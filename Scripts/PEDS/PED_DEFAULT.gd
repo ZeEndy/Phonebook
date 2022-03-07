@@ -195,6 +195,7 @@ func _physics_process(delta):
 				if down_timer<0:
 					get_node("PED_SPRITES/Legs").speed_scale=1
 	elif state == ped_states.dead:
+		get_node("PED_COL/CollsionCircle").disabled=true
 		if get_groups().size()>0:
 			for i in get_groups():
 				remove_from_group(i)
