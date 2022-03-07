@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sndConfirmKill.wav-0776103f9183c8079242eeefa47a3f42.sample"
+
+[deps]
+
+source_file="res://Data/EXPERIMENTS/A10/sndConfirmKill.wav"
+dest_files=[ "res://.import/sndConfirmKill.wav-0776103f9183c8079242eeefa47a3f42.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

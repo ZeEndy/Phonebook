@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_Glass2.wav-83f41e9b99909be8ab3f6af94931fec8.sample"
+
+[deps]
+
+source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Glass2.wav"
+dest_files=[ "res://.import/snd_Glass2.wav-83f41e9b99909be8ab3f6af94931fec8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/WAD/WadSprite.gd" type="Script" id=1]
+
+[node name="Execution Editor" type="Node2D" groups=[
+"Current_room",
+]]
+
+[node name="Player Arms" type="AnimatedSprite" parent="."]
+script = ExtResource( 1 )
+
+[node name="Player Mask" type="AnimatedSprite" parent="."]
+script = ExtResource( 1 )
+
+[node name="Player" type="AnimatedSprite" parent="."]
+script = ExtResource( 1 )
+
+[node name="Enemy" type="AnimatedSprite" parent="."]
+script = ExtResource( 1 )

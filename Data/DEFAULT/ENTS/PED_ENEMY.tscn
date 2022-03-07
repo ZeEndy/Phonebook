@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/smoothing/smoothing_2d.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/PEDS/PED_Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Body.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Data/DEFAULT/SPRITES/enemy.png" type="Texture" id=4]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Legs.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="Enemy" type="Node2D" groups=["Enemy_Parent", "PED_parent"]]
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="PED_COL" type="KinematicBody2D" parent="." groups=["Enemy", "PED"]]
+collision_layer = 65
+collision_mask = 32
+
+[node name="CollsionCircle" type="CollisionShape2D" parent="PED_COL"]
+shape = SubResource( 1 )
+
+[node name="weapon_find" type="RayCast2D" parent="PED_COL"]
+enabled = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="PED_COL"]
+rect = Rect2( -32, -32, 64, 64 )
+
+[node name="movement_check" type="RayCast2D" parent="PED_COL"]
+enabled = true
+collision_mask = 32
+
+[node name="visibilty_check" type="RayCast2D" parent="PED_COL"]
+enabled = true
+collision_mask = 16
+
+[node name="Label" type="Label" parent="PED_COL"]
+margin_left = -39.0
+margin_top = 42.0
+margin_right = 1.0
+margin_bottom = 56.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PED_SPRITES" type="Node2D" parent="."]
+script = ExtResource( 1 )
+target = NodePath("../PED_COL")
+flags = 51
+
+[node name="Legs" parent="PED_SPRITES" instance=ExtResource( 7 )]
+
+[node name="Body" parent="PED_SPRITES" instance=ExtResource( 3 )]
+rotation = 5.07036e-06
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PED_SPRITES"]
+margin_left = -40.9635
+margin_top = 17.3609
+margin_right = -0.963455
+margin_bottom = 57.3609
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TEMPSPRITE" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+
+[connection signal="viewport_entered" from="PED_COL/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_entered"]
+[connection signal="viewport_exited" from="PED_COL/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

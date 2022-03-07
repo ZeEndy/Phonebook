@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sndIncomingConfirm.wav-99025733988a7f72ed74ce42c832183d.sample"
+
+[deps]
+
+source_file="res://Data/EXPERIMENTS/A10/sndIncomingConfirm.wav"
+dest_files=[ "res://.import/sndIncomingConfirm.wav-99025733988a7f72ed74ce42c832183d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

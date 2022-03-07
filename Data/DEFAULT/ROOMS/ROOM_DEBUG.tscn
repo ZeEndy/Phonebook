@@ -1,0 +1,249 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Data/DEFAULT/ENTS/PED_PLAYER.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Data/DEFAULT/ENTS/ENT_DOOR.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Data/DEFAULT/ROOMS/COD-ModernWarfare-Shipment-Mini-Map-Layout.jpg" type="Texture" id=3]
+[ext_resource path="res://Scripts/LEVEL/LVL_MAIN.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/VFX/VFX_SURFACE.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/GAME/GAME_PATHFINDING.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/LEVEL/LVL_FLOOR_LOGIC.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/HUD/HUD_BG.gd" type="Script" id=12]
+
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0, 0, 0, 1, 0.0508525, 0.596207, 0.599482, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 400
+
+[sub_resource type="TileSet" id=4]
+
+[sub_resource type="ViewportTexture" id=5]
+viewport_path = NodePath("Floor 1/Viewport")
+
+[node name="Sex Level" type="Node2D" groups=["Current_room", "Level"]]
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+song = "res://GAMES/DEMO/Data/Music/mu_fixed.ogg"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
+rotation = -1.5708
+scale = Vector2( 1764, 4012 )
+mesh = SubResource( 1 )
+texture = SubResource( 3 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cod-ModernWarfare-Shipment-Mini-Map-Layout" type="Sprite" parent="."]
+visible = false
+position = Vector2( 416, 376 )
+scale = Vector2( 1.04101, 1.04053 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PathfindingGrid" type="TileMap" parent="." groups=["NavMap"]]
+z_index = -4
+tile_set = SubResource( 4 )
+cell_size = Vector2( 8, 8 )
+cell_quadrant_size = 8
+cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
+cell_tile_origin = 1
+collision_layer = 32
+collision_mask = 32
+format = 1
+script = ExtResource( 7 )
+map_size = Vector2( 80, 80 )
+nav_map_up_to_date = false
+
+[node name="Floor 1" type="Node2D" parent="."]
+script = ExtResource( 10 )
+my_surface = NodePath("Viewport")
+
+[node name="Viewport" type="Viewport" parent="Floor 1" groups=["Surface"]]
+size = Vector2( 7680, 4320 )
+transparent_bg = true
+handle_input_locally = false
+render_target_clear_mode = 1
+render_target_update_mode = 3
+script = ExtResource( 6 )
+im_enabled = true
+avalible_sprites = [ true ]
+
+[node name="TEST" type="Sprite" parent="Floor 1"]
+scale = Vector2( 0.25, 0.25 )
+z_index = -3
+texture = SubResource( 5 )
+centered = false
+flip_v = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="sexwalls" type="StaticBody2D" parent="Floor 1" groups=["SOLID"]]
+z_index = 2
+collision_layer = 48
+collision_mask = 15
+
+[node name="VISUAL" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 8, 0 )
+polygon = PoolVector2Array( 816, 776, 816, 448, 680, 448, 680, 288, 752, 288, 752, 440, 816, 440, 816, 0, -8, 0, -8, 280, 128, 280, 128, 448, 120, 448, 120, 288, 56, 288, 56, 448, -8, 448, -8, 768, 816, 768, 816, 776, -16, 776, -16, -8, 824, -8, 824, 776 )
+
+[node name="VISUAL2" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 0, 24 )
+polygon = PoolVector2Array( 328, 720, 488, 720, 488, 728, 328, 728 )
+
+[node name="VISUAL3" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 0 )
+polygon = PoolVector2Array( 344, 712, 336, 712, 336, 616, 496, 616, 496, 680, 344, 680 )
+
+[node name="VISUAL4" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 0, 8 )
+polygon = PoolVector2Array( 208, 392, 368, 392, 368, 520, 208, 520 )
+
+[node name="VISUAL5" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 16, 0 )
+polygon = PoolVector2Array( 424, 208, 584, 208, 584, 344, 424, 344, 424, 336, 576, 336, 576, 272, 424, 272 )
+
+[node name="VISUAL6" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 0, 8 )
+polygon = PoolVector2Array( 216, 336, 368, 336, 368, 208, 216, 208 )
+
+[node name="VISUAL7" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 8, 0 )
+polygon = PoolVector2Array( 320, 64, 320, 128, 480, 128, 480, 64.0764, 480, 32, 472, 32, 472, 64 )
+
+[node name="VISUAL8" type="Polygon2D" parent="Floor 1/sexwalls"]
+polygon = PoolVector2Array( 432, 408, 592, 408, 592, 528, 432, 528 )
+
+[node name="VISUAL9" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 104, 688, 168, 584, 136, 568, 72, 672 )
+
+[node name="VISUAL10" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 120, 80, 160, 80, 160, 120, 120, 120 )
+
+[node name="VISUAL11" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 208, 112, 240, 56, 272, 72, 240, 128 )
+
+[node name="VISUAL12" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 680, 624, 744, 608, 752, 640, 688, 656 )
+
+[node name="VISUAL13" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 728, 568, 768, 560, 752, 496, 712, 504 )
+
+[node name="VISUAL14" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 616, 72, 616, 64, 624, 48, 632, 48, 696, 88, 680, 112 )
+
+[node name="VISUAL15" type="Polygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 688, 120, 704, 96, 728, 112, 712, 136 )
+
+[node name="COLLISION" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 8, 0 )
+polygon = PoolVector2Array( 816, 776, 816, 448, 680, 448, 680, 288, 752, 288, 752, 440, 816, 440, 816, 0, -8, 0, -8, 280, 128, 280, 128, 448, 120, 448, 120, 288, 56, 288, 56, 448, -8, 448, -8, 768, 816, 768, 816, 776, -16, 776, -16, -8, 824, -8, 824, 776 )
+
+[node name="COLLISION2" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 0, 24 )
+polygon = PoolVector2Array( 328, 720, 488, 720, 488, 728, 328, 728 )
+
+[node name="COLLISION3" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 0 )
+polygon = PoolVector2Array( 344, 712, 336, 712, 336, 616, 496, 616, 496, 680, 344, 680 )
+
+[node name="COLLISION4" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 0, 8 )
+polygon = PoolVector2Array( 208, 392, 368, 392, 368, 520, 208, 520 )
+
+[node name="COLLISION5" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 16, 0 )
+polygon = PoolVector2Array( 424, 208, 584, 208, 584, 344, 424, 344, 424, 336, 576, 336, 576, 272, 424, 272 )
+
+[node name="COLLISION6" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 0, 8 )
+polygon = PoolVector2Array( 216, 336, 368, 336, 368, 208, 216, 208 )
+
+[node name="COLLISION7" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( 8, 0 )
+polygon = PoolVector2Array( 320, 64, 320, 128, 480, 128, 480, 64.0764, 480, 32, 472, 32, 472, 64 )
+
+[node name="COLLISION8" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+polygon = PoolVector2Array( 432, 408, 592, 408, 592, 528, 432, 528 )
+
+[node name="COLLISION9" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 104, 688, 168, 584, 136, 568, 72, 672 )
+
+[node name="COLLISION10" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 120, 80, 160, 80, 160, 120, 120, 120 )
+
+[node name="COLLISION11" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 208, 112, 240, 56, 272, 72, 240, 128 )
+
+[node name="COLLISION12" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 680, 624, 744, 608, 752, 640, 688, 656 )
+
+[node name="COLLISION13" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 728, 568, 768, 560, 752, 496, 712, 504 )
+
+[node name="COLLISION14" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 616, 72, 616, 64, 624, 48, 632, 48, 696, 88, 680, 112 )
+
+[node name="COLLISION15" type="CollisionPolygon2D" parent="Floor 1/sexwalls"]
+position = Vector2( -8, 24 )
+polygon = PoolVector2Array( 688, 120, 704, 96, 728, 112, 712, 136 )
+
+[node name="Door" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 488, 680 )
+rotation = -0.713704
+
+[node name="Door2" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 488, 744 )
+rotation = 0.652432
+
+[node name="Door3" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 328, 744 )
+rotation = 2.72421
+
+[node name="Door4" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 128, 448 )
+rotation = 0.785397
+
+[node name="Door5" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 64, 448 )
+rotation = 1.57079
+
+[node name="Door6" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 440, 272 )
+rotation = 1.57079
+
+[node name="Door7" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 440, 336 )
+rotation = 4.71068
+
+[node name="Door8" parent="Floor 1" instance=ExtResource( 2 )]
+position = Vector2( 328, 64 )
+rotation = 2.61799
+
+[node name="PED" parent="Floor 1" instance=ExtResource( 1 )]
+position = Vector2( 64, 64 )

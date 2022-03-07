@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sndWrathOfGod.wav-3f1dbb05b14341c803c10f2071606cde.sample"
+
+[deps]
+
+source_file="res://Data/EXPERIMENTS/A10/sndWrathOfGod.wav"
+dest_files=[ "res://.import/sndWrathOfGod.wav-3f1dbb05b14341c803c10f2071606cde.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

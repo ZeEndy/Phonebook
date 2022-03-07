@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sndFlyBy.wav-ef3e17ece66b8da1576583b288785a9b.sample"
+
+[deps]
+
+source_file="res://Data/EXPERIMENTS/A10/sndFlyBy.wav"
+dest_files=[ "res://.import/sndFlyBy.wav-ef3e17ece66b8da1576583b288785a9b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/GAME/GAME_GENERAL.gd" type="Script" id=1]
+[ext_resource path="res://GAMES/DEMO/Data/Scenes/Main Menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/GAME/GAME_GLOBAL.gd" type="Script" id=3]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+//render_mode blend_mix;
+//
+//uniform float giv_time = 1;
+//uniform float u_amount = 0.1;
+//
+//
+//float rand(){
+//	return fract(sin(dot(mod(vec2(TIME,0),10000.0),vec2(24.435,11.0534)))*5123.146306);
+//}
+//
+//void fragment(){
+//	vec2 coord = UV;
+//	float value = rand(coord+vec2(10000.0)*2.0);
+//
+//	COLOR = vec4(vec3(rand(UV+vec2(64389.0)*0.754),rand(coord+vec2(64389.0)*0.354),rand(coord+vec2(64389.0))*0.57),0.463);
+//}
+//
+//float get_noise(vec2 uv) {
+//    return fract(sin(dot(uv ,vec2(12.9898,78.233))) * 43758.5453);
+//}
+//
+//void fragment() {
+//    vec2 k = 1.0 / TEXTURE_PIXEL_SIZE;
+//    vec2 pixel_coords = floor(k * UV) + k * vec2(TIME);
+//    float n = 2.0 * get_noise(pixel_coords) - 1.0;
+//    COLOR = vec4(rand(),rand(),rand(),1) + n * u_amount;
+//}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="QuadMesh" id=3]
+
+[sub_resource type="QuadMesh" id=6]
+
+[sub_resource type="Gradient" id=4]
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 4 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[node name="GAME" type="Node"]
+script = ExtResource( 1 )
+
+[node name="GLOBAL" type="Node" parent="." groups=["GLOBAL"]]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GLOBAL"]
+layer = 3
+
+[node name="Noise" type="MeshInstance2D" parent="GLOBAL/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.0392157 )
+material = SubResource( 2 )
+position = Vector2( 56, 128 )
+rotation = 1.5708
+scale = Vector2( 248.268, 248.268 )
+mesh = SubResource( 3 )
+
+[node name="Fade" type="MeshInstance2D" parent="GLOBAL/CanvasLayer"]
+rotation = 1.5708
+scale = Vector2( 5, 5 )
+mesh = SubResource( 6 )
+texture = SubResource( 7 )
+
+[node name="Menu_Fade" type="MeshInstance2D" parent="GLOBAL/CanvasLayer"]
+visible = false
+rotation = 1.5708
+scale = Vector2( 5, 5 )
+mesh = SubResource( 3 )
+texture = SubResource( 5 )
+
+[node name="Music" type="AudioStreamPlayer" parent="GLOBAL"]
+autoplay = true
+bus = "Music"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="GLOBAL"]
+layer = 50
+
+[node name="DEBUG_TEXT" type="Label" parent="GLOBAL/CanvasLayer2"]
+margin_right = 176.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Menu" parent="." instance=ExtResource( 2 )]
+start_room = "res://GAMES/DEMO/Data/Scenes/Levels/ROOM_SURVIVAL.tscn"

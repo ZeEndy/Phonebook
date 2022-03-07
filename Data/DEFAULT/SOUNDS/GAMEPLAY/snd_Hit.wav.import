@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_Hit.wav-c72bc2b5ce779e417bb099b3243f8eb6.sample"
+
+[deps]
+
+source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Hit.wav"
+dest_files=[ "res://.import/snd_Hit.wav-c72bc2b5ce779e417bb099b3243f8eb6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/smoothing/smoothing_2d.gd" type="Script" id=1]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Body.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/PEDS/PED_DEFAULT.gd" type="Script" id=3]
+[ext_resource path="res://Data/DEFAULT/SPRITES/player.png" type="Texture" id=4]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Legs.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
+
+[node name="PED2" type="Node2D" groups=["PED_parent"]]
+z_index = 1
+script = ExtResource( 3 )
+
+[node name="PED_COL" type="KinematicBody2D" parent="." groups=["PED"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollsionCircle" type="CollisionShape2D" parent="PED_COL"]
+shape = SubResource( 1 )
+
+[node name="weapon_find" type="RayCast2D" parent="PED_COL"]
+enabled = true
+
+[node name="PED" type="Node2D" parent="PED_COL"]
+
+[node name="PED_SPRITES" type="Node2D" parent="."]
+script = ExtResource( 1 )
+target = NodePath("../PED_COL")
+flags = 51
+
+[node name="Legs" parent="PED_SPRITES" instance=ExtResource( 5 )]
+
+[node name="Body" parent="PED_SPRITES" instance=ExtResource( 2 )]
+
+[node name="TEMPSPRITE" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )

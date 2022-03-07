@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_Shotgun.wav-87a09d369f0affe81261193f11e9a3e8.sample"
+
+[deps]
+
+source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Shotgun.wav"
+dest_files=[ "res://.import/snd_Shotgun.wav-87a09d369f0affe81261193f11e9a3e8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

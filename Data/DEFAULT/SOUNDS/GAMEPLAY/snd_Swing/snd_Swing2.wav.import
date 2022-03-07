@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_Swing2.wav-fd9f3dc8e9e8846b350cde036a7238bc.sample"
+
+[deps]
+
+source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav"
+dest_files=[ "res://.import/snd_Swing2.wav-fd9f3dc8e9e8846b350cde036a7238bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
