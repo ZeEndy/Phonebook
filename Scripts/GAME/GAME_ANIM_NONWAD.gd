@@ -8,6 +8,7 @@ export var speed_scale=1
 export var frame=0
 export var animation=""
 export var saved_var={}
+export var add_to_surface=false
 
 # Called when the node enters the scene tree for the first time.
 
@@ -26,7 +27,6 @@ func _process(delta):
 	frame=get_node("AnimationPlayer").current_animation_position
 	animation=get_node("AnimationPlayer").current_animation
 	get_node("AnimationPlayer").playback_speed=speed_scale
-	
 
 func add_ammo(ammount=1):
 	if get_node("../../").gun.ammo+ammount<=get_node("../../").gun.max_ammo:
@@ -74,6 +74,15 @@ func has_animation(input_anim):
 
 func play_audio(given_sample,pos_2d=null,affected_time=true,true_pitch=1,random_pitch=0,bus="SFX"):
 	AudioManager.play_audio(given_sample,pos_2d,affected_time,true_pitch,random_pitch,bus)
+
+
+func spawn_object(path_to_object:String,pos:Vector2,set_stuff:Array=[]):
+	#set stuff just do [[get variable,the value to set it as],[get 2nd variable,the value to set it as]]
+	if path_to_object!="":
+		var object = load(path_to_object).instance()
+		object.global_position+=pos.rotated(global_rotation)
+		for i in set_stuff:
+			object.set(i[0],i[1])
 
 #need to calculate acording to the frame rate
 func set_frame(frame_rate:int = 13,frame:int = 0):

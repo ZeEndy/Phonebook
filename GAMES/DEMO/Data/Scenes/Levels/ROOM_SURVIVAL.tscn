@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Data/DEFAULT/ENTS/PED_PLAYER.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Data/DEFAULT/ENTS/ENT_DOOR.tscn" type="PackedScene" id=2]
@@ -8,13 +8,14 @@
 [ext_resource path="res://Scripts/VFX/VFX_SURFACE.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/GAME/GAME_PATHFINDING.gd" type="Script" id=7]
 [ext_resource path="res://Data/DEFAULT/ENTS/PED_ENEMY.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GAMES/DEMO/Scripts/SPAWNER.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/LEVEL/LVL_FLOOR_LOGIC.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/HUD/HUD_BG.gd" type="Script" id=12]
 
 [sub_resource type="QuadMesh" id=1]
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0, 0, 0, 1, 0.955493, 0.043308, 0.749699, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.624478, 0.00681973, 0.589854, 1 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
@@ -37,7 +38,7 @@ layer = -1
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer"]
 rotation = -1.5708
-scale = Vector2( 2030, 3982 )
+scale = Vector2( 2030, 3992 )
 mesh = SubResource( 1 )
 texture = SubResource( 3 )
 script = ExtResource( 12 )
@@ -244,7 +245,8 @@ position = Vector2( 440, 336 )
 rotation = 4.71068
 
 [node name="GENERIC PLAYER" parent="Floor 1" instance=ExtResource( 1 )]
-position = Vector2( 128, 80 )
+position = Vector2( 516, 317 )
+ability = ""
 
 [node name="Door8" parent="Floor 1" instance=ExtResource( 2 )]
 position = Vector2( 328, 64 )
@@ -265,5 +267,33 @@ position = Vector2( 776, 216 )
 [node name="Window5" parent="Floor 1" instance=ExtResource( 4 )]
 position = Vector2( 808, 216 )
 
-[node name="Enemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( 472, 312 )
+[node name="Node2D" type="Node2D" parent="Floor 1"]
+position = Vector2( 90, 421 )
+script = ExtResource( 9 )
+
+[node name="Node2D2" type="Node2D" parent="Floor 1"]
+position = Vector2( 360, 705 )
+script = ExtResource( 9 )
+
+[node name="Node2D3" type="Node2D" parent="Floor 1"]
+position = Vector2( 774, 720 )
+script = ExtResource( 9 )
+
+[node name="Node2D4" type="Node2D" parent="Floor 1"]
+position = Vector2( 776, 492 )
+script = ExtResource( 9 )
+
+[node name="Node2D5" type="Node2D" parent="Floor 1"]
+position = Vector2( 782, 387 )
+script = ExtResource( 9 )
+
+[node name="Node2D6" type="Node2D" parent="Floor 1"]
+position = Vector2( 457, 49 )
+script = ExtResource( 9 )
+
+[node name="Node2D7" type="Node2D" parent="Floor 1"]
+position = Vector2( 47, 47 )
+script = ExtResource( 9 )
+
+[node name="Enemy" parent="Floor 1" instance=ExtResource( 8 )]
+position = Vector2( 173, 404 )

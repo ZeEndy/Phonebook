@@ -163,7 +163,7 @@ func get_class():
 
 func debug_rand_weapon():
 		if Input.is_action_just_pressed("DEBUG_SPAWN_GUN"):
-			var random_weapon=int(round(rand_range(0,2)))
+			var random_weapon=int(round(rand_range(0,3)))
 			drop_weapon()
 			match random_weapon:
 				0:#M16
@@ -287,6 +287,47 @@ func debug_rand_weapon():
 						"trigger_reset":0.1,
 						"trigger_shot":0,
 						"shoot_bullets":1
+					}
+					gun=dupe_dict(transfer_gun)
+				3:#SHOTGUN
+					var transfer_gun={
+						#id for hud
+						"id":"SHOTGUN",
+						#ammo of the gun
+						"ammo":7,
+						"max_ammo":6,
+						# wad sprites
+						"walk_sprite":"WalkShotgun",
+						"attack_sprite":["AttackShotgun"],
+						"attack_index":0,
+						#random on attack
+						"random_sprite":false,
+						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Shotgun.wav",
+						
+						
+						"kill_sprite":"",
+						"kill_lean_sprite":"",
+						
+						"recoil":8,
+						
+						"droppable":true,
+						#types:melee,burst,semi,auto
+						"type":"semi",
+						#attack_type:| shotgun, normal, armor, grenade,lethal, non-lethal,downing
+						"attack_type":"armor",
+						
+						
+						"execution_sprite":"",
+						"ground_sprite":"",
+						"gun_length":0,
+						"screen_shake":1,
+						
+						#trigger
+						"trigger_pressed":false,
+						"trigger_bullets":0,
+						"trigger_reset":0.8,
+						"trigger_shot":0,
+						"shoot_bullets":8
 					}
 					gun=dupe_dict(transfer_gun)
 # :face_with_raised_eyebrow: old code

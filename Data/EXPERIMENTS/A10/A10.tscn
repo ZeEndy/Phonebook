@@ -49,9 +49,7 @@ shader_param/Samples = 30
 shader_param/strength = 0.2632
 shader_param/noise = ExtResource( 1 )
 
-[node name="A10" type="Node2D" groups=[
-"EXPERIMENT_A10",
-]]
+[node name="A10" type="Node2D" groups=["EXPERIMENT_A10"]]
 script = ExtResource( 3 )
 
 [node name="a10" type="Sprite" parent="."]

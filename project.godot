@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
+"base": "Sprite",
 "class": "BULLET",
 "language": "GDScript",
 "path": "res://Scripts/GAMEPLAY/GAMEPLAY_BULLET.gd"
@@ -69,8 +69,9 @@ _global_script_class_icons={
 [application]
 
 config/name="PhoneBook"
-run/main_scene="res://Game_Selector.tscn"
+run/main_scene="res://GAMES/DEMO/MAIN.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 

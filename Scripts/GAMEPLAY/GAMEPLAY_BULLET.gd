@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Sprite
 
 class_name BULLET
 #const impact = preload("res://Weapons/Effects/Impact.tscn")
@@ -6,6 +6,7 @@ var bullet
 var paused=false
 var speed = 3750
 export var velocity = Vector2()
+export var size = Vector2(8,1)
 export var force=0
 var get_destroyed=true
 var penetrate=true
@@ -35,31 +36,35 @@ func _physics_process(delta):
 	modulate = Color.white.linear_interpolate(Color.yellow, randf())
 	velocity = Vector2(speed, 0).rotated(rotation)
 #	get_node("Sprite_Bullet").scale.x=lerp(get_node("Sprite_Bullet").scale.x,1,0.3*delta*60)
-	var collision = move_and_collide(velocity*delta,false)
-	if collision:
-		if collision.collider.get_parent().has_method("do_remove_health"):
-			spawn_smoke(collision.normal.angle(),collision.position,Color.red,0)
+	global_position+=(velocity*delta)
+	var collision = check_collision()
+	if collision.size()>0:
+		if collision[0].collider.get_parent().has_method("do_remove_health"):
+#			spawn_smoke(collision.normal.angle(),collision.position,Color.red,0)
 			if penetrate==true:
-				var exit_wound_pos = collision.collider.global_position+(Vector2(collision.collider.global_position.distance_to(collision.position),0).rotated((collision.collider.global_position-collision.position).angle()))
-				spawn_smoke(-collision.normal.angle(),exit_wound_pos,Color.red,0)
+#				var exit_wound_pos = collision[0].collider.global_position+(Vector2(collision.collider.global_position.distance_to(collision[0].position),0).rotated((collision.collider.global_position-collision.position).angle()))
+#				spawn_smoke(-collision.normal.angle(),exit_wound_pos,Color.red,0)
 				get_destroyed=false
 			else:
 				get_destroyed=false
 				queue_free()
 			#fuck me this is stupid
 			if kill==false:
-				if "Lean" in collision.collider.get_parent().sprites.get_node("Legs").animation:
+				if "Lean" in collision[0].collider.get_parent().sprites.get_node("Legs").animation:
 					if signal_!="":
 						emit_signal("bullet_signal")
-					collision.collider.get_parent().do_remove_health(damage,death_lean_sprite,collision.collider.get_parent().sprites.get_node("Legs").global_rotation,randi(),-0.1)
+					collision[0].collider.get_parent().do_remove_health(damage,death_lean_sprite,collision.collider.get_parent().sprites.get_node("Legs").global_rotation,randi(),-0.1)
 				else:
 					if signal_!="":
 						emit_signal("bullet_signal")
-					collision.collider.get_parent().do_remove_health(damage,death_sprite,global_rotation)
+					collision[0].collider.get_parent().do_remove_health(damage,death_sprite,global_rotation)
 				kill=true
+		elif collision[0].collider.get_parent().has_method("destroy_window"):
+			collision[0].collider.get_parent().destroy_window()
+			
 		else:
-			hit_point=collision.position
-			hit_rotation=collision.normal.angle()
+#			hit_point=collision[0].collider.position
+#			hit_rotation=collision[1].normal.angle()
 			destroy()
 	else:
 		kill=false
@@ -114,6 +119,24 @@ func spawn_smoke(given_dir=global_rotation,given_pos=global_position,given_color
 #	sprite.speed=1+rand_range(0,0.5)*randf()
 #	get_parent().add_child(sprite)
 	pass
+
+
+
+func check_collision():
+	var collision_objects=[]
+	
+	var shape = RectangleShape2D.new()
+	shape.extents=size
+	
+	var query = Physics2DShapeQueryParameters.new()
+	query.set_shape(shape)
+	query.collision_layer=61
+	var space = get_world_2d().direct_space_state
+	query.set_transform(Transform2D(global_rotation, global_position+shape.extents.rotated(global_rotation)))
+	var piss=space.intersect_shape(query,1)
+	if piss.size()>0:
+		collision_objects=[piss[0],space.get_rest_info(query)]
+	return collision_objects
 
 
 

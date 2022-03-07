@@ -375,7 +375,6 @@ func spawn_bullet(amoumt:int):
 			if gun.has("kill_sprite"):
 				sus_bullet.death_sprite=gun.kill_sprite
 				sus_bullet.death_lean_sprite=gun.kill_lean_sprite
-				
 		else:
 			var sus_bullet=def_grenade_ent.instance()
 			#add da weapon spawn bullet

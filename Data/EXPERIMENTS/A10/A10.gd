@@ -67,18 +67,9 @@ func _process(delta):
 				else:
 					if get_node("wrath_of_god").playing==false:
 						if played_confirm==false:
-							if kill_comfirmed==true:
-								get_node("confirm_kill").play()
-							else:
-								get_node("confirm_no_kill").play()
 							played_confirm=true
 				if played_confirm==true:
-					if kill_comfirmed==true:
-						if get_node("confirm_kill").playing==false:
-							queue_free()
-					else:
-						if get_node("confirm_no_kill").playing==false:
-							queue_free()
+					queue_free()
 	else:
 		if bullets>=get_node("a10/bullet_cache").get_child_count():
 			if spawn_bullet_timer<=0:
