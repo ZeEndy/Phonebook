@@ -47,8 +47,8 @@ func debug_rand_weapon():
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_M9.wav",
 						
 						
-						"kill_sprite":"",
-						"kill_lean_sprite":"",
+						"kill_sprite":"DeadMachinegun",
+						"kill_lean_sprite":"DeadLeanMachinegun",
 						
 						"recoil":4,
 						
@@ -88,8 +88,8 @@ func debug_rand_weapon():
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndAK.wav",
 						
 						
-						"kill_sprite":"",
-						"kill_lean_sprite":"",
+						"kill_sprite":"DeadMachinegun",
+						"kill_lean_sprite":"DeadLeanMachinegun",
 						
 						"recoil":4,
 						
@@ -100,8 +100,8 @@ func debug_rand_weapon():
 						"attack_type":"armor",
 						
 						
-						"execution_sprite":"ExecuteKnife",
-						"ground_sprite":"DieKnife",
+						"execution_sprite":"",
+						"ground_sprite":"",
 						"gun_length":0,
 						"screen_shake":1,
 						
@@ -129,8 +129,8 @@ func debug_rand_weapon():
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndM16.wav",
 						
 						
-						"kill_sprite":"",
-						"kill_lean_sprite":"",
+						"kill_sprite":"DeadMachinegun",
+						"kill_lean_sprite":"DeadLeanMachinegun",
 						
 						"recoil":4,
 						
@@ -157,7 +157,7 @@ func debug_rand_weapon():
 				3:#SHOTGUN
 					var transfer_gun={
 						#id for hud
-						"id":"SHOTGUN",
+						"id":"Shotgun",
 						#ammo of the gun
 						"ammo":7,
 						"max_ammo":6,
@@ -170,8 +170,8 @@ func debug_rand_weapon():
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Shotgun.wav",
 						
 						
-						"kill_sprite":"",
-						"kill_lean_sprite":"",
+						"kill_sprite":"DeadShotgun",
+						"kill_lean_sprite":"DeadLeanShotgun",
 						
 						"recoil":8,
 						
@@ -182,8 +182,8 @@ func debug_rand_weapon():
 						"attack_type":"armor",
 						
 						
-						"execution_sprite":"",
-						"ground_sprite":"",
+						"execution_sprite":"ExecuteShotgun",
+						"ground_sprite":"DieShotgun",
 						"gun_length":0,
 						"screen_shake":1,
 						
@@ -193,6 +193,88 @@ func debug_rand_weapon():
 						"trigger_reset":0.8,
 						"trigger_shot":0,
 						"shoot_bullets":8
+					}
+					gun=dupe_dict(transfer_gun)
+				4:#Knife
+					var transfer_gun={
+						#id for hud
+						"id":"Knife",
+						#ammo of the gun
+						"ammo":7,
+						"max_ammo":6,
+						# wad sprites
+						"walk_sprite":"WalkKnife",
+						"attack_sprite":["AttackKnife"],
+						"attack_index":0,
+						#random on attack
+						"random_sprite":false,
+						"attack_sound":"",
+						
+						
+						"kill_sprite":"DeadSlash",
+						"kill_lean_sprite":"DeadLeanMelee",
+						
+						"recoil":8,
+						
+						"droppable":true,
+						#types:melee,burst,semi,auto
+						"type":"melee",
+						#attack_type:| shotgun, normal, armor, grenade,lethal, non-lethal,downing
+						"attack_type":"",
+						
+						
+						"execution_sprite":"ExecuteKnife",
+						"ground_sprite":"DieKnife",
+						"gun_length":0,
+						"screen_shake":1,
+						
+						#trigger
+						"trigger_pressed":false,
+						"trigger_bullets":0,
+						"trigger_reset":0,
+						"trigger_shot":0,
+						"shoot_bullets":0
+					}
+					gun=dupe_dict(transfer_gun)
+				5:#Bat
+					var transfer_gun={
+						#id for hud
+						"id":"Bat",
+						#ammo of the gun
+						"ammo":7,
+						"max_ammo":6,
+						# wad sprites
+						"walk_sprite":"WalkBat",
+						"attack_sprite":["AttackBat"],
+						"attack_index":0,
+						#random on attack
+						"random_sprite":false,
+						"attack_sound":"",
+						
+						
+						"kill_sprite":"DeadBlunt",
+						"kill_lean_sprite":"DeadLeanMelee",
+						
+						"recoil":8,
+						
+						"droppable":true,
+						#types:melee,burst,semi,auto
+						"type":"melee",
+						#attack_type:| shotgun, normal, armor, grenade,lethal, non-lethal,downing
+						"attack_type":"",
+						
+						
+						"execution_sprite":"ExecuteBat",
+						"ground_sprite":"DieBlunt",
+						"gun_length":0,
+						"screen_shake":1,
+						
+						#trigger
+						"trigger_pressed":false,
+						"trigger_bullets":0,
+						"trigger_reset":0.8,
+						"trigger_shot":0,
+						"shoot_bullets":0
 					}
 					gun=dupe_dict(transfer_gun)
 			return gun

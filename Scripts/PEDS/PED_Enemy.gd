@@ -163,9 +163,9 @@ func _physics_process(delta):
 	elif state==ped_states.down:
 		body_direction=get_node("PED_SPRITES/Legs").global_rotation
 		if get_node("PED_SPRITES/Legs").speed_scale==0:
-			get_node("PED_COL").set_collision_layer_bit(0,false)
+			get_node("PED_COL").set_collision_layer_bit(7,false)
 		else:
-			get_node("PED_COL").set_collision_layer_bit(0,true)
+			get_node("PED_COL").set_collision_layer_bit(7,true)
 	elif state==ped_states.execute:
 		if execute_click==true:
 			sprites.get_node("Body").speed_scale=1

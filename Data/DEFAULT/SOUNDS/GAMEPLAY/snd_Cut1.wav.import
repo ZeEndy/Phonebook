@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snd_Cut1.wav-4702d40d2cc01128fe38d611c7d7ad4a.sample"
+
+[deps]
+
+source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut1.wav"
+dest_files=[ "res://.import/snd_Cut1.wav-4702d40d2cc01128fe38d611c7d7ad4a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

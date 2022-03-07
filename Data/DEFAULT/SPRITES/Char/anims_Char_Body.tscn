@@ -128,7 +128,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
+"update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 tracks/1/type = "value"
@@ -155,76 +155,75 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 6, 0 ), Vector2( 6, 0 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("../..:sprite_index")
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
-tracks/3/loop_wrap = false
+tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.388889 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "WalkBat" ]
+"values": [ {
+"args": [ [ false, "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
+"method": "play_audio"
+} ]
 }
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
+tracks/4/type = "value"
+tracks/4/path = NodePath("Melee_Area/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.388889 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ [ false, "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
-"method": "play_audio"
-}, {
-"args": [ "WalkUnarmed" ],
-"method": "flip_sprite_switch"
-} ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Melee_Area/CollisionShape2D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 0.166667, 0.388889 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("anim/mask:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/path = NodePath("anim/mask:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 0.0555556, 0.166667, 0.222222, 0.277778 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 2 ) ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("Melee_Area:attack_type")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath("Melee_Area:attack_type")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0, 0.388889 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 1 ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.388889 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "WalkBat" ],
+"method": "flip_sprite_switch"
+} ]
+}
 
 [sub_resource type="Animation" id=179]
 resource_name = "AttackKnife"
-length = 0.375
-step = 0.0416667
+length = 0.25
+step = 0.0277778
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim:frame")
 tracks/0/interp = 1
@@ -232,10 +231,10 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.333333 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 8 ]
+"times": PoolRealArray( 0, 0.0277778, 0.0555556, 0.0833333, 0.111111, 0.138889, 0.166667, 0.194444, 0.222222 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("anim:animation")
@@ -244,7 +243,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.375 ),
+"times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Attack Knife", "Attack Knife" ]
@@ -256,7 +255,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.375 ),
+"times": PoolRealArray( 0, 0.25 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 6, 8 ), Vector2( 6, 8 ) ]
@@ -268,7 +267,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.375 ),
+"times": PoolRealArray( 0.25 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "WalkKnife" ],
@@ -282,7 +281,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.166667, 0.291667 ),
+"times": PoolRealArray( 0, 0.0555556, 0.222222 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
@@ -294,7 +293,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.166667 ),
+"times": PoolRealArray( 0, 0.111111 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
@@ -310,6 +309,68 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 1 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../..:sprite_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.0277778 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
+"method": "play_audio"
+} ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Melee_Area:hit_sound")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut2.wav" ] ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Melee_Area:death_sprite")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "DeadSlash" ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Melee_Area:death_lean_sprite")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "DeadLeanMelee" ]
 }
 
 [sub_resource type="Animation" id=236]
@@ -582,7 +643,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id=152]
 resource_name = "AttackUnarmed"
-length = 0.444444
+length = 0.388889
 step = 0.0555556
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim:frame")
@@ -639,14 +700,14 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.0555556, 0.388889 ),
+"times": PoolRealArray( 0, 0.0555556 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "flip_sprite"
+}, {
 "args": [ [ false, "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
 "method": "play_audio"
-}, {
-"args": [ "WalkUnarmed" ],
-"method": "flip_sprite_switch"
 } ]
 }
 tracks/5/type = "value"
@@ -671,7 +732,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.111111, 0.277778 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 1, -1 ), Vector2( 1, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 1, 0 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Melee_Area:attack_type")
@@ -680,10 +741,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 0.444444 ),
+"times": PoolRealArray( 0, 0.388889 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "downing", "downing" ]
+"values": [ 0, 0 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("Melee_Area:hit_sound")
@@ -692,7 +753,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.444444 ),
+"times": PoolRealArray( 0, 0.388889 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ [ null ], [  ] ]
@@ -3437,7 +3498,7 @@ radius = 12.0
 height = 8.0
 
 [node name="Body" type="Node2D"]
-rotation = -6.28318
+rotation = 5.07036e-06
 script = ExtResource( 1 )
 speed_scale = 0
 
@@ -3469,8 +3530,7 @@ anims/WalkUnarmed = SubResource( 78 )
 
 [node name="anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 79 )
-animation = "Attack Shotgun"
-offset = Vector2( 11, 0 )
+animation = "Walk Unarmed"
 
 [node name="mask" type="AnimatedSprite" parent="anim"]
 frames = SubResource( 205 )
@@ -3493,6 +3553,8 @@ collision_layer = 65535
 collision_mask = 65535
 monitorable = false
 script = ExtResource( 2 )
+attack_type = 1
+hit_sound = [ null ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Melee_Area"]
 visible = false

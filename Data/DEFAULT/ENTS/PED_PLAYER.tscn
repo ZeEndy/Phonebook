@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/PEDS/PED_Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Legs.tscn" type="PackedScene" id=2]
@@ -8,47 +8,6 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
-
-[sub_resource type="Animation" id=6]
-resource_name = "DeadBash"
-length = 0.153846
-step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("anim:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("anim:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.153846 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ "DeadBash", "DeadBash" ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("anim:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.153846 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -7, -1 ), Vector2( -7, -1 ) ]
-}
 
 [node name="GENERIC PLAYER" type="Node2D" groups=["PED_parent"]]
 z_index = 1
@@ -70,17 +29,6 @@ script = ExtResource( 3 )
 target = NodePath("../PED_COL")
 flags = 51
 
-[node name="Legs" parent="PED_SPRITES" instance=ExtResource( 2 )]
-
-[node name="AnimationPlayer" parent="PED_SPRITES/Legs" index="0"]
-anims/DeadBash = SubResource( 6 )
-
-[node name="anim" parent="PED_SPRITES/Legs" index="1"]
-frame = 0
-offset = Vector2( -7, -1 )
-
-[node name="Body" parent="PED_SPRITES" instance=ExtResource( 6 )]
-
 [node name="RichTextLabel" type="RichTextLabel" parent="PED_SPRITES"]
 margin_left = -102.0
 margin_top = 17.0
@@ -91,9 +39,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Legs" parent="PED_SPRITES" instance=ExtResource( 2 )]
+
+[node name="Body" parent="PED_SPRITES" instance=ExtResource( 6 )]
+
 [node name="TEMPSPRITE" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
-
-[editable path="PED_SPRITES/Legs"]
-[editable path="PED_SPRITES/Body"]

@@ -414,32 +414,25 @@ func _play_animation(animation:String,frame=0):
 	sprites.get_node("Body").seek(frame,true)
 	sprite_index = animation
 
-func do_remove_health(damage=1,killsprite:String="DeadBlunt",rotation:float=randi(),frame="rand",body_speed=2,_bleed=false):
+func do_remove_health(damage=1,killsprite:String="DeadBlunt",rot:float=randi(),frame="rand",body_speed=2,_bleed=false):
 	var damage_output
 	if damage is Array:
 		damage_output=rand_range(damage[0],damage[1])
 	else:
 		damage_output=damage
 	health-=damage_output
-	if state==ped_states.alive:
+	if state==ped_states.alive or (state == ped_states.down && "Lean" in sprites.get_node("Legs").animation):
 		if health<=0:
 			drop_weapon(randf()*0.3,randi())
-			var dead_body=load("res://Data/DEFAULT/ENTS/VFX_DEAD.tscn").instance()
-			get_parent().add_child(dead_body)
-			
-			dead_body.get_node("AnimatedSprite").frames=sprites.get_node("Body").frames
-			var sussy_sprite=killsprite
-			dead_body.get_node("AnimatedSprite").play(sussy_sprite)
-			if !typeof(frame)==TYPE_STRING:
-				dead_body.get_node("AnimatedSprite").frame=frame
+			sprites.get_node("Legs").play(killsprite)
+			if frame=="rand":
+				sprites.get_node("Legs").seek(rand_range(0,sprites.get_node("Legs/AnimationPlayer").current_animation_length))
 			else:
-				pass
-	#			dead_body.get_node("AnimatedSprite").frame=rand_range(0,sprites.get_node("Body").frames.get_frame_count(sussy_sprite))
-			
-			dead_body.global_position=get_node("PED_COL").global_position
-			dead_body.direction=rotation
-			dead_body.speed=body_speed
-			queue_free()
+				sprites.get_node("Legs").seek(frame)
+			sprites.get_node("Legs").global_rotation=rot
+			sprites.get_node("Legs").speed_scale=0
+			sprites.get_node("Body").visible=false
+			state=ped_states.dead
 
 func go_down(direction=randi()):
 	if state == ped_states.alive:
@@ -449,6 +442,7 @@ func go_down(direction=randi()):
 			sprites.get_node("Legs").play("GetUp",0,false,0)
 			sprites.get_node("Legs").speed_scale=0
 			sprites.get_node("Legs").global_rotation_degrees=rad2deg(direction)+180
+			sprites.get_node("Body").visible=false
 			down_timer=8
 			get_node("PED_COL").set_collision_layer_bit(6,false)
 			axis=Vector2(0.8,0).rotated(direction)
@@ -459,6 +453,7 @@ func go_down(direction=randi()):
 
 func get_up():
 	state=ped_states.alive
+	sprites.get_node("Body").visible=true
 	get_node("PED_SPRITES/Body/Melee_Area/CollisionShape2D").disabled=true
 
 

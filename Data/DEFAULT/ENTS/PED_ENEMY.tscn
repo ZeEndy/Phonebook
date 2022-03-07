@@ -51,7 +51,6 @@ flags = 51
 [node name="Legs" parent="PED_SPRITES" instance=ExtResource( 7 )]
 
 [node name="Body" parent="PED_SPRITES" instance=ExtResource( 3 )]
-rotation = 5.07036e-06
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PED_SPRITES"]
 margin_left = -40.9635

@@ -53,7 +53,7 @@ func _physics_process(delta):
 				if "Lean" in collision[0].collider.get_parent().sprites.get_node("Legs").animation:
 					if signal_!="":
 						emit_signal("bullet_signal")
-					collision[0].collider.get_parent().do_remove_health(damage,death_lean_sprite,collision.collider.get_parent().sprites.get_node("Legs").global_rotation,randi(),-0.1)
+					collision[0].collider.get_parent().do_remove_health(damage,death_lean_sprite,collision[0].collider.get_parent().sprites.get_node("Legs").global_rotation,"rand",-0.1)
 				else:
 					if signal_!="":
 						emit_signal("bullet_signal")

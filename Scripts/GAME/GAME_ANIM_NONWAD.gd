@@ -56,6 +56,10 @@ func flip_sprite_switch(next_anim):
 	get_node("../../").sprite_index=next_anim
 	get_node("anim").scale.y=-get_node("anim").scale.y
 
+
+func flip_sprite():
+	#used for attacks
+	get_node("anim").scale.y=-get_node("anim").scale.y
 #sets time based on ammo
 func set_frame_ammo(frame_rate:int,frame:int,repeat=0.0):
 #	if get_node("../../").gun.ammo>0:
