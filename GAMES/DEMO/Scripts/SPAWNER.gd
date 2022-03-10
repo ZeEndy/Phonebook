@@ -22,6 +22,7 @@ func spawn_eneny():
 	var eneny=load("res://Data/DEFAULT/ENTS/PED_ENEMY.tscn").instance()
 	get_parent().add_child(eneny)
 	eneny.global_position=global_position
+	eneny.get_node('PED_SPRITES').teleport()
 	var gun=debug_rand_weapon()
 	eneny.gun=gun
 	eneny.sprite_index=gun.walk_sprite
