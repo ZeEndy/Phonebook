@@ -59,7 +59,7 @@ func _physics_process(delta):
 func _process(_delta):
 	debug_rand_weapon()
 	if get_node_or_null("PED_SPRITES/RichTextLabel")!=null:
-		get_node_or_null("PED_SPRITES/RichTextLabel").text=sprite_index
+		get_node_or_null("PED_SPRITES/RichTextLabel").text=String(get_tree().get_nodes_in_group("Enemy").size())
 #		if gun.has("max_ammo"):
 #			if gun.ammo<=gun.max_ammo:
 #				get_node_or_null("PED_SPRITES/RichTextLabel").text=String(gun.ammo)
@@ -166,7 +166,7 @@ func debug_rand_weapon():
 			var random_weapon=int(round(rand_range(0,5)))
 			drop_weapon()
 			match random_weapon:
-				0:#M16
+				0:#M(
 					var transfer_gun={
 						#id for hud
 						"id":"M9",
@@ -248,7 +248,7 @@ func debug_rand_weapon():
 						"shoot_bullets":1
 					}
 					gun=dupe_dict(transfer_gun)
-				2:#UZI
+				2:#M16
 					var transfer_gun={
 						#id for hud
 						"id":"M16",
@@ -330,7 +330,7 @@ func debug_rand_weapon():
 						"shoot_bullets":8
 					}
 					gun=dupe_dict(transfer_gun)
-				4:#Knife
+				4:#KNIFE
 					var transfer_gun={
 						#id for hud
 						"id":"Knife",

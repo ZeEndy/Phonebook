@@ -3,6 +3,11 @@ extends Node2D
 #preloads
 onready var def_bullet_ent=preload("res://Data/DEFAULT/ENTS/ENT_BULLET.tscn")
 onready var def_grenade_ent=preload("res://Data/DEFAULT/ENTS/ENT_GRENADE.tscn")
+#reference variables
+onready var sprites = get_node("PED_SPRITES")
+onready var sprite_body = get_node("PED_SPRITES/Body")
+onready var sprite_legs = get_node("PED_SPRITES/Legs")
+onready var collision_body = get_node("PED_COL")
 
 class_name PED
 
@@ -69,8 +74,7 @@ var default_gun={
 	"trigger_bullets":0,
 	"trigger_reset":0.1,
 	"trigger_shot":0,
-	"shoot_bullets":0
-}
+	"shoot_bullets":0}
 export var gun ={
 	#id for hud
 	"id":"Unarmed",
@@ -108,8 +112,7 @@ export var gun ={
 	"trigger_bullets":0,
 	"trigger_reset":0.1,
 	"trigger_shot":0,
-	"shoot_bullets":0
-}
+	"shoot_bullets":0}
 var given_height=0
 var added_recoil = 0.0 #multiply this shit in the attack if needed
 var closest_gun = null
@@ -133,7 +136,6 @@ var change_leg_sprite_value=false
 # Sprite variables
 export var sprite_index = "WalkUnarmed"
 export var leg_index = "WalkLegs"
-onready var sprites = get_node("PED_SPRITES")
 var body_direction = 0
 
 signal die
@@ -143,11 +145,11 @@ func _ready():
 	gun=gun.duplicate(true)
 	if get_node_or_null("TEMPSPRITE")!=null:
 		get_node("TEMPSPRITE").queue_free()
-	sprites.get_node("Body").global_rotation=get_parent().global_rotation
+	sprite_body.global_rotation=get_parent().global_rotation
 	
 	if sprite_index=="":
 		_play_animation(gun.walk_sprite)
-	get_node("PED_SPRITES/Legs").play(leg_index)
+	sprite_legs.play(leg_index)
 	
 # Finds the first visible pickupable weapon dropped within 40 units of the player that isn't behind a wall 
 func gun_finder():
@@ -172,7 +174,7 @@ func _process(delta):
 
 
 func _physics_process(delta):
-	get_node("PED_COL").global_rotation=0
+	collision_body.global_rotation=0
 	if gun.trigger_pressed==true:
 		attack()
 	if state == ped_states.down:
@@ -180,28 +182,28 @@ func _physics_process(delta):
 #		axis=lerp(axis,Vector2.ZERO,0.1)
 		if my_velocity.length()>0.1:
 			axis=lerp(axis,Vector2.ZERO,10*delta)
-			var test_motion=get_node("PED_COL").move_and_collide(Vector2(16,0).rotated(my_velocity.angle()),false,true,true)
+			var test_motion=collision_body.move_and_collide(Vector2(16,0).rotated(my_velocity.angle()),false,true,true)
 			if test_motion:
 				my_velocity=Vector2.ZERO
 				axis=Vector2.ZERO
-				sprites.get_node("Legs").play("GetUpLean")
-				sprites.get_node("Legs").global_rotation=test_motion.normal.angle()
-				get_node("PED_SPRITES/Legs").speed_scale=0
-				get_node("PED_COL").global_position=test_motion.position
+				sprite_legs.play("GetUpLean")
+				sprite_legs.global_rotation=test_motion.normal.angle()
+				sprite_legs.speed_scale=0
+				collision_body.global_position=test_motion.position
 		if my_velocity.length()<5:
-			sprites.get_node("Body").global_rotation=sprites.get_node("Legs").global_rotation
+			sprite_body.global_rotation=sprite_legs.global_rotation
 			if can_get_up==true:
 				down_timer-=delta
 				if down_timer<0:
-					get_node("PED_SPRITES/Legs").speed_scale=1
+					sprite_legs.speed_scale=1
 	elif state == ped_states.dead:
 		get_node("PED_COL/CollsionCircle").disabled=true
 		if get_groups().size()>0:
 			for i in get_groups():
 				remove_from_group(i)
-		if get_node("PED_COL").get_groups().size()>0:
-			for i in get_node("PED_COL").get_groups():
-				get_node("PED_COL").remove_from_group(i)
+		if collision_body.get_groups().size()>0:
+			for i in collision_body.get_groups():
+				collision_body.remove_from_group(i)
 
 func movement(new_motion=null,_delta=null):
 	if new_motion==null:
@@ -214,7 +216,7 @@ func movement(new_motion=null,_delta=null):
 			my_velocity=my_velocity.linear_interpolate(Vector2(0,0),ACCELERATION*0.4)
 	else:
 		my_velocity=new_motion
-	my_velocity=get_node("PED_COL").move_and_slide(my_velocity)
+	my_velocity=collision_body.move_and_slide(my_velocity)
 
 func general_process(delta):
 	if state==ped_states.alive:
@@ -232,7 +234,7 @@ func general_process(delta):
 		
 		
 		leg_sprites(delta)
-		var body_sprite = sprites.get_node("Body")
+		var body_sprite = sprite_body
 		var walking = (gun.walk_sprite in sprite_index)
 		
 		if walking:
@@ -250,10 +252,10 @@ func general_process(delta):
 
 func leg_sprites(delta):
 	if (abs(my_velocity.length()))<20:
-			sprites.get_node("Legs/AnimationPlayer").seek(0)
+			sprite_legs.get_node("AnimationPlayer").seek(0)
 	else:
-		sprites.get_node("Legs").rotation=lerp_angle(sprites.get_node("Legs").rotation,atan2(my_velocity.y,my_velocity.x),50*delta)
-		sprites.get_node("Legs").speed_scale=(abs(my_velocity.length()/220))
+		sprite_legs.rotation=lerp_angle(sprite_legs.rotation,atan2(my_velocity.y,my_velocity.x),50*delta)
+		sprite_legs.speed_scale = (abs(my_velocity.length()/220))
 
 
 #This script functions by reading through the poperty list of the gun variable and spawning
@@ -284,7 +286,7 @@ func attack():
 		# animation decision tree
 		var chosen_attack_sprite = gun[attack_sprite][gun.attack_index]
 		sprite_index=chosen_attack_sprite
-		sprites.get_node("Body").set_frame(1,0)
+		sprite_body.set_frame(1,0)
 		if gun.random_sprite == false:
 			gun.attack_index = (gun.attack_index + 1) % gun[attack_sprite].size()
 		else:
@@ -299,7 +301,7 @@ func attack():
 				# animation decision tree
 				var chosen_attack_sprite = gun[attack_sprite][gun.attack_index]
 				sprite_index=chosen_attack_sprite
-				sprites.get_node("Body").set_frame(1,0)
+				sprite_body.set_frame(1,0)
 				if gun.random_sprite == false:
 					gun.attack_index = (gun.attack_index + 1) % gun[attack_sprite].size()
 				else:
@@ -319,7 +321,7 @@ func switch_weapon():
 			drop_weapon()
 			closest_gun = gun_finder()
 			if closest_gun != null:
-				var sound_pos=get_node("PED_COL").global_position
+				var sound_pos=collision_body.global_position
 				if get_class()=="Player":
 					sound_pos=null
 				AudioManager.play_audio("res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_PickupWeapon.wav",sound_pos,true,1,0,"Master")
@@ -341,13 +343,13 @@ func drop_weapon(throw_speed=1,dir=null):
 			inst_weapon.linear_velocity=(Vector2(1200,0).rotated(body_direction))*throw_speed
 		else:
 			inst_weapon.linear_velocity=(Vector2(1200,0).rotated(dir))*throw_speed
-		inst_weapon.global_position=get_node("PED_COL").global_position+Vector2(15,0).rotated(body_direction)
+		inst_weapon.global_position=collision_body.global_position+Vector2(15,0).rotated(body_direction)
 		inst_weapon.gun=dupe_dict(gun)
 		get_parent().call_deferred("add_child",inst_weapon)
 		gun=dupe_dict(default_gun)
 		gun.execution_sprite=""
 		gun.ground_sprite=""
-		var sound_pos=get_node("PED_COL").global_position
+		var sound_pos=collision_body.global_position
 		if get_class()=="Player":
 			sound_pos=null
 		AudioManager.play_audio("res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Throw.wav",sound_pos,true,1,0,"Master")
@@ -365,7 +367,7 @@ func spawn_bullet(amoumt:int):
 		if gun.attack_type!="grenade":
 			var sus_bullet=def_bullet_ent.instance()
 			#add da weapon spawn bullet
-			sus_bullet.global_position=get_node("PED_COL").global_position+Vector2(24,0).rotated(body_direction)
+			sus_bullet.global_position=collision_body.global_position+Vector2(24,0).rotated(body_direction)
 			var recoil_add=body_direction
 			if gun.has("recoil"):
 				recoil_add+=deg2rad(rand_range(-gun.recoil,gun.recoil))
@@ -379,7 +381,7 @@ func spawn_bullet(amoumt:int):
 		else:
 			var sus_bullet=def_grenade_ent.instance()
 			#add da weapon spawn bullet
-			sus_bullet.global_position=get_node("PED_COL").global_position+Vector2(24,0).rotated(body_direction)
+			sus_bullet.global_position=collision_body.global_position+Vector2(24,0).rotated(body_direction)
 			var recoil_add=body_direction
 			if gun.has("recoil"):
 				recoil_add+=deg2rad(rand_range(-gun.recoil,gun.recoil))
@@ -391,28 +393,28 @@ func spawn_bullet(amoumt:int):
 
 func move_to_point(delta,point:Vector2,speed=0.7):
 	if get_node("PED_COL/movement_check").is_colliding()==false:
-		#cum calculation piss =focused_player.global_position+Vector2(25,0).rotated(focused_player.global_position.direction_to(get_node("PED_COL").global_position).angle())
-		axis=lerp(axis,Vector2(speed,0).rotated(get_node("PED_COL").global_position.direction_to(point).angle()),50*delta)
+		#cum calculation piss =focused_player.global_position+Vector2(25,0).rotated(focused_player.global_position.direction_to(collision_body.global_position).angle())
+		axis=lerp(axis,Vector2(speed,0).rotated(collision_body.global_position.direction_to(point).angle()),50*delta)
 		body_direction=lerp_angle(body_direction,axis.angle(),0.15)
 	else:
 		navigate_to_point(point)
 		var temp_dir=Vector2(0,0)
 		if path.size()>1:
-			if get_node("PED_COL").global_position.distance_to(path[-1])<5:
+			if collision_body.global_position.distance_to(path[-1])<5:
 				path.remove(path.size()-1)
-			temp_dir=get_node("PED_COL").global_position.direction_to(path[-1])
+			temp_dir=collision_body.global_position.direction_to(path[-1])
 		axis=temp_dir*speed
 	movement()
 
 
 func navigate_to_point(point):
-	path = get_tree().get_nodes_in_group("NavMap")[0].get_astar_path(point,get_node("PED_COL").global_position)
+	path = get_tree().get_nodes_in_group("NavMap")[0].get_astar_path(point,collision_body.global_position)
 
 func _on_Legs_animation_finished():
 	change_leg_sprite_value=true
 
 func _play_animation(animation:String,frame=0):
-	sprites.get_node("Body").seek(frame,true)
+	sprite_body.seek(frame,true)
 	sprite_index = animation
 
 func do_remove_health(damage=1,killsprite:String="DeadBlunt",rot:float=randi(),frame="rand",body_speed=2,_bleed=false):
@@ -422,39 +424,39 @@ func do_remove_health(damage=1,killsprite:String="DeadBlunt",rot:float=randi(),f
 	else:
 		damage_output=damage
 	health-=damage_output
-	if state==ped_states.alive or (state == ped_states.down && "Lean" in sprites.get_node("Legs").animation):
+	if state==ped_states.alive or (state == ped_states.down && "Lean" in sprite_legs.animation):
 		if health<=0:
 			drop_weapon(randf()*0.3,randi())
-			sprites.get_node("Legs").play(killsprite)
+			sprite_legs.play(killsprite)
 			if frame=="rand":
-				sprites.get_node("Legs").seek(rand_range(0,sprites.get_node("Legs/AnimationPlayer").current_animation_length))
+				sprite_legs.seek(rand_range(0,sprite_legs.get_node("AnimationPlayer").current_animation_length))
 			else:
-				sprites.get_node("Legs").seek(frame)
-			sprites.get_node("Legs").global_rotation=rot
-			sprites.get_node("Legs").speed_scale=0
-			sprites.get_node("Body").visible=false
+				sprite_legs.seek(frame)
+			sprite_legs.global_rotation=rot
+			sprite_legs.speed_scale=0
+			sprite_body.visible=false
 			state=ped_states.dead
 
 func go_down(direction=randi()):
 	if state == ped_states.alive:
-		if get_node("PED_SPRITES/Legs").has_animation("GetUp"):
+		if sprite_legs.has_animation("GetUp"):
 			drop_weapon(0.1)
 			state = ped_states.down
-			sprites.get_node("Legs").play("GetUp",0,false,0)
-			sprites.get_node("Legs").speed_scale=0
-			sprites.get_node("Legs").global_rotation_degrees=rad2deg(direction)+180
-			sprites.get_node("Body").visible=false
+			sprite_legs.play("GetUp",0,false,0)
+			sprite_legs.speed_scale=0
+			sprite_legs.global_rotation_degrees=rad2deg(direction)+180
+			sprite_body.visible=false
 			down_timer=8
-			get_node("PED_COL").set_collision_layer_bit(6,false)
+			collision_body.set_collision_layer_bit(6,false)
 			axis=Vector2(0.8,0).rotated(direction)
-#		get_node("PED_COL").linear_damp=6
+#		collision_body.linear_damp=6
 
 
 
 
 func get_up():
 	state=ped_states.alive
-	sprites.get_node("Body").visible=true
+	sprite_body.visible=true
 	get_node("PED_SPRITES/Body/Melee_Area/CollisionShape2D").disabled=true
 
 
@@ -465,22 +467,22 @@ func do_execution():
 		my_velocity=Vector2(0,0)
 		execute_target.get_parent().my_velocity=Vector2(0,0)
 		execute_target.get_parent().axis=Vector2(0,0)
-		get_node("PED_COL").global_position=execute_target.global_position
-		sprites.get_node("Body").global_rotation=execute_target.get_parent().sprites.get_node("Legs").global_rotation-deg2rad(180)
+		collision_body.global_position=execute_target.global_position
+		sprite_body.global_rotation=execute_target.get_parent().sprite_legs.global_rotation-deg2rad(180)
 		
-		if execute_target.get_parent().sprites.get_node("Legs").animation!="GetUpLean":
+		if execute_target.get_parent().sprite_legs.animation!="GetUpLean":
 			if gun.execution_sprite!="":
-				sprites.get_node("Body").play(gun.execution_sprite)
-				execute_target.get_parent().sprites.get_node("Legs").play(gun.ground_sprite,0,false,0)
+				sprite_body.play(gun.execution_sprite)
+				execute_target.get_parent().sprite_legs.play(gun.ground_sprite,0,false,0)
 			else:
 				drop_weapon(0.1,deg2rad(rand_range(-180,180)))
-				sprites.get_node("Body").play(default_gun.execution_sprite)
-				execute_target.get_parent().sprites.get_node("Legs").play(default_gun.ground_sprite,0,false,0)
+				sprite_body.play(default_gun.execution_sprite)
+				execute_target.get_parent().sprite_legs.play(default_gun.ground_sprite,0,false,0)
 		else:
-				sprites.get_node("Body").play("ExecuteWall")
-				execute_target.get_parent().sprites.get_node("Legs").play("DieLean")
+				sprite_body.play("ExecuteWall")
+				execute_target.get_parent().sprite_legs.play("DieLean")
 		
-		sprites.get_node("Legs").visible=false
+		sprite_legs.visible=false
 		execute_target.get_parent().can_get_up=false
 
 
@@ -527,28 +529,29 @@ func execute_remove_health(damage=1,ammo_use=0,animation="",frame="rand",sound=n
 				AudioManager.play_audio(sound)
 			par.state=ped_states.dead
 			if animation!="":
-				par.sprites.get_node("Legs").play(animation,0,false,0)
+				par.sprite_legs.play(animation,0,false,0)
 				if frame=="rand":
-					par.sprites.get_node("Legs").seek(rand_range(0,sprites.get_node("Legs/AnimationPlayer").current_animation_length))
+					par.sprite_legs.seek(rand_range(0,sprite_legs.get_node("AnimationPlayer").current_animation_length))
 				else:
-					par.sprites.get_node("Legs").seek(frame)
+					par.sprite_legs.seek(frame)
 			state=ped_states.alive
-			sprites.get_node("Legs").visible=true
+			sprite_legs.visible=true
 			sprite_index=gun.walk_sprite
+			delay=0.1
 			return true
 
 
 #go to the next enemy sprite frame
 func execute_e_next_frame(frame_rate:int = 13):
-	execute_target.get_parent().sprites.get_node("Legs").next_frame(frame_rate)
+	execute_target.get_parent().sprite_legs.next_frame(frame_rate)
 	return true #output if command was completed
 
 func execute_e_copy_time():
-	execute_target.get_parent().sprites.get_node("Legs").seek(sprites.get_node("Body").frame)
+	execute_target.get_parent().sprite_legs.seek(sprite_body.frame)
 
 #read the function
 func execute_do_click():
-	sprites.get_node("Body").speed_scale=1
+	sprite_body.speed_scale=1
 
 
 func get_class():

@@ -20,9 +20,7 @@ func _ready():
 
 func _process(delta):
 	get_node("a10/fly_by").pitch_scale=Engine.time_scale
-	get_node("confirm_kill").pitch_scale=Engine.time_scale
 	get_node("incoming_confirm").pitch_scale=Engine.time_scale
-	get_node("confirm_no_kill").pitch_scale=Engine.time_scale
 	get_node("wrath_of_god").pitch_scale=Engine.time_scale
 	get_node("ground_impact").pitch_scale=Engine.time_scale
 	if get_node("incoming_confirm").playing!=true:

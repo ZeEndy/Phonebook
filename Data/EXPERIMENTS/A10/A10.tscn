@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Data/EXPERIMENTS/A10/BlueNoise.png" type="Texture" id=1]
 [ext_resource path="res://Data/EXPERIMENTS/A10/a10.png" type="Texture" id=2]
 [ext_resource path="res://Data/EXPERIMENTS/A10/A10.gd" type="Script" id=3]
-[ext_resource path="res://Data/EXPERIMENTS/A10/sndConfirmNoKill.wav" type="AudioStream" id=4]
 [ext_resource path="res://Data/EXPERIMENTS/A10/sndImpactGround.wav" type="AudioStream" id=5]
 [ext_resource path="res://Data/EXPERIMENTS/A10/sndWrathOfGod.wav" type="AudioStream" id=6]
-[ext_resource path="res://Data/EXPERIMENTS/A10/sndConfirmKill.wav" type="AudioStream" id=7]
 [ext_resource path="res://Data/EXPERIMENTS/A10/sndIncomingConfirm.wav" type="AudioStream" id=8]
 [ext_resource path="res://Data/EXPERIMENTS/A10/sndFlyBy.wav" type="AudioStream" id=9]
 
@@ -68,14 +66,6 @@ bus = "SFX"
 
 [node name="bullet_cache" type="Node2D" parent="a10"]
 position = Vector2( -5000, 0 )
-
-[node name="confirm_kill" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-bus = "SFX"
-
-[node name="confirm_no_kill" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
-bus = "SFX"
 
 [node name="incoming_confirm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

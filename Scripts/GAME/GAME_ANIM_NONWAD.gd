@@ -53,10 +53,9 @@ func shake_screen(ammount:int):
 
 func flip_sprite_switch(next_anim):
 	#used for attacks
-	get_node("../../").sprite_index=next_anim
 	get_node("anim").scale.y=-get_node("anim").scale.y
-
-
+	get_node("../../").sprite_index=next_anim
+	
 func flip_sprite():
 	#used for attacks
 	get_node("anim").scale.y=-get_node("anim").scale.y

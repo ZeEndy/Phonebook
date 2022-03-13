@@ -2,6 +2,9 @@ extends Node2D
 
 class_name Door
 
+#reference variables
+onready var door_anc=get_node("DOOR_ANCHER")
+
 export var swingspeed=0
 var swingdir=0
 export var swinger=0
@@ -29,18 +32,18 @@ func _ready():
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta):
 		if (abs(swingspeed) > 0):
-			get_node("DOOR_ANCHER").rotation_degrees =get_node("DOOR_ANCHER").rotation_degrees + (swingspeed*delta*60)
-			if (get_node("DOOR_ANCHER").rotation_degrees < -135):
-				get_node("DOOR_ANCHER").rotation_degrees = -135
+			door_anc.rotation_degrees =door_anc.rotation_degrees + (swingspeed*delta*60)
+			if (door_anc.rotation_degrees < -135):
+				door_anc.rotation_degrees = -135
 				swingspeed = abs(swingspeed)
-			if (get_node("DOOR_ANCHER").rotation_degrees > 135):
-				get_node("DOOR_ANCHER").rotation_degrees = 135
+			if (door_anc.rotation_degrees > 135):
+				door_anc.rotation_degrees = 135
 				swingspeed = (- abs(swingspeed))
 			swingdir = sign(swingspeed)
 			if (abs(swingspeed) < 3.5):
-				if ((get_node("DOOR_ANCHER").rotation_degrees > -6) && (get_node("DOOR_ANCHER").rotation_degrees < 6)):
+				if ((door_anc.rotation_degrees > -6) && (door_anc.rotation_degrees < 6)):
 					swingspeed = 0
-					get_node("DOOR_ANCHER").rotation_degrees = 0
+					door_anc.rotation_degrees = 0
 			if (swingspeed > 0.25):
 				swingspeed = (swingspeed - 0.25*delta*60)
 			elif (swingspeed < -0.25):
@@ -51,8 +54,8 @@ func _physics_process(delta):
 				active=0
 		else:
 			if spring_return==true:
-				if get_node("DOOR_ANCHER").rotation_degrees != 0:
-					get_node("DOOR_ANCHER").rotation_degrees=lerp(get_node("DOOR_ANCHER").rotation_degrees,0,0.02)
+				if door_anc.rotation_degrees != 0:
+					door_anc.rotation_degrees=lerp(door_anc.rotation_degrees,0,0.02)
 		Collision_trollface()
 
 
@@ -71,7 +74,7 @@ func play_sample(given_sample,affected_time=true,true_pitch=1,random_pitch=0,bus
 #		audio_player.current_pitch=true_pitch+rand_range(-random_pitch,random_pitch)
 #		audio_player.autoplay = true
 #		audio_player.set_bus(bus) 
-#		audio_player.global_position=global_position+Vector2(door_size.x,0).rotated(get_node("DOOR_ANCHER").global_rotation)
+#		audio_player.global_position=global_position+Vector2(door_size.x,0).rotated(door_anc.global_rotation)
 	elif given_sample is Array:
 		if (typeof(given_sample[0])==1 && given_sample[0]==false):
 			print("type of is 1")
@@ -94,10 +97,10 @@ func Collision_trollface():
 				swinger=1
 				if abs(swingspeed)<2:
 					play_sample("sndDoorOpen")
-					var line_pos=global_position+Vector2(door_size.x,0).rotated(get_node("DOOR_ANCHER").global_rotation)
+					var line_pos=global_position+Vector2(door_size.x,0).rotated(door_anc.global_rotation)
 					var add_on_speed=clamp(abs(1.15-i[2].distance_to(line_pos)-PED_SCALE),1,1.15)
 					swingspeed=(7*add_on_speed)
-		if active==0 or active==1:
+				return
 			if i[0] is Enemy && !locked:
 				if active==0:
 					active=i[1]
@@ -105,14 +108,15 @@ func Collision_trollface():
 					active=1
 				if swinger==1:
 					if i[0].state==0:
-						i[0].go_down(get_node("DOOR_ANCHER").global_rotation+rand_range(deg2rad(-45),deg2rad(45)))
+						i[0].go_down(door_anc.global_rotation+rand_range(deg2rad(-45),deg2rad(45)))
 						play_sample("sndDoorHit")
 				else:
 					if abs(swingspeed)<2:
 						play_sample("sndDoorOpen")
-					var line_pos=global_position+Vector2(door_size.x,0).rotated(get_node("DOOR_ANCHER").global_rotation)
+					var line_pos=global_position+Vector2(door_size.x,0).rotated(door_anc.global_rotation)
 					var add_on_speed=clamp(abs(1.15-i[2].distance_to(line_pos)-PED_SCALE),1,1.15)
 					swingspeed=(7*add_on_speed)
+				return
 		elif active==0 or active==-1:
 			if i[0] is Player && !locked:
 				if active==0:
@@ -122,9 +126,10 @@ func Collision_trollface():
 				swinger=1
 				if abs(swingspeed)<2:
 					play_sample("sndDoorOpen")
-				var line_pos=global_position+Vector2(door_size.x,0).rotated(get_node("DOOR_ANCHER").global_rotation)
+				var line_pos=global_position+Vector2(door_size.x,0).rotated(door_anc.global_rotation)
 				var add_on_speed=clamp(abs(1.15-i[2].distance_to(line_pos)-PED_SCALE),1,1.15)
 				swingspeed=-(7*add_on_speed)
+				return
 			if i[0] is Enemy && !locked:
 				if active==0:
 					active=i[1]
@@ -132,14 +137,15 @@ func Collision_trollface():
 					active=-1
 				if swinger==1:
 					if i[0].state==0:
-						i[0].go_down(get_node("DOOR_ANCHER").global_rotation+rand_range(deg2rad(-45),deg2rad(45)))
+						i[0].go_down(door_anc.global_rotation+rand_range(deg2rad(-45),deg2rad(45)))
 						play_sample("sndDoorHit")
 				else:
 					if abs(swingspeed)<2:
 						play_sample("sndDoorOpen")
-					var line_pos=global_position+Vector2(door_size.x,0).rotated(get_node("DOOR_ANCHER").global_rotation)
+					var line_pos=global_position+Vector2(door_size.x,0).rotated(door_anc.global_rotation)
 					var add_on_speed=clamp(abs(1.15-i[2].distance_to(line_pos)-PED_SCALE),1,1.15)
 					swingspeed=-(7*add_on_speed)
+				return
 
 
 func door_collision_checker():
@@ -151,21 +157,21 @@ func door_collision_checker():
 	query.collision_layer=5
 	
 	var space = get_world_2d().direct_space_state
-	query.set_transform(Transform2D(get_node("DOOR_ANCHER").global_rotation, global_position+Vector2(door_size.x/2,0).rotated(get_node("DOOR_ANCHER").global_rotation)))
+	query.set_transform(Transform2D(door_anc.global_rotation, global_position+Vector2(door_size.x/2,0).rotated(door_anc.global_rotation)))
 	collision_objects+=space.intersect_shape(query,5)
 	
 	for ang in abs(round(swingspeed)):
 		var space2 = get_world_2d().direct_space_state
-		query.set_transform(Transform2D(get_node("DOOR_ANCHER").global_rotation+deg2rad(ang*active), global_position+Vector2(door_size.x/2,0).rotated(get_node("DOOR_ANCHER").global_rotation+deg2rad(ang*active))))
+		query.set_transform(Transform2D(door_anc.global_rotation+deg2rad(ang*active), global_position+Vector2(door_size.x/2,0).rotated(door_anc.global_rotation+deg2rad(ang*active))))
 		collision_objects+=space2.intersect_shape(query,5)
 	
 	var return_array=[]
 	for i in collision_objects:
 		if !(i.collider is StaticBody2D):
-			var line_pos=global_position+Vector2(door_size.x,0).rotated(get_node("DOOR_ANCHER").global_rotation)
+			var line_pos=global_position+Vector2(door_size.x,0).rotated(door_anc.global_rotation)
 			var direction=line_pos.direction_to(i.collider.global_position).angle()
 			var test=0
-			if angle_difference(get_node("DOOR_ANCHER").global_rotation,direction)>deg2rad(90) && angle_difference(get_node("DOOR_ANCHER").global_rotation,direction)<deg2rad(180):
+			if angle_difference(door_anc.global_rotation,direction)>deg2rad(90) && angle_difference(door_anc.global_rotation,direction)<deg2rad(180):
 				test=-1
 			else:
 				test=1

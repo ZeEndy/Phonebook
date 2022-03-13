@@ -185,7 +185,6 @@ func get_astar_path(world_start, world_end):
 	var path_world = []
 	for point in _point_path:
 		var point_world = map_to_world(Vector2(point.x, point.y)) + _half_cell_size
-	
 		path_world.append(point_world)
 	
 #	for i in path_world.size()-1:

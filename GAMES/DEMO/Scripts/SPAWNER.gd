@@ -12,10 +12,10 @@ var random_timer=rand_range(0,1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	random_timer-=delta
-	if random_timer<0:
-		spawn_eneny()
+#func _process(delta):
+#	random_timer-=delta
+#	if random_timer<0:
+#		spawn_eneny()
 
 
 func spawn_eneny():
