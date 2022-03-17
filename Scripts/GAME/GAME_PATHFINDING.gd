@@ -241,34 +241,26 @@ func _set_path_end_position(value):
 
 
 func update_navigation_map():
+	var time_start = OS.get_ticks_msec()
 	var shape = RectangleShape2D.new()
-	shape.extents=(get_cell_size()*0.5)-Vector2(0.5,0.5)
+	shape.extents=(get_cell_size()*0.75)
 	var query = Physics2DShapeQueryParameters.new()
 	query.set_shape(shape)
 	query.collision_layer=collision_layer
-	for map_x in map_size.x:
-		for map_y in map_size.y:
-			set_cell(map_x,map_y,0)
-		
-	
-	
-	for point in get_used_cells():
-		var space = get_world_2d().direct_space_state
-		var point_position=map_to_world(point)
-		query.set_transform(Transform2D(0, point_position+(cell_size*0.5)))
-		var check_point=space.intersect_shape(query,1)
-		
-		if check_point!=[]:
-			var shit=false
-			for i in check_point[0].collider.get_children():
-				if (i is CollisionShape2D) or (i is CollisionPolygon2D):
-					if i.disabled==false:
-						shit=true
-			if shit==true:
-				set_cell(point.x,point.y,0)
+	clear()
+	for point_x in map_size.x:
+		for point_y in map_size.y:
+			var space = get_world_2d().direct_space_state
+			var point_position=map_to_world(Vector2(point_x,point_y))
+			query.set_transform(Transform2D(0, point_position+(cell_size*0.75 )))
+			var check_point=space.intersect_shape(query,1)
 			
-		else:
-			set_cell(point.x,point.y,1)
+			if check_point!=[]:
+				set_cell(point_x,point_y,0)
+				
+			else:
+				set_cell(point_x,point_y,1)
+	print("calculation time: "+str(OS.get_ticks_msec()-time_start)+"ms")
 	
 
 
