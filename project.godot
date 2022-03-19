@@ -69,7 +69,7 @@ _global_script_class_icons={
 [application]
 
 config/name="PhoneBook"
-run/main_scene="res://GAMES/DEMO/MAIN.tscn"
+run/main_scene="res://MAIN.tscn"
 boot_splash/image="res://biglogo.png"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
@@ -296,7 +296,7 @@ common/enable_object_picking=false
 quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
-threads/thread_model=2
+2d/snapping/use_gpu_pixel_snap=true
 quality/directional_shadow/size=400
 quality/shadow_atlas/size=400
 quality/shadows/filter_mode=0

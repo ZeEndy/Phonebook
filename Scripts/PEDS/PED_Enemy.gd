@@ -201,7 +201,7 @@ func go_down(down_dir=randi()):
 
 func player_visibilty(mode=0):
 	var seen=true
-	if is_instance_valid(focused_player):
+	if focused_player!=null:
 		if mode==0:
 			var shape = RectangleShape2D.new()
 			shape.extents=Vector2(collision_body.global_position.distance_to(focused_player.global_position)/2,4)

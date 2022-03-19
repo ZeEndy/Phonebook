@@ -32,11 +32,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	bullet_height-=delta
-	modulate = Color.white.linear_interpolate(Color.yellow, randf())
-	velocity = Vector2(speed, 0).rotated(rotation)
-#	get_node("Sprite_Bullet").scale.x=lerp(get_node("Sprite_Bullet").scale.x,1,0.3*delta*60)
-	global_position+=(velocity*delta)
 	var collision = check_collision()
 	if collision.size()>0:
 		if collision[0].collider.get_parent().has_method("do_remove_health"):
@@ -81,6 +76,13 @@ func _physics_process(delta):
 		for i in 7+rand_range(0,12):
 			spawn_spark(rad2deg(rand_range(0,PI*2)),global_position)
 		queue_free()
+		return
+	bullet_height-=delta
+	modulate = Color.white.linear_interpolate(Color.yellow, randf())
+	velocity = Vector2(speed, 0).rotated(rotation)
+#	get_node("Sprite_Bullet").scale.x=lerp(get_node("Sprite_Bullet").scale.x,1,0.3*delta*60)
+	global_position+=(velocity*delta)
+
 
 func destroy():
 	spawn_smoke(hit_rotation,hit_point,Color.whitesmoke,1)

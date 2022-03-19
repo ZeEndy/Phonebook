@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 58.0
+margin_top = -122.0
+margin_right = 125.0
+margin_bottom = -108.0
+rect_scale = Vector2( 5, 5 )
+text = "CUMMING"
+__meta__ = {
+"_edit_use_anchors_": false
+}

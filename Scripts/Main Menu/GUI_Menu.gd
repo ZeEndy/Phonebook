@@ -128,7 +128,7 @@ func title_functions():
 
 func title_draw(delta):
 	if doing_action==false:
-		get_node("Title screen/Text").scale=get_viewport().size/(get_viewport().size*get_node("Camera2D").zoom)
+#		get_node("Title screen/Text").scale=get_viewport().size/(get_viewport().size*get_node("Camera2D").zoom)
 		
 		title_dir+=30*delta
 		var title_rotation=(Vector2(0.05,0).rotated(deg2rad(title_dir))).x
@@ -157,13 +157,13 @@ func title_draw(delta):
 				
 				
 			
-			get_node("Title screen/Text/"+i[0]).rect_rotation=rad2deg(title_rotation)
-			get_node("Title screen/Text/"+i[0]).rect_pivot_offset=get_node("Title screen/Text/"+i[0]).rect_size/2
-			
-		
-		
-		get_node("Title screen/Text/Title").rect_rotation=rad2deg(title_rotation)
-		get_node("Title screen/Text/Title").rect_pivot_offset=get_node("Title screen/Text/Title").rect_size/2
+#			get_node("Title screen/Text/"+i[0]).rect_rotation=rad2deg(title_rotation)
+#			get_node("Title screen/Text/"+i[0]).rect_pivot_offset=get_node("Title screen/Text/"+i[0]).rect_size/2
+#
+#
+#
+#		get_node("Title screen/Text/Title").rect_rotation=rad2deg(title_rotation)
+#		get_node("Title screen/Text/Title").rect_pivot_offset=get_node("Title screen/Text/Title").rect_size/2
 		
 		
 		

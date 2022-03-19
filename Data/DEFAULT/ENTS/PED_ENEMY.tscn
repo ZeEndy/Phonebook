@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/smoothing/smoothing_2d.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PEDS/PED_Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Body.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Data/DEFAULT/SPRITES/enemy.png" type="Texture" id=4]
+[ext_resource path="res://Data/DEFAULT/SPRITES/EfxMuzzleFlash.png" type="Texture" id=5]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Legs.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -42,6 +43,10 @@ flags = 51
 [node name="Legs" parent="PED_SPRITES" instance=ExtResource( 7 )]
 
 [node name="Body" parent="PED_SPRITES" instance=ExtResource( 3 )]
+
+[node name="Light2D" type="Light2D" parent="PED_SPRITES/Body"]
+texture = ExtResource( 5 )
+offset = Vector2( 128, 0 )
 
 [node name="TEMPSPRITE" type="Sprite" parent="."]
 visible = false

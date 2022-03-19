@@ -58,8 +58,8 @@ func _physics_process(delta):
 	
 func _process(_delta):
 	debug_rand_weapon()
-	if get_node_or_null("PED_SPRITES/RichTextLabel")!=null:
-		get_node_or_null("PED_SPRITES/RichTextLabel").text=String(get_tree().get_nodes_in_group("Enemy").size())
+#	if get_node_or_null("PED_SPRITES/RichTextLabel")!=null:
+#		get_node_or_null("Control/Label").text=String(gun.ammo)
 #		if gun.has("max_ammo"):
 #			if gun.ammo<=gun.max_ammo:
 #				get_node_or_null("PED_SPRITES/RichTextLabel").text=String(gun.ammo)

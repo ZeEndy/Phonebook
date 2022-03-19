@@ -1,15 +1,16 @@
 extends Node2D
-
+class_name PED
 #preloads
 onready var def_bullet_ent=preload("res://Data/DEFAULT/ENTS/ENT_BULLET.tscn")
 onready var def_grenade_ent=preload("res://Data/DEFAULT/ENTS/ENT_GRENADE.tscn")
+
+
 #reference variables
 onready var sprites = get_node("PED_SPRITES")
 onready var sprite_body = get_node("PED_SPRITES/Body")
 onready var sprite_legs = get_node("PED_SPRITES/Legs")
 onready var collision_body = get_node("PED_COL")
 
-class_name PED
 
 #variables are oragnized by specification aka what state they are used the most in
 enum ped_states{
@@ -28,12 +29,12 @@ export var start_with_gun=false
 # Movement variables
 const MAX_SPEED = 225
 const ACCELERATION = 0.20
+const DECEL_MULTIP = 0.75
 export var my_velocity=Vector2()
 var friction_multip = 1
 var axis = Vector2()
 var motion_multiplier=1
 var path=[]
-
 
 
 #WEAPON VARIABLES
@@ -127,8 +128,6 @@ export var execute_click=false
 var can_get_up=true
 
 
-
-
 #VISUALS AND MISC
 export var shake_screen=false
 var change_sprite_value=false
@@ -213,7 +212,7 @@ func movement(new_motion=null,_delta=null):
 			my_velocity= my_velocity.clamped(MAX_SPEED)
 		else:
 			pass
-			my_velocity=my_velocity.linear_interpolate(Vector2(0,0),ACCELERATION*0.4)
+			my_velocity=my_velocity.linear_interpolate(Vector2(0,0),ACCELERATION*1.1)
 	else:
 		my_velocity=new_motion
 	my_velocity=collision_body.move_and_slide(my_velocity)
