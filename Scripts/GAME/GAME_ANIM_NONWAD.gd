@@ -9,6 +9,7 @@ export var frame=0
 export var animation=""
 export var saved_var={}
 export var add_to_surface=false
+var wait_to_flip=false
 
 # Called when the node enters the scene tree for the first time.
 
@@ -53,7 +54,7 @@ func shake_screen(ammount:int):
 
 func flip_sprite_switch(next_anim):
 	#used for attacks
-	get_node("anim").scale.y=-get_node("anim").scale.y
+	wait_to_flip=true
 	get_node("../../").sprite_index=next_anim
 	
 func flip_sprite():
@@ -104,3 +105,9 @@ func print_debug_anim():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	if wait_to_flip==true:
+		get_node("anim").scale.y=-get_node("anim").scale.y
+		wait_to_flip=false
