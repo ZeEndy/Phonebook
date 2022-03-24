@@ -109,5 +109,6 @@ func print_debug_anim():
 
 func _on_AnimationPlayer_animation_started(anim_name):
 	if wait_to_flip==true:
+		get_node("AnimationPlayer").seek(get_node("AnimationPlayer").current_animation_position,true)
 		get_node("anim").scale.y=-get_node("anim").scale.y
 		wait_to_flip=false
