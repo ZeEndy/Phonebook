@@ -212,7 +212,7 @@ func movement(new_motion=null,_delta=null):
 			my_velocity= my_velocity.clamped(MAX_SPEED)
 		else:
 			pass
-			my_velocity=my_velocity.linear_interpolate(Vector2(0,0),ACCELERATION*1.1)
+			my_velocity=lerp(my_velocity,Vector2(0,0),DECEL_MULTIP)
 	else:
 		my_velocity=new_motion
 	my_velocity=collision_body.move_and_slide(my_velocity)
@@ -356,18 +356,21 @@ func drop_weapon(throw_speed=1,dir=null):
 
 func spawn_bullet(amoumt:int):
 #	print(gun.random_attack_sounds)
+	#play gunshot sound
 	if gun.attack_sound!=null:
 		AudioManager.play_audio(gun.attack_sound)
 	if shake_screen==true:
 		get_tree().get_nodes_in_group("Camera")[0].shake=gun.screen_shake
-		Input.start_joy_vibration(0,1,1,1)
+		#this doesn't work idk
+#		Input.start_joy_vibration(0,1,1,1)
 	gun.ammo-=1
+	#for I is so that you can spawn multiple bullets at the same time
 	for i in amoumt:
 		if gun.attack_type!="grenade":
 			var sus_bullet=def_bullet_ent.instance()
 			#add da weapon spawn bullet
-			sus_bullet.global_position=collision_body.global_position+Vector2(24,0).rotated(body_direction)
-			var recoil_add=body_direction
+			sus_bullet.global_position=sprite_body.get_node("Bullet_Spawn").global_position
+			var recoil_add=sprite_body.get_node("Bullet_Spawn").global_rotation
 			if gun.has("recoil"):
 				recoil_add+=deg2rad(rand_range(-gun.recoil,gun.recoil))
 			sus_bullet.global_rotation=recoil_add
@@ -380,8 +383,8 @@ func spawn_bullet(amoumt:int):
 		else:
 			var sus_bullet=def_grenade_ent.instance()
 			#add da weapon spawn bullet
-			sus_bullet.global_position=collision_body.global_position+Vector2(24,0).rotated(body_direction)
-			var recoil_add=body_direction
+			sus_bullet.global_position=sprite_body.get_node("Bullet_Spawn").global_position
+			var recoil_add=sprite_body.get_node("Bullet_Spawn").global_rotation
 			if gun.has("recoil"):
 				recoil_add+=deg2rad(rand_range(-gun.recoil,gun.recoil))
 			sus_bullet.global_rotation=recoil_add

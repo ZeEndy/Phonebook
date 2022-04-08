@@ -9,6 +9,7 @@ export var frame=0
 export var animation=""
 export var saved_var={}
 export var add_to_surface=false
+export(NodePath) var spawn_pos_on_tree
 var wait_to_flip=false
 
 # Called when the node enters the scene tree for the first time.
@@ -42,6 +43,14 @@ func change_anim_on_full(anim):
 	else:
 		get_node("AnimationPlayer").seek(0)
 	pass
+
+
+func change_anim_on_bolt(anim):
+	#this function is only for reload animations
+	if !(get_node("../../").gun.ammo == get_node("../../").gun.max_ammo):
+		get_node("../../").sprite_index=anim
+		get_node("../../").override_attack=false
+
 
 #used for shotguns
 func pump(next_anim):
@@ -80,13 +89,23 @@ func play_audio(given_sample,pos_2d=null,affected_time=true,true_pitch=1,random_
 	AudioManager.play_audio(given_sample,pos_2d,affected_time,true_pitch,random_pitch,bus)
 
 
-func spawn_object(path_to_object:String,pos:Vector2,set_stuff:Array=[]):
+func spawn_object(path_to_object:String,pos:Vector2,rot:float,set_stuff:Array=[]):
 	#set stuff just do [[get variable,the value to set it as],[get 2nd variable,the value to set it as]]
 	if path_to_object!="":
 		var object = load(path_to_object).instance()
-		object.global_position+=pos.rotated(global_rotation)
+		object.global_position=global_position+pos.rotated(global_rotation)
+		object.global_rotation=global_rotation+rot
 		for i in set_stuff:
-			object.set(i[0],i[1])
+			if i[0]=="casing_linear_velocity":
+				var add_on_speed=Vector2.ZERO
+				var casing_angle=i[1].angle()
+				var casing_speed=Vector2(rand_range(i[1].length()*0.4,i[1].length()),0).rotated(casing_angle)
+				if get_parent().get_parent() is PED:
+					add_on_speed=get_parent().get_parent().my_velocity
+				object.set("linear_velocity",casing_speed.rotated(global_rotation+rand_range(deg2rad(-20),deg2rad(20)))+add_on_speed)
+			else:
+				object.set(i[0],i[1])
+		get_node(spawn_pos_on_tree).get_parent().add_child(object)
 
 #need to calculate acording to the frame rate
 func set_frame(frame_rate:int = 13,frame:int = 0):

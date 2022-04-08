@@ -44,11 +44,10 @@ func _ready():
 		alert_timer=alert_time()
 	enemy_state=-1
 
-func _process(_delta):
-	update()
 
 func _physics_process(delta):
-	#fuck you Juan and your fucking quircky engine
+	#Used to wait until engine decides its time to spawn in the actual collision objects and not to cause problems upon loading
+	#Why Juan why
 	if spawn_timer>-1: 
 		spawn_timer-=delta 
 		if spawn_timer<0:
@@ -75,6 +74,7 @@ func _physics_process(delta):
 			else:
 				alert_timer=alert_time()
 			if enemy_type==Enemy_t.PATROL:
+				#patrol movement logic
 				sprites.get_node("Body").global_rotation=body_direction
 				movement()
 				axis=Vector2(0.20,0).rotated(deg2rad(direction))
@@ -98,18 +98,18 @@ func _physics_process(delta):
 						direction -= dif
 				return
 			elif enemy_type==Enemy_t.RANDOM:
+				#random movement logic
 				sprites.get_node("Body").global_rotation=body_direction
 				body_direction=lerp_angle(body_direction,deg2rad(direction),0.15)
 				movement()
 				random_timer -= 1 * delta_time
+				#random timer check for when it should turn
 				if (random_timer <= 0):
 					direction = randi() % 360
 					axis=Vector2((randi() % 2)*0.25,0).rotated(deg2rad(direction)) 
-					print(axis)
 					random_timer = 60 + (randi() % 61)
 				var v = Vector2(12,0).rotated(deg2rad(direction))
-				#this causes a masive memory leak. too bad
-				#TODO: find a better way to bounce
+				#last variable determines that its a test so that it doesn't actually move forward into the wall
 				var c = get_node("PED_COL").move_and_collide(v, true, true, true)
 				if c:
 					v = v.bounce(c.normal)
@@ -117,14 +117,20 @@ func _physics_process(delta):
 					axis=Vector2(axis.length(),0).rotated(deg2rad(direction)) 
 				return
 			elif enemy_type==Enemy_t.STATIONARY:
+				#lol
 				movement(Vector2(0,0))
 				return
 		else:
+			#make sure that the player isn't dead
 			if get_tree().get_nodes_in_group("Player").size()>0:
+				#The enemy sees the player
 				if enemy_state==enemy_s.charging:
+					#did I need body_direction to be set here I can't remember I'm fucking senile old man
 					sprite_body.global_rotation=body_direction
+					#check if its not a dodger or a dog
 					if enemy_type!=Enemy_t.DODGER && enemy_type!=Enemy_t.DOG_PATROL:
 						if player_visibilty()==true:
+							#checks for if it isn't melee so that there isn't gunners running towards you
 							if gun.type!="melee":
 								var clamped_rotation_speed=clamp(movement_check.cast_to.length()*0.02,0.15,0.25)
 								body_direction=lerp_angle(body_direction,movement_check.cast_to.angle(),clamped_rotation_speed*60*delta)
@@ -238,6 +244,7 @@ func alert_time():
 func _on_VisibilityNotifier2D_viewport_entered(_viewport):
 	get_node("PED_SPRITES").visible=true
 	get_node("PED_SPRITES").set_enabled(true)
+	get_node("PED_SPRITES").teleport()
 
 
 func _on_VisibilityNotifier2D_viewport_exited(_viewport):

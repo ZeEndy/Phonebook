@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EfxMuzzleFlash.png-958ce550fd9283c63514807ce638e618.stex"
+path="res://.import/sprCasingRifle.png-ff51b67fabbb356b43120dac8a0f4432.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/DEFAULT/SPRITES/EfxMuzzleFlash.png"
-dest_files=[ "res://.import/EfxMuzzleFlash.png-958ce550fd9283c63514807ce638e618.stex" ]
+source_file="res://Data/DEFAULT/SPRITES/sprCasingRifle.png"
+dest_files=[ "res://.import/sprCasingRifle.png-ff51b67fabbb356b43120dac8a0f4432.stex" ]
 
 [params]
 

@@ -28,7 +28,7 @@ func add_to_surface(obj_path,position=Vector2(0,0),rotation=0):
 		saved_node=get_node(obj_path)
 		saved_node.get_parent().remove_child(saved_node)
 	else:
-		if obj_path.get_parent()!=null:
+		if is_instance_valid(obj_path.get_parent()):
 			obj_path.get_parent().remove_child(obj_path)
 		saved_node=obj_path
 	add_child(saved_node)
@@ -79,7 +79,6 @@ func add_to_surface(obj_path,position=Vector2(0,0),rotation=0):
 			"z" : saved_node.z_index
 		}
 		surface_data.append(my_properties)
-
 	yield(VisualServer, "frame_post_draw")
 	saved_node.queue_free()
 

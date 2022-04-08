@@ -15,21 +15,24 @@ export var camera_obj=0
 
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		sprite_index="MaskOn"
+	#usless code
+#	if Input.is_action_just_pressed("ui_accept"):
+#		sprite_index="MaskOn"
 	get_node("PED_COL").global_rotation = 0
 	if state == ped_states.alive:
 		if Input.is_action_just_pressed("interact"):
 			switch_weapon()
-			print("pooass")
+		#movement axis
 		axis = Vector2(Input.get_action_strength("right")-Input.get_action_strength("left"),Input.get_action_strength("down")-Input.get_action_strength("up"))
 		
+		#incase you want to disable movement
 		if ability_override_movement==false:
 			movement(null,delta)
 		
 		if Input.is_action_just_pressed("execute"):
 			do_execution()
 		ability_activate()
+		#change weapon fire modes can be use later but change it so that it goes trough an array that you make in the weapon dictonary
 #		if Input.is_action_just_pressed("switch_mode") && gun.trigger_pressed==false:
 #			if gun.type=="semi":
 #				gun.type="burst"
@@ -37,10 +40,10 @@ func _physics_process(delta):
 #				gun.type="semi"
 		
 		
+		#INPUT MANAGMENT
 		if override_attack==false:
 			if Input.is_action_just_pressed("attack"):
 				gun.trigger_pressed=true
-
 		if Input.is_action_just_released("attack") && gun.type=="semi":
 			gun.trigger_pressed=false
 		if Input.is_action_just_released("attack") && gun.type=="auto":
@@ -50,25 +53,18 @@ func _physics_process(delta):
 		if  gun.type=="burst" && gun.trigger_shot==0 && delay==0:
 			if !(Input.is_action_pressed("attack")):
 				gun.trigger_pressed=false
-
-			
 		fability(delta)
 	if state == ped_states.abilty:
+		#rolldodge and shit like that use it here
 		fability(delta)
 	
 func _process(_delta):
 	debug_rand_weapon()
-#	if get_node_or_null("PED_SPRITES/RichTextLabel")!=null:
-#		get_node_or_null("Control/Label").text=String(gun.ammo)
-#		if gun.has("max_ammo"):
-#			if gun.ammo<=gun.max_ammo:
-#				get_node_or_null("PED_SPRITES/RichTextLabel").text=String(gun.ammo)
-#			else:
-#				get_node_or_null("PED_SPRITES/RichTextLabel").text=String(gun.max_ammo)+"+"+String(gun.ammo-gun.max_ammo)
+	#reload for weapons
 	if Input.is_action_just_pressed("debug_reload_kunt"):
 		reload_non_wad()
-	if Input.is_action_just_pressed("ui_down"):
-		print(get_node("PED_COL").global_position)
+	#instance the camera dynamically just incase the CAMERA group is empty and it isn't in a EDITOR
+	#Editor part can be removed since the editor no longer exists but can be used incase you make your own
 	if get_tree().get_nodes_in_group("Camera").size()==0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
 		var new_camera=Camera2D.new()
 		new_camera.zoom=Vector2(1,1)*0.3
@@ -86,11 +82,17 @@ func _process(_delta):
 		var inst_cursor=new_cursor.instance()
 		get_parent().add_child(inst_cursor)
 	if state == ped_states.alive:
+		#make sure that the cursor has been changed to a Vector2 so that they don't point to null causing a crash
 		if cursor_pos != null:
 			body_direction = -cursor_pos.angle_to(Vector2(1,0))
+			#old MGL code to determine granade launchers distance and to determine far look's distance
 			given_height = cursor_pos.length()*0.006
+		
+		
+		#boring ass camera position based on the body sprite's position and rotation 
 		if get_tree().get_nodes_in_group("Camera").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
 			if Input.is_action_pressed("far_look"):
+				#far look based on given_height use *70 to change how far you want it go
 				get_tree().get_nodes_in_group("Camera")[0].global_position=sprites.global_position+Vector2(24+given_height*70,0).rotated(body_direction)
 			else:
 				get_tree().get_nodes_in_group("Camera")[0].global_position=sprites.global_position+Vector2(24,0).rotated(body_direction)
@@ -101,6 +103,8 @@ func _process(_delta):
 				if execute_click==true:
 					if Input.is_action_just_pressed("attack"):
 						execute_do_click()
+
+#function to start and ability
 func ability_activate():
 	if ability_active=="":
 		if "Rolldodge" in ability && axis.length()!=0 && Input.is_action_just_pressed("execute") && in_distance_to_execute==false:
@@ -110,12 +114,13 @@ func ability_activate():
 			sprites.get_node("Body").visible=false
 			state=ped_states.abilty
 			ability_active="Rolldodge"
-#		if "Reload_custom" in ability && sprite_index==gun.walk_sprite && sprites.get_node("Body").has_animation("spr"+whoami.replace(".","Reload")) && Input.is_action_just_pressed("reload"):
-#			pass
 
-#add abilty code here later
+
+
 func fability(delta):
 	if ability_active!="":
+		#roll dodge
+		#do it if you have sprite other wise it wont work
 		if ability_active=="Rolldodge":
 			if !Input.is_action_pressed("execute"):
 				if sprites.get_node("Legs").frame<12 && sprites.get_node("Legs").frame>4:
@@ -140,27 +145,41 @@ func fability(delta):
 func reload_non_wad():
 	if gun.has("max_ammo"):
 		if gun.ammo<=gun.max_ammo:
+			#get the list of sprites and create 2 variables
 			var list_of_sprites=sprites.get_node("Body").frames.get_animation_list()
-			if gun.ammo>0:
-				for i in list_of_sprites:
-					if "Reload"+gun.id in i && "_Start" in i && !("Empty" in i):
-						print(i)
-						sprite_index=i
-			else:
-				for i in list_of_sprites:
-					if "Reload"+gun.id in i && "_StartEmpty" in i:
-						sprite_index=i
+			var normal_reload=""
+			var empty_reload=""
+			#get the list of avalible reloads for a specific gun ID
+			for i in list_of_sprites:
+				if "Reload"+gun.id in i && "_Start" in i && !("Empty" in i):
+					normal_reload=i
+					break
+			for i in list_of_sprites:
+				if "Reload"+gun.id in i && "_StartEmpty" in i:
+					empty_reload=i
+					break
+			#check if both of them aren't empty so that sprite_index isn't empty
+			if normal_reload!="" or empty_reload!="":
+				#Whats up guys it is a bluedrake and today we're gonna suck alot of cock and talk about this
+				#tactical releastic weapon reload animation manager that falls back if one of the animations is missing
+				if gun.ammo>0:
+					if normal_reload!="":
+						sprite_index=normal_reload
+					else:
+						sprite_index=empty_reload
+				else:
+					if empty_reload!="":
+						sprite_index=empty_reload
+					else:
+						sprite_index=normal_reload
 
-#sample code
-#	if "teleport" in abilty:
-#		do teleport shit
-# this allows multiple abilties to be mixed and matched
-	pass
 
+#function used for some if checks
 func get_class():
 	return "Player"
 
 
+#debug weapon spawner for the lolz
 func debug_rand_weapon():
 		if Input.is_action_just_pressed("DEBUG_SPAWN_GUN"):
 			var random_weapon=int(round(rand_range(0,5)))
