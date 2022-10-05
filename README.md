@@ -2,3 +2,5 @@
 Join the discord for info and to chat if you want
 https://discord.gg/TC4xRF6Kya
 
+THIS IS THE MAIN BRANCH IT IS UNSTABLE
+USE THE [3.5 BRANCH](https://github.com/ZeEndy/Phonebook/tree/3.5)
