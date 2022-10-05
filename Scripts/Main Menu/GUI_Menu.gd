@@ -8,7 +8,7 @@ extends Node2D
 #TODO ADD THE FUCKING FONT MANAGMENT
 #testing out the github webhook
 
-export var start_room=""
+@export var start_room=""
 
 var title_options=[
 	["Start",3],
@@ -50,7 +50,7 @@ func _ready():
 #	for i in title_options:
 #		get_node("Title screen/Text/"+i[0]).theme.default_font.add_texture(temp_font)
 #	get_node("Title screen/Text/Title").theme.default_font.add_texture(temp_font)
-#	var title=DynamicFont.new()
+#	var title=FontFile.new()
 #	title.font_data=_wad.get(_wad.lazy_find("fntTitle.fnt"))
 #
 #	get_node("Title").set("custom_fonts/normal_font",title)
@@ -78,9 +78,9 @@ func _physics_process(_delta):
 	if current_menu==menu_states.TITLE:
 		var shader1=get_node("Title screen/Color layer 1/ColorRect").material
 		var shader2=get_node("Title screen/Color layer 2/ColorRect").material
-		shader1.set_shader_param("radius",lerp(shader1.get_shader_param("radius"),rand_range(0,0.3),0.10))
+		shader1.set_shader_parameter("radius",lerp(shader1.get_shader_parameter("radius"),randf_range(0,0.3),0.10))
 		
-		shader2.set_shader_param("radius",lerp(shader2.get_shader_param("radius"),rand_range(0.2,0.5),0.10))
+		shader2.set_shader_parameter("radius",lerp(shader2.get_shader_parameter("radius"),randf_range(0.2,0.5),0.10))
 
 
 func title_functions():
@@ -124,15 +124,15 @@ func title_functions():
 		elif current_selection==title_options[4]:
 			get_tree().get_nodes_in_group("GLOBAL")[0].fade=true
 			if get_tree().get_nodes_in_group("GLOBAL")[0].fade_color==1:
-				var shutup=get_tree().change_scene("res://Game_Selector.tscn")
+				var shutup=get_tree().change_scene_to_file("res://Game_Selector.tscn")
 
 func title_draw(delta):
 	if doing_action==false:
 #		get_node("Title screen/Text").scale=get_viewport().size/(get_viewport().size*get_node("Camera2D").zoom)
 		
 		title_dir+=30*delta
-		var title_rotation=(Vector2(0.05,0).rotated(deg2rad(title_dir))).x
-		get_node("Title screen/Text/Title").rect_rotation=title_rotation
+		var title_rotation=(Vector2(0.05,0).rotated(deg_to_rad(title_dir))).x
+		get_node("Title screen/Text/Title").rotation=title_rotation
 		for i in title_options:
 			if current_selection!=i:
 				
@@ -143,7 +143,7 @@ func title_draw(delta):
 					i[1]=3
 				for x in floor(i[1]):
 					var text="/"+i[0]
-					get_node("Title screen/Text/"+i[0]+text.repeat(x+1)).rect_position.x=0
+					get_node("Title screen/Text/"+i[0]+text.repeat(x+1)).position.x=0
 			else:
 				get_node("Title screen/Text/"+i[0]).modulate=Color(1,1,1)
 				if i[1]<7:
@@ -153,38 +153,38 @@ func title_draw(delta):
 				for x in floor(i[1]):
 					var text="/"+i[0]
 					if get_node_or_null("Title screen/Text/"+i[0]+text.repeat(x+1))!=null:
-						get_node("Title screen/Text/"+i[0]+text.repeat(x+1)).rect_position.x= -1
+						get_node("Title screen/Text/"+i[0]+text.repeat(x+1)).position.x= -1
 				
 				
 			
-#			get_node("Title screen/Text/"+i[0]).rect_rotation=rad2deg(title_rotation)
-#			get_node("Title screen/Text/"+i[0]).rect_pivot_offset=get_node("Title screen/Text/"+i[0]).rect_size/2
+#			get_node("Title screen/Text/"+i[0]).rotation=rad_to_deg(title_rotation)
+#			get_node("Title screen/Text/"+i[0]).pivot_offset=get_node("Title screen/Text/"+i[0]).size/2
 #
 #
 #
-#		get_node("Title screen/Text/Title").rect_rotation=rad2deg(title_rotation)
-#		get_node("Title screen/Text/Title").rect_pivot_offset=get_node("Title screen/Text/Title").rect_size/2
+#		get_node("Title screen/Text/Title").rotation=rad_to_deg(title_rotation)
+#		get_node("Title screen/Text/Title").pivot_offset=get_node("Title screen/Text/Title").size/2
 		
 		
 		
-	get_node("Title screen/Inverse/ColorRect").rect_size=get_viewport_rect().size
-	get_node("Title screen/Background/Background").rect_size=get_viewport_rect().size
+	get_node("Title screen/Inverse/ColorRect").size=get_viewport_rect().size
+	get_node("Title screen/Background/Background").size=get_viewport_rect().size
 	if get_viewport_rect().size.x>get_viewport_rect().size.y:
-		get_node("Title screen/Color layer 1/ColorRect").rect_size=Vector2(get_viewport_rect().size.x,get_viewport_rect().size.x)
-		get_node("Title screen/Color layer 2/ColorRect").rect_size=Vector2(get_viewport_rect().size.x,get_viewport_rect().size.x)
+		get_node("Title screen/Color layer 1/ColorRect").size=Vector2(get_viewport_rect().size.x,get_viewport_rect().size.x)
+		get_node("Title screen/Color layer 2/ColorRect").size=Vector2(get_viewport_rect().size.x,get_viewport_rect().size.x)
 		
-		var posy=(get_viewport_rect().size.x/2*get_node("Camera2D").zoom.x)-get_node("Title screen/Color layer 1/ColorRect").rect_size.y/2
+		var posy=(get_viewport_rect().size.x/2*get_node("Camera2D").zoom.x)-get_node("Title screen/Color layer 1/ColorRect").size.y/2
 		
-		get_node("Title screen/Color layer 1/ColorRect").rect_position.y=posy
-		get_node("Title screen/Color layer 2/ColorRect").rect_position.y=posy
+		get_node("Title screen/Color layer 1/ColorRect").position.y=posy
+		get_node("Title screen/Color layer 2/ColorRect").position.y=posy
 	else:
-		get_node("Title screen/Color layer 1/ColorRect").rect_size=Vector2(get_viewport_rect().size.y,get_viewport_rect().size.y)
-		get_node("Title screen/Color layer 2/ColorRect").rect_size=Vector2(get_viewport_rect().size.y,get_viewport_rect().size.y)
+		get_node("Title screen/Color layer 1/ColorRect").size=Vector2(get_viewport_rect().size.y,get_viewport_rect().size.y)
+		get_node("Title screen/Color layer 2/ColorRect").size=Vector2(get_viewport_rect().size.y,get_viewport_rect().size.y)
 		
-		var posy=(get_viewport_rect().size.y/2*get_node("Camera2D").zoom.y)-get_node("Title screen/Color layer 1/ColorRect").rect_size.x/2
+		var posy=(get_viewport_rect().size.y/2*get_node("Camera2D").zoom.y)-get_node("Title screen/Color layer 1/ColorRect").size.x/2
 		
-		get_node("Title screen/Color layer 1/ColorRect").rect_position.y=posy
-		get_node("Title screen/Color layer 2/ColorRect").rect_position.y=posy
+		get_node("Title screen/Color layer 1/ColorRect").position.y=posy
+		get_node("Title screen/Color layer 2/ColorRect").position.y=posy
 	
 
 

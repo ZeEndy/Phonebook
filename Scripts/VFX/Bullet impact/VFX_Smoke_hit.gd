@@ -14,7 +14,7 @@ func _process(delta):
 	z_index=1
 	speed_scale=0.3
 #	material.set("blend_mode",BLEND_MODE_ADD)
-	global_rotation= direction-deg2rad(180)
+	global_rotation= direction-deg_to_rad(180)
 	global_position+=Vector2(speed*60,0).rotated(direction)*delta
 	speed-=friction*60*delta
 	speed=clamp(speed,0,10)

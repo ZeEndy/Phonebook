@@ -7,8 +7,8 @@ extends Node2D
 
 var top_position=0
 var bottom_position=0
-onready var top=get_node("top")
-onready var bottom=get_node("bottom")
+@onready var top=get_node("top")
+@onready var bottom=get_node("bottom")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +25,7 @@ func _process(delta):
 		bottom_position=bottom.cast_to.x
 	else:
 		bottom_position=(bottom.get_collision_point()-bottom.global_position).length()
-	get_node("Polygon2D").polygon=PoolVector2Array([
+	get_node("Polygon2D").polygon=PackedVector2Array([
 		Vector2(0.000004,1),
 		Vector2(-0.000002,0),
 		Vector2(top_position,-1*(clamp(top_position-top.cast_to.x,0,top.cast_to.x)/top.cast_to.x)),

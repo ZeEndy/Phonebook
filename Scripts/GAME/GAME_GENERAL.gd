@@ -29,7 +29,7 @@ var cursor_position=null
 var configfile
 
 #func _ready():
-#	yield(get_tree().create_timer(0.1),"timeout")
+#	await get_tree().create_timer(0.1).timeout
 #	save_node_state("checkpoint",get_tree().get_nodes_in_group("Level")[0])
 #	save_node_state("restart_scene",get_tree().get_nodes_in_group("Level")[0])
 
@@ -44,8 +44,8 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("DEBUG_FULLSCREEN"):
 		fullscreen=!fullscreen
-		OS.set_window_fullscreen(fullscreen)
-	OS.set_window_title("PhoneBook " + " | fps: " + str(Engine.get_frames_per_second()))
+#		OS.set_window_fullscreen(fullscreen)
+#	OS.set_window_title("PhoneBook " + " | fps: " + str(Engine.get_frames_per_second()))
 	
 	
 	
@@ -71,10 +71,10 @@ func save_node_state(_file_name,node):
 	_set_owner(root_node,root_node)
 	packed_scene.pack(node)
 	
-	saved_scene=ResourceSaver.save("user://"+_file_name+".scn", packed_scene)
+	saved_scene=ResourceSaver.save(packed_scene,"user://"+_file_name+".scn")
 	
 	_saving=false
-	print("saved on file: "+_file_name)
+	print("saved checked file: "+_file_name)
 	return saved_scene
 
 #usless fucntions
@@ -89,7 +89,7 @@ func quit_level():
 	get_tree().quit()
 
 func _set_owner(node, root):
-	if node is Viewport && node in get_tree().get_nodes_in_group("Surface"):
+	if node is SubViewport && node in get_tree().get_nodes_in_group("Surface"):
 		node.save_surface()
 	if node != root:
 		node.owner = root
@@ -102,7 +102,7 @@ func _set_owner(node, root):
 
 #func is_instanced_from_scene(p_node):
 #	#check if its a file that way it doesnt make duplicates
-#	if not p_node.filename.empty():
+#	if not p_node.filename.is_empty():
 #		return true
 #	#saving the surface for blood fx and shit
 #	if p_node 
@@ -114,7 +114,7 @@ func switch_scene(file,fade,inst):
 		_activate_switch=true
 		_instant=inst
 		if _instant==false:
-			new_room=ResourceLoader.load_interactive(file)
+			new_room=ResourceLoader.load_threaded_request(file)
 		else:
 			new_room=load(file)
 		_fade=fade
@@ -133,7 +133,7 @@ func _active_switch_scene(fade,instant):
 							#ERR_FILE_EOF means that file is loaded into memory and can be instanced
 							print(new_room.poll())
 							if new_room.poll()==ERR_FILE_EOF:
-								var replace_room=new_room.get_resource().instance()
+								var replace_room=new_room.get_resource().instantiate()
 								add_child(replace_room)
 								get_node("GLOBAL").fade=false
 								new_room=null
@@ -143,7 +143,7 @@ func _active_switch_scene(fade,instant):
 					if get_node("GLOBAL").fade_color==1:
 						if get_tree().get_nodes_in_group("Current_room").size()>0:
 							get_tree().get_nodes_in_group("Current_room")[0].queue_free()
-							var replace_room=new_room.instance()
+							var replace_room=new_room.instantiate()
 							add_child(replace_room)
 							get_node("GLOBAL").fade=false
 							new_room=null
@@ -163,7 +163,7 @@ func _active_switch_scene(fade,instant):
 #						else:
 #							#ERR_FILE_EOF means that file is loaded into memory and can be instanced
 #							if new_room.poll()==ERR_FILE_EOF:
-#								var replace_room=new_room.get_resource().instance()
+#								var replace_room=new_room.get_resource().instantiate()
 #								add_child(replace_room)
 #								get_node("GLOBAL").fade=false
 #								new_room=null
@@ -175,8 +175,8 @@ func _active_switch_scene(fade,instant):
 #							get_tree().get_nodes_in_group("Current_room")[0].queue_free()
 #							new_room.wait()
 #							if new_room.poll()==ERR_FILE_EOF:
-#								yield(get_tree().create_timer(0.01),"timeout")
-#								var replace_room=new_room.get_resource().instance()
+#								await get_tree().create_timer(0.01).timeout
+#								var replace_room=new_room.get_resource().instantiate()
 #								add_child(replace_room)
 #								get_node("GLOBAL").fade=false
 #								new_room=null

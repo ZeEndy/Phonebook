@@ -3,8 +3,8 @@ extends PED
 class_name Enemy
 
 #reference variables
-onready var visibilty_check=get_node("PED_COL/visibilty_check")
-onready var movement_check=get_node("PED_COL/movement_check")
+@onready var visibilty_check=get_node("PED_COL/visibilty_check")
+@onready var movement_check=get_node("PED_COL/movement_check")
 
 
 #states
@@ -20,8 +20,8 @@ enum enemy_s {
 	charging,
 	aiming,
 	chasing}
-export(Enemy_t) var enemy_type=Enemy_t.PATROL
-export var enemy_state = enemy_s.neutral
+@export var enemy_type: Enemy_t=Enemy_t.PATROL
+@export var enemy_state = enemy_s.neutral
 
 
 #alert stuff
@@ -29,8 +29,8 @@ enum alert_s{
 	normal,
 	alert,
 	ready}
-export var alert_state=alert_s.normal
-export var alert_timer=-1
+@export var alert_state=alert_s.normal
+@export var alert_timer=-1
 var random_timer = 0
 
 #misc
@@ -77,16 +77,16 @@ func _physics_process(delta):
 				#patrol movement logic
 				sprites.get_node("Body").global_rotation=body_direction
 				movement()
-				axis=Vector2(0.20,0).rotated(deg2rad(direction))
+				axis=Vector2(0.20,0).rotated(deg_to_rad(direction))
 				body_direction=lerp_angle(body_direction,axis.angle(),0.15)
-				var v = Vector2(my_velocity.length()/2,0).rotated(deg2rad(direction))
+				var v = Vector2(my_velocity.length()/2,0).rotated(deg_to_rad(direction))
 				var shape = RectangleShape2D.new()
 				shape.extents=Vector2(v.length(),get_node("PED_COL/CollsionCircle").shape.radius)
-				var query = Physics2DShapeQueryParameters.new()
+				var query = PhysicsShapeQueryParameters2D.new()
 				query.set_shape(shape)
 				query.collision_layer=32
 				var space = get_world_2d().direct_space_state
-				query.set_transform(Transform2D(deg2rad(direction),get_node("PED_COL").global_position+Vector2(shape.extents.x/2,0).rotated(deg2rad(direction))))
+				query.set_transform(Transform2D(deg_to_rad(direction),get_node("PED_COL").global_position+Vector2(shape.extents.x/2,0).rotated(deg_to_rad(direction))))
 				query.exclude.append(get_node("PED_COL"))
 				if space.intersect_shape(query,1).size()>0:
 					direction -= 10 * delta_time
@@ -100,21 +100,21 @@ func _physics_process(delta):
 			elif enemy_type==Enemy_t.RANDOM:
 				#random movement logic
 				sprites.get_node("Body").global_rotation=body_direction
-				body_direction=lerp_angle(body_direction,deg2rad(direction),0.15)
+				body_direction=lerp_angle(body_direction,deg_to_rad(direction),0.15)
 				movement()
 				random_timer -= 1 * delta_time
 				#random timer check for when it should turn
 				if (random_timer <= 0):
 					direction = randi() % 360
-					axis=Vector2((randi() % 2)*0.25,0).rotated(deg2rad(direction)) 
+					axis=Vector2((randi() % 2)*0.25,0).rotated(deg_to_rad(direction)) 
 					random_timer = 60 + (randi() % 61)
-				var v = Vector2(12,0).rotated(deg2rad(direction))
+				var v = Vector2(12,0).rotated(deg_to_rad(direction))
 				#last variable determines that its a test so that it doesn't actually move forward into the wall
 				var c = get_node("PED_COL").move_and_collide(v, true, true, true)
 				if c:
 					v = v.bounce(c.normal)
-					direction = rad2deg(v.angle())
-					axis=Vector2(axis.length(),0).rotated(deg2rad(direction)) 
+					direction = rad_to_deg(v.angle())
+					axis=Vector2(axis.length(),0).rotated(deg_to_rad(direction)) 
 				return
 			elif enemy_type==Enemy_t.STATIONARY:
 				#lol
@@ -186,9 +186,9 @@ func _physics_process(delta):
 	elif state==ped_states.down:
 		body_direction=sprite_legs.global_rotation
 		if sprite_legs.speed_scale==0:
-			collision_body.set_collision_layer_bit(7,false)
+			collision_body.set_collision_layer_value(7,false)
 		else:
-			collision_body.set_collision_layer_bit(7,true)
+			collision_body.set_collision_layer_value(7,true)
 		return
 	elif state==ped_states.execute:
 		if execute_click==true:
@@ -199,8 +199,8 @@ func _physics_process(delta):
 func go_down(down_dir=randi()):
 	if state == ped_states.alive:
 		if sprite_body.frames.has_animation("GetUp"):
-			collision_body.set_collision_layer_bit(0,false)
-	.go_down(down_dir)
+			collision_body.set_collision_layer_value(0,false)
+	super.go_down(down_dir)
 
 
 
@@ -211,7 +211,7 @@ func player_visibilty(mode=0):
 		if mode==0:
 			var shape = RectangleShape2D.new()
 			shape.extents=Vector2(collision_body.global_position.distance_to(focused_player.global_position)/2,4)
-			var query = Physics2DShapeQueryParameters.new()
+			var query = PhysicsShapeQueryParameters2D.new()
 			query.set_shape(shape)
 			query.collision_layer=16
 			var space = get_world_2d().direct_space_state

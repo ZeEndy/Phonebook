@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sndImpactGround.wav-b2194eb8f6cb4586ba4714bad87b5e43.sample"
+type="AudioStreamWAV"
+uid="uid://djmkwebvvm1x2"
+path="res://.godot/imported/sndImpactGround.wav-b2194eb8f6cb4586ba4714bad87b5e43.sample"
 
 [deps]
 
 source_file="res://Data/EXPERIMENTS/A10/sndImpactGround.wav"
-dest_files=[ "res://.import/sndImpactGround.wav-b2194eb8f6cb4586ba4714bad87b5e43.sample" ]
+dest_files=["res://.godot/imported/sndImpactGround.wav-b2194eb8f6cb4586ba4714bad87b5e43.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -12,10 +12,10 @@ var friction=0.5
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	z_index=1
-	modulate = Color.white.linear_interpolate(Color.yellow, randf())
+	modulate = Color.WHITE.lerp(Color.YELLOW, randf())
 	material.set("blend_mode",BLEND_MODE_ADD)
 	frame=speed
-	global_position+=Vector2(speed*60,0).rotated(deg2rad(direction))*delta
+	global_position+=Vector2(speed*60,0).rotated(deg_to_rad(direction))*delta
 	speed=clamp(speed,0,10)
 	speed-=friction*60*delta
 	if speed<1:

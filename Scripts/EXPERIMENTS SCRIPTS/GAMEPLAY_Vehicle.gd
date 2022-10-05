@@ -17,13 +17,13 @@ var start_engine=false
 
 var gear=1
 var wait_rpm=0
-export var gear_ratio=[-0.3,0.4,0.6,0.8,1,1.2]
-export var engine_start_rpm=0
-export var idle_rpm=0
-export var throttle=0
-export var max_rpm=0
-export var sound_library=[]
-export var turn_radius=60
+@export var gear_ratio=[-0.3,0.4,0.6,0.8,1,1.2]
+@export var engine_start_rpm=0
+@export var idle_rpm=0
+@export var throttle=0
+@export var max_rpm=0
+@export var sound_library=[]
+@export var turn_radius=60
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,8 +90,8 @@ func _physics_process(delta):
 		if engine_rpm>idle_rpm*1.2:
 			var gear_final=abs(-1-gear_ratio[gear])
 			drive_axis=Vector2(((engine_rpm-idle_rpm)*0.1)*(gear_final),0)
-			get_node("KinematicBody2D").global_rotation+=get_node("Smoothing2D/TireRight").rotation*drive_axis.length()*delta*0.005
-			get_node("KinematicBody2D").move_and_collide(drive_axis.rotated(get_node("KinematicBody2D").global_rotation)*delta)
+			get_node("CharacterBody2D").global_rotation+=get_node("Smoothing2D/TireRight").rotation*drive_axis.length()*delta*0.005
+			get_node("CharacterBody2D").move_and_collide(drive_axis.rotated(get_node("CharacterBody2D").global_rotation)*delta)
 		
 
 

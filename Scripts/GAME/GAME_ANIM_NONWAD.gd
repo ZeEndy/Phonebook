@@ -4,12 +4,12 @@ class_name anim_mang
 #work around lol
 var frames = self
 
-export var speed_scale=1
-export var frame=0
-export var animation=""
-export var saved_var={}
-export var add_to_surface=false
-export(NodePath) var spawn_pos_on_tree
+@export var speed_scale=1
+@export var frame=0
+@export var animation=""
+@export var saved_var={}
+@export var add_to_surface=false
+@export var spawn_pos_on_tree: NodePath
 var wait_to_flip=false
 
 # Called when the node enters the scene tree for the first time.
@@ -58,7 +58,7 @@ func pump(next_anim):
 		get_node("../../").sprite_index=next_anim
 
 func shake_screen(ammount:int):
-	get_tree().get_nodes_in_group("Camera")[0].shake=ammount
+	get_tree().get_nodes_in_group("Camera3D")[0].shake=ammount
 
 
 func flip_sprite_switch(next_anim):
@@ -69,7 +69,7 @@ func flip_sprite_switch(next_anim):
 func flip_sprite():
 	#used for attacks
 	get_node("anim").scale.y=-get_node("anim").scale.y
-#sets time based on ammo
+#sets time based checked ammo
 func set_frame_ammo(frame_rate:int,frame:int,repeat=0.0):
 #	if get_node("../../").gun.ammo>0:
 	if get_node("../../").execute_remove_health(0,repeat)!=true:
@@ -92,17 +92,17 @@ func play_audio(given_sample,pos_2d=null,affected_time=true,true_pitch=1,random_
 func spawn_object(path_to_object:String,pos:Vector2,rot:float,set_stuff:Array=[]):
 	#set stuff just do [[get variable,the value to set it as],[get 2nd variable,the value to set it as]]
 	if path_to_object!="":
-		var object = load(path_to_object).instance()
+		var object = load(path_to_object).instantiate()
 		object.global_position=global_position+pos.rotated(global_rotation)
 		object.global_rotation=global_rotation+rot
 		for i in set_stuff:
 			if i[0]=="casing_linear_velocity":
 				var add_on_speed=Vector2.ZERO
 				var casing_angle=i[1].angle()
-				var casing_speed=Vector2(rand_range(i[1].length()*0.4,i[1].length()),0).rotated(casing_angle)
+				var casing_speed=Vector2(randf_range(i[1].length()*0.4,i[1].length()),0).rotated(casing_angle)
 				if get_parent().get_parent() is PED:
 					add_on_speed=get_parent().get_parent().my_velocity
-				object.set("linear_velocity",casing_speed.rotated(global_rotation+rand_range(deg2rad(-20),deg2rad(20)))+add_on_speed)
+				object.set("linear_velocity",casing_speed.rotated(global_rotation+randf_range(deg_to_rad(-20),deg_to_rad(20)))+add_on_speed)
 			else:
 				object.set(i[0],i[1])
 		get_node(spawn_pos_on_tree).get_parent().add_child(object)
@@ -115,7 +115,7 @@ func next_frame(frame_rate:int = 13):
 	seek(frame+(1/float(frame_rate)) ,true)
 #	print(frame+(1/float(frame_rate)))
 
-func seek(seconds:float = 0,update:bool = true):
+func seek(seconds:float = 0.0,update:bool = true):
 	get_node("AnimationPlayer").seek(seconds,update)
 
 func print_debug_anim():

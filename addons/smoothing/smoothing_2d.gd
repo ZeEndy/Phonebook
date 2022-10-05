@@ -20,7 +20,8 @@
 
 extends Node2D
 
-export(NodePath) var target : NodePath setget set_target, get_target
+@export_node_path(Node2D) var target: 
+	set=set_target,get=get_target
 
 var _m_Target : Node2D
 
@@ -42,14 +43,15 @@ const SF_GLOBAL_OUT = 1 << 5
 const SF_DIRTY = 1 << 6
 const SF_INVISIBLE = 1 << 7
 
-export (int, FLAGS, "enabled", "translate", "rotate", "scale", "global in", "global out") var flags : int = SF_ENABLED | SF_TRANSLATE setget _set_flags, _get_flags
+@export_flags("enabled","translate", "rotate", "scale", "global in", "global out") var flags : int = SF_ENABLED | SF_TRANSLATE : set=_set_flags, get=_get_flags
+#@export_flags(int, FLAGS, "enabled", "translate", "rotate", "scale", "global in", "global out") var flags : int = SF_ENABLED | SF_TRANSLATE setget _set_flags, _get_flags
 
 ##########################################################################################
 # USER FUNCS
 
 # call this on e.g. starting a level, AFTER moving the target
 # so we can update both the previous and current values
-func teleport():
+func s_teleport():
 	var temp_flags = flags
 	_SetFlags(SF_TRANSLATE | SF_ROTATE | SF_SCALE)
 	
@@ -64,7 +66,7 @@ func teleport():
 	# get back the old flags
 	flags = temp_flags
 	
-func set_enabled(var bEnable : bool):
+func set_enabled(bEnable : bool):
 	_ChangeFlags(SF_ENABLED, bEnable)
 	_SetProcessing()
 
@@ -188,7 +190,7 @@ func _process(_delta):
 	if _TestFlags(SF_GLOBAL_OUT):
 		# translate
 		if _TestFlags(SF_TRANSLATE):
-			set_global_position(m_Pos_prev.linear_interpolate(m_Pos_curr, f))
+			set_global_position(m_Pos_prev.lerp(m_Pos_curr, f))
 	
 		# rotate
 		if _TestFlags(SF_ROTATE):
@@ -196,11 +198,11 @@ func _process(_delta):
 			set_global_rotation(r)
 	
 		if _TestFlags(SF_SCALE):
-			set_global_scale(m_Scale_prev.linear_interpolate(m_Scale_curr, f))
+			set_global_scale(m_Scale_prev.lerp(m_Scale_curr, f))
 	else:
 		# translate
 		if _TestFlags(SF_TRANSLATE):
-			set_position(m_Pos_prev.linear_interpolate(m_Pos_curr, f))
+			set_position(m_Pos_prev.lerp(m_Pos_curr, f))
 	
 		# rotate
 		if _TestFlags(SF_ROTATE):
@@ -208,7 +210,7 @@ func _process(_delta):
 			set_rotation(r)
 	
 		if _TestFlags(SF_SCALE):
-			set_scale(m_Scale_prev.linear_interpolate(m_Scale_curr, f))
+			set_scale(m_Scale_prev.lerp(m_Scale_curr, f))
 	
 	pass
 	
@@ -221,24 +223,24 @@ func _physics_process(_delta):
 	_SetFlags(SF_DIRTY)
 	pass
 
-func _LerpAngle(var from : float, var to : float, var weight : float)->float:
+func _LerpAngle( from : float,  to : float,  weight : float)->float:
 	return from + _ShortAngleDist(from, to) * weight
 
-func _ShortAngleDist(var from : float, var to : float)->float:
+func _ShortAngleDist( from : float,  to : float)->float:
 	var max_angle : float = 2 * PI
 	var diff : float = fmod(to-from, max_angle)
 	return fmod(2.0 * diff, max_angle) - diff
 
-func _SetFlags(var f):
+func _SetFlags( f):
 	flags |= f
 	
-func _ClearFlags(var f):
+func _ClearFlags( f):
 	flags &= ~f
 	
-func _TestFlags(var f):
+func _TestFlags( f):
 	return (flags & f) == f
 
-func _ChangeFlags(var f, var bSet):
+func _ChangeFlags( f,  bSet):
 	if bSet:
 		_SetFlags(f)
 	else:

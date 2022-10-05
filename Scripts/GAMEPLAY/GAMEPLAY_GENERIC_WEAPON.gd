@@ -10,7 +10,7 @@ var pick_up=false
 var wait_pickup=0.001
 
 
-export var gun={
+@export var gun={
 	#id for hud
 	"id":"M16",
 	#ammo of the gun
@@ -20,9 +20,9 @@ export var gun={
 	"walk_sprite":"WalkM16",
 	"attack_sprite":["AttackM16"],
 	"attack_index":0,
-	#random on attack
+	#random checked attack
 	"random_sprite":false,
-	#flip on attack
+	#flip checked attack
 	"flip_sprite":false,
 
 	"sound_index":0,
@@ -58,7 +58,7 @@ export var gun={
 
 
 func _ready():
-	get_node("SPRITE").global_rotation_degrees=global_rotation_degrees
+	get_node("SPRITE").global=global_rotation
 #	_create_collision_polygon(get_node("SPRITE").texture,l[2])
 #	print(l[0].get_data())
 #	var dick= AtlasTexture.new()

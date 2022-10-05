@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/smoothing/smoothing_2d.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PEDS/PED_Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Body.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Data/DEFAULT/SPRITES/enemy.png" type="Texture" id=4]
+[ext_resource path="res://Data/DEFAULT/SPRITES/enemy.png" type="Texture2D" id=4]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Legs.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -13,7 +13,7 @@ radius = 8.0
 z_index = 1
 script = ExtResource( 2 )
 
-[node name="PED_COL" type="KinematicBody2D" parent="." groups=["Enemy", "PED"]]
+[node name="PED_COL" type="CharacterBody2D" parent="." groups=["Enemy", "PED"]]
 collision_layer = 65
 collision_mask = 32
 
@@ -23,7 +23,7 @@ shape = SubResource( 1 )
 [node name="weapon_find" type="RayCast2D" parent="PED_COL"]
 enabled = true
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="PED_COL"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="PED_COL"]
 rect = Rect2( -32, -32, 64, 64 )
 
 [node name="movement_check" type="RayCast2D" parent="PED_COL"]
@@ -44,9 +44,9 @@ flags = 51
 [node name="Body" parent="PED_SPRITES" instance=ExtResource( 3 )]
 spawn_pos_on_tree = NodePath("../..")
 
-[node name="TEMPSPRITE" type="Sprite" parent="."]
+[node name="TEMPSPRITE" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource( 4 )
 
-[connection signal="viewport_entered" from="PED_COL/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_entered"]
-[connection signal="viewport_exited" from="PED_COL/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="viewport_entered" from="PED_COL/VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_entered"]
+[connection signal="viewport_exited" from="PED_COL/VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

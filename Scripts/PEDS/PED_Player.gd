@@ -4,14 +4,14 @@ class_name Player
 
 
 # Typing in a abilty for the player character lets know what abilty to use i.e. rolldoge, killing punches, tony punches, ect 
-export var ability = "Rolldodge"
-export var saved_ability_variable=[]
-export var ability_active=""
-export var ability_override_movement=false
-export var override_pick_up=false
-export var override_attack=false
+@export var ability = "Rolldodge"
+@export var saved_ability_variable=[]
+@export var ability_active=""
+@export var ability_override_movement=false
+@export var override_pick_up=false
+@export var override_attack=false
 var cursor_pos = null
-export var camera_obj=0
+@export var camera_obj=0
 
 
 func _physics_process(delta):
@@ -65,10 +65,10 @@ func _process(_delta):
 		reload_non_wad()
 	#instance the camera dynamically just incase the CAMERA group is empty and it isn't in a EDITOR
 	#Editor part can be removed since the editor no longer exists but can be used incase you make your own
-	if get_tree().get_nodes_in_group("Camera").size()==0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
+	if get_tree().get_nodes_in_group("Camera3D").size()==0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
 		var new_camera=Camera2D.new()
 		new_camera.zoom=Vector2(1,1)*0.3
-		new_camera.add_to_group("Camera")
+		new_camera.add_to_group("Camera3D")
 		new_camera.current=true
 		new_camera.global_position=global_position
 		get_parent().get_parent().add_child(new_camera)
@@ -79,7 +79,7 @@ func _process(_delta):
 		new_camera.set_process(true)
 	if get_tree().get_nodes_in_group("Cursor").size()==0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
 		var new_cursor=load("res://Data/DEFAULT/ENTS/ENT_Cursor.tscn")
-		var inst_cursor=new_cursor.instance()
+		var inst_cursor=new_cursor.instantiate()
 		get_parent().add_child(inst_cursor)
 	if state == ped_states.alive:
 		#make sure that the cursor has been changed to a Vector2 so that they don't point to null causing a crash
@@ -89,17 +89,17 @@ func _process(_delta):
 			given_height = cursor_pos.length()*0.006
 		
 		
-		#boring ass camera position based on the body sprite's position and rotation 
-		if get_tree().get_nodes_in_group("Camera").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
+		#boring ass camera position based checked the body sprite's position and rotation 
+		if get_tree().get_nodes_in_group("Camera3D").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
 			if Input.is_action_pressed("far_look"):
-				#far look based on given_height use *70 to change how far you want it go
-				get_tree().get_nodes_in_group("Camera")[0].global_position=sprites.global_position+Vector2(24+given_height*70,0).rotated(body_direction)
+				#far look based checked given_height use *70 to change how far you want it go
+				get_tree().get_nodes_in_group("Camera3D")[0].global_position=sprites.global_position+Vector2(24+given_height*70,0).rotated(body_direction)
 			else:
-				get_tree().get_nodes_in_group("Camera")[0].global_position=sprites.global_position+Vector2(24,0).rotated(body_direction)
+				get_tree().get_nodes_in_group("Camera3D")[0].global_position=sprites.global_position+Vector2(24,0).rotated(body_direction)
 		sprites.get_node("Body").global_rotation = body_direction
 	elif state == ped_states.execute:
-		if get_tree().get_nodes_in_group("Camera").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
-				get_tree().get_nodes_in_group("Camera")[0].global_position=sprites.global_position
+		if get_tree().get_nodes_in_group("Camera3D").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
+				get_tree().get_nodes_in_group("Camera3D")[0].global_position=sprites.global_position
 				if execute_click==true:
 					if Input.is_action_just_pressed("attack"):
 						execute_do_click()
@@ -130,8 +130,8 @@ func fability(delta):
 			movement(Vector2(1,0).rotated(axis.angle())*(MAX_SPEED+50),delta)
 			
 			sprites.get_node("Legs").speed_scale=0.3
-			if get_tree().get_nodes_in_group("Camera").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
-				get_tree().get_nodes_in_group("Camera")[0].global_position=sprites.global_position
+			if get_tree().get_nodes_in_group("Camera3D").size()>0 && get_tree().get_nodes_in_group("EDITOR").size()==0:
+				get_tree().get_nodes_in_group("Camera3D")[0].global_position=sprites.global_position
 			if change_leg_sprite_value==true:
 				sprites.get_node("Legs").animation="WalkLegs"
 				sprites.get_node("Body").visible=true
@@ -182,7 +182,7 @@ func get_class():
 #debug weapon spawner for the lolz
 func debug_rand_weapon():
 		if Input.is_action_just_pressed("DEBUG_SPAWN_GUN"):
-			var random_weapon=int(round(rand_range(0,5)))
+			var random_weapon=int(round(randf_range(0,5)))
 			drop_weapon()
 			match random_weapon:
 				0:#M(
@@ -196,7 +196,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkM9",
 						"attack_sprite":["AttackM9"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_M9.wav",
 						
@@ -237,7 +237,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkAK",
 						"attack_sprite":["AttackAK"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndAK.wav",
 						
@@ -278,7 +278,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkM16",
 						"attack_sprite":["AttackM16"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndM16.wav",
 						
@@ -319,7 +319,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkShotgun",
 						"attack_sprite":["AttackShotgun"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Shotgun.wav",
 						
@@ -360,7 +360,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkKnife",
 						"attack_sprite":["AttackKnife"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"",
 						
@@ -401,7 +401,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkBat",
 						"attack_sprite":["AttackBat"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"",
 						
@@ -444,9 +444,9 @@ func debug_rand_weapon():
 #						"walk_sprite":"WalkMGL",
 #						"attack_sprite":["AttackMGL"],
 #						"attack_index":0,
-#						#random on attack
+#						#random checked attack
 #						"random_sprite":false,
-#						#flip on attack
+#						#flip checked attack
 #						"flip_sprite":false,
 #
 #						"sound_index":0,

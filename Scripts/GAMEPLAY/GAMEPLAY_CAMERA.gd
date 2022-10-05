@@ -17,7 +17,7 @@ func _process(delta):
 	shake-=delta*120
 	shake=clamp(shake,0,1000)
 	var ranged=shake*(delta*(Engine.get_frames_per_second()/30))
-	offset=Vector2(rand_range(-ranged,ranged),rand_range(-ranged,ranged))
+	offset=Vector2(randf_range(-ranged,ranged),randf_range(-ranged,ranged))
 	smoothing_speed=6/Engine.time_scale
 #	var position_pixel_locked=Vector2(round(global_position.x/2),round(global_position.y/2))
 #	global_position=position_pixel_locked*2

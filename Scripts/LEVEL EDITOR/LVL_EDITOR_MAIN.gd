@@ -4,12 +4,12 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-onready var level=get_node("level")
+@onready var level=get_node("level")
 #well self explanatory
-export (NodePath) var current_floor
-export var level_name="TEST LEVEL"
+@export (NodePath) var current_floor
+@export var level_name="TEST LEVEL"
 #idk where I'm going with this
-export var fart_check=true
+@export var fart_check=true
 var floors=[]
 
 var ent_spawn_list=[
@@ -17,7 +17,7 @@ var ent_spawn_list=[
 	"res://Data/DEFAULT/ENTS/ENT_GENERIC_WEAPON.tscn",
 	"Weapon"
 ]
-export var weapon_ent_list=[
+@export var weapon_ent_list=[
 	#M16
 	{
 		#id for hud
@@ -27,9 +27,9 @@ export var weapon_ent_list=[
 		"walk_sprite":"WalkM16",
 		"attack_sprite":["AttackM16"],
 		"attack_index":0,
-		#random on attack
+		#random checked attack
 		"random_sprite":false,
-		#flip on attack
+		#flip checked attack
 		"flip_sprite":false,
 		
 		#types:melee,semi,burst
@@ -98,10 +98,10 @@ func play_level():
 
 
 func add_new_ent(ent_id):
-	var new_ent=load(ent_id).instance()
+	var new_ent=load(ent_id).instantiate()
 	new_ent.global_position=get_viewport().get_mouse_position()
 	current_floor.add_child(new_ent)
-	yield(get_tree().create_timer(0.01),"timeout")
+	await get_tree().create_timer(0.01).timeout
 	for child in new_ent.get_children():
 		child.set_process(false)
 		child.set_physics_process(false)

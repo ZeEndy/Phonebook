@@ -18,7 +18,7 @@ collision_mask = 16
 [node name="Polygon2D" type="Polygon2D" parent="."]
 material = SubResource( 322 )
 color = Color( 1, 0, 0, 1 )
-polygon = PoolVector2Array( 3.8147e-06, 1, -1.90735e-06, 0, 1400, -1, 1400, 1 )
+polygon = PackedVector2Array( 3.8147e-06, 1, -1.90735e-06, 0, 1400, -1, 1400, 1 )
 
 [node name="bottom" type="RayCast2D" parent="."]
 position = Vector2( 5.72205e-06, 1 )

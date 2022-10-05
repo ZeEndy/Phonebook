@@ -1,11 +1,11 @@
 extends Node2D
 
-export var point=0
-export var point_stuff=[]
-export var saved=false
-export var level_complete=false
+@export var point=0
+@export var point_stuff=[]
+@export var saved=false
+@export var level_complete=false
 
-export(String) var song
+@export var song: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

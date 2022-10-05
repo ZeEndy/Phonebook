@@ -13,13 +13,13 @@ var target_volume=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	yield(VisualServer,"frame_post_draw")
+	await RenderingServer.frame_post_draw
 	game_is_active=true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("CanvasLayer/Noise").material.set_shader_param("giv_time",delta*rand_range(0.767845,1.697665))
+	get_node("CanvasLayer/Noise").material.set_shader_parameter("giv_time",delta*randf_range(0.767845,1.697665))
 	#fade
 	get_node("CanvasLayer/Fade").scale=Vector2(get_viewport().size.y*2,get_viewport().size.x*2)
 	get_node("CanvasLayer/Noise").scale=Vector2(get_viewport().size.y*2,get_viewport().size.x*2)
@@ -36,9 +36,9 @@ func _process(delta):
 				fade_color=1
 	get_node("CanvasLayer/Fade").modulate.a=fade_color
 	
-	get_node(
-		"CanvasLayer2/DEBUG_TEXT"
-		).text="Build version :"+str(ProjectSettings.get("global/game_version"))+"\n"+"FPS:"+String(Performance.get_monitor(0))+"\n"+"Texture Memory used:"+String(Performance.get_monitor(21)/10000000)+"\n"+"Process time:"+String(Performance.get_monitor(1))+"\n"+"Physics process time:"+String(Performance.get_monitor(2))+"\n"+"Draw calls:"+String(Performance.get_monitor(19))+"\n"+"Objects in game"+String(Performance.get_monitor(8))
+#	get_node(
+#		"CanvasLayer2/DEBUG_TEXT"
+#		).text="Build version :"+str(ProjectSettings.get("global/game_version"))+"\n"+"FPS:"+String(Performance.get_monitor(0))+"\n"+"Texture2D Memory used:"+String(Performance.get_monitor(21)/10000000)+"\n"+"Process time:"+String(Performance.get_monitor(1))+"\n"+"Physics process time:"+String(Performance.get_monitor(2))+"\n"+"Draw calls:"+String(Performance.get_monitor(19))+"\n"+"Objects in game"+String(Performance.get_monitor(8))
 	
 	
 	#music

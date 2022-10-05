@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/HUD/HUD_Cursor.gd" type="Script" id=1]
-[ext_resource path="res://Data/DEFAULT/SPRITES/sprCursor_strip13.png" type="Texture" id=2]
+[ext_resource path="res://Data/DEFAULT/SPRITES/sprCursor_strip13.png" type="Texture2D" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -63,7 +63,7 @@ animations = [ {
 "speed": 13.0
 } ]
 
-[node name="Cursor" type="AnimatedSprite" groups=["Cursor"]]
+[node name="Cursor" type="AnimatedSprite2D" groups=["Cursor"]]
 z_index = 2
 frames = SubResource( 14 )
 frame = 5

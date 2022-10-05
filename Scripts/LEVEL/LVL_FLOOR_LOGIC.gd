@@ -1,15 +1,15 @@
 extends Node2D
 
 
-export var floor_clear=false
-export var solid_collisions_list=[]
-export(NodePath) var my_surface
+@export var floor_clear=false
+@export var solid_collisions_list=[]
+@export var my_surface: NodePath
 
 var time_to_reset_navmap=0.1
 var reset_navmap=true
 
 func _ready():
-	yield(get_tree().create_timer(0.01),"timeout")
+	await get_tree().create_timer(0.01).timeout
 	if visible==false:
 		freeze_scene(self, true)
 

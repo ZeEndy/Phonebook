@@ -18,7 +18,7 @@ func _ready():
 	var find_the_fucking_exe=Directory.new()
 	print(ProjectSettings.globalize_path("res://"))
 	if dirs.open(ProjectSettings.globalize_path("res://")+"GAMES") == OK:
-		dirs.list_dir_begin()
+		dirs.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		while true:
 			var file = dirs.get_next()
 			print(file)
@@ -26,7 +26,7 @@ func _ready():
 				break
 			elif not file.begins_with("."):
 				if dirs.file_exists(file+"/MAIN.tscn"):
-					var my_array=["","",null,false,false,null]#name,main scene,logo,hlm2 base wad,hlm2 music wad,video bg
+					var my_array=["","",null,false,false,null]#name,main scene,logo,hlm2 base wad,hlm2 music wad,video panel
 					my_array[0]=file
 					my_array[1]=file+"/MAIN.tscn"
 					
@@ -45,7 +45,7 @@ func _ready():
 					var my_array = ["","",null]
 					my_array[0]=file
 					find_the_fucking_exe.open(ProjectSettings.globalize_path("res://")+"GAMES/"+file)
-					find_the_fucking_exe.list_dir_begin()
+					find_the_fucking_exe.list_dir_begin() # TODOGODOT4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 					while true:
 						var file2=find_the_fucking_exe.get_next()
 						if file2 == "":
@@ -64,24 +64,24 @@ func _ready():
 	for i in avalible_games.size():
 		print(i)
 		if avalible_games[i][5] != null:
-			var new_video = VideoPlayer.new()
+			var new_video = VideoStreamPlayer.new()
 			get_node("videos").add_child(new_video)
 			new_video.stream = avalible_games[i][5]
 			new_video.volume = 0
 			new_video.play()
 		if avalible_games[i][2] != null:
-			var new_sprite=Sprite.new()
+			var new_sprite=Sprite2D.new()
 			get_node("logos").add_child(new_sprite)
 			new_sprite.global_position = Vector2(125,125+450)
 			new_sprite.global_position.x += 600*i
 			new_sprite.texture = avalible_games[i][2]
 			new_sprite.centered = true
-#	get_tree().change_scene("res://GAMES/HLM2/MAIN.tscn")
+#	get_tree().change_scene_to_file("res://GAMES/HLM2/MAIN.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("ColorRect").rect_size=get_viewport().size
+	get_node("ColorRect").size=get_viewport().size
 	select_tween = lerp(select_tween,selected,25*delta)
 	selected=clamp_loop(selected+(int(Input.is_action_just_pressed("right"))-int(Input.is_action_just_pressed("left"))),0,get_node("logos").get_child_count()-1)
 	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("left"):
@@ -90,7 +90,7 @@ func _process(delta):
 	var print_arr=[]
 	#do the logo positions and sizing
 	for i in range(0,get_node("logos").get_child_count()):
-		if get_node("logos").get_child(i) is Sprite:
+		if get_node("logos").get_child(i) is Sprite2D:
 			var dist_to_var=get_node("logos").get_child_count()-((Vector2(selected,0).distance_to(Vector2(i,0))))
 			dist_to_var=clamp(dist_to_var,0,get_node("logos").get_child_count())/get_node("logos").get_child_count()
 			get_node("logos").get_child(i).global_position=Vector2(get_viewport().size.x/2+(
@@ -120,9 +120,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		print("res://GAMES/"+avalible_games[selected][0])
 		if avalible_games[selected][1].ends_with("tscn"):
-			get_tree().change_scene("res://GAMES/"+avalible_games[selected][1])
+			get_tree().change_scene_to_file("res://GAMES/"+avalible_games[selected][1])
 		else:
-			var args=PoolStringArray([""])
+			var args=PackedStringArray([""])
 			var exe_pos=ProjectSettings.globalize_path("res://").replace("/","\\")+"GAMES\\"+avalible_games[selected][0]+"\\"+avalible_games[selected][1]
 			var _piss=OS.execute(exe_pos,args,false,exe_output)
 	
@@ -139,24 +139,24 @@ func clamp_loop(value=0,zero=0,one=0):
 
 func video_bg_center():
 	for i in range(0,get_node("videos").get_child_count()):
-		if get_node("videos").get_child(i) is VideoPlayer:
-#			if get_node("videos").get_child(i).stream_position==get_node("VideoPlayer").:
+		if get_node("videos").get_child(i) is VideoStreamPlayer:
+#			if get_node("videos").get_child(i).stream_position==get_node("VideoStreamPlayer").:
 #				get_node("videos").get_child(i).play()
-			get_node("videos").get_child(i).rect_position=(get_viewport().size*0.5)-(get_node("videos").get_child(i).rect_size/2)
-			get_node("videos").get_child(i).rect_size=Vector2(get_viewport().size.x,get_viewport().size.x)
+			get_node("videos").get_child(i).position=(get_viewport().size*0.5)-(get_node("videos").get_child(i).size/2)
+			get_node("videos").get_child(i).size=Vector2(get_viewport().size.x,get_viewport().size.x)
 
 #func switch_video_bg(video=null,delta=1):
 #	if video!=null:
-#		if get_node("VideoPlayer").stream!=video:
-#			get_node("VideoPlayer").modulate.a=lerp(get_node("VideoPlayer").modulate.a,0,0.25*delta)
-#			if get_node("VideoPlayer").modulate.a>=0.1:
-#				get_node("VideoPlayer").stream=video
-#				get_node("VideoPlayer").play()
+#		if get_node("VideoStreamPlayer").stream!=video:
+#			get_node("VideoStreamPlayer").modulate.a=lerp(get_node("VideoStreamPlayer").modulate.a,0,0.25*delta)
+#			if get_node("VideoStreamPlayer").modulate.a>=0.1:
+#				get_node("VideoStreamPlayer").stream=video
+#				get_node("VideoStreamPlayer").play()
 #		else:
-#			get_node("VideoPlayer").modulate.a=lerp(get_node("VideoPlayer").modulate.a,1,0.25*delta)
+#			get_node("VideoStreamPlayer").modulate.a=lerp(get_node("VideoStreamPlayer").modulate.a,1,0.25*delta)
 #	else:
-#		get_node("VideoPlayer").modulate.a=lerp(get_node("VideoPlayer").modulate.a,0,0.25*delta)
-#		if get_node("VideoPlayer").modulate.a==0:
-#			get_node("VideoPlayer").stream=null
+#		get_node("VideoStreamPlayer").modulate.a=lerp(get_node("VideoStreamPlayer").modulate.a,0,0.25*delta)
+#		if get_node("VideoStreamPlayer").modulate.a==0:
+#			get_node("VideoStreamPlayer").stream=null
 
 

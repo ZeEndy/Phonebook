@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sndAK.wav-bee5608d495c60700282ca9a9896870f.sample"
+type="AudioStreamWAV"
+uid="uid://dw0fwbjdqi8rd"
+path="res://.godot/imported/sndAK.wav-bee5608d495c60700282ca9a9896870f.sample"
 
 [deps]
 
 source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndAK.wav"
-dest_files=[ "res://.import/sndAK.wav-bee5608d495c60700282ca9a9896870f.sample" ]
+dest_files=["res://.godot/imported/sndAK.wav-bee5608d495c60700282ca9a9896870f.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

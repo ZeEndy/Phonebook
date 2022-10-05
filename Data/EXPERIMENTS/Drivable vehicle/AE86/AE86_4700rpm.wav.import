@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/AE86_4700rpm.wav-482ea3f2ff83edec863f8b7d5621e1b9.sample"
+type="AudioStreamWAV"
+uid="uid://b11wq3yx8uu3y"
+path="res://.godot/imported/AE86_4700rpm.wav-482ea3f2ff83edec863f8b7d5621e1b9.sample"
 
 [deps]
 
 source_file="res://Data/EXPERIMENTS/Drivable vehicle/AE86/AE86_4700rpm.wav"
-dest_files=[ "res://.import/AE86_4700rpm.wav-482ea3f2ff83edec863f8b7d5621e1b9.sample" ]
+dest_files=["res://.godot/imported/AE86_4700rpm.wav-482ea3f2ff83edec863f8b7d5621e1b9.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

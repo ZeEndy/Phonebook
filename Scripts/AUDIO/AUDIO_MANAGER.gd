@@ -35,13 +35,13 @@ func play_audio(given_sample,pos_in_2d=null ,affected_time=true,true_pitch=1,ran
 			audio_player.global_position=pos_in_2d
 		audio_player.stream = get_audio_stream(given_sample)
 		audio_player.affected_time=affected_time
-		audio_player.current_pitch=true_pitch+rand_range(-random_pitch,random_pitch)
+		audio_player.current_pitch=true_pitch+randf_range(-random_pitch,random_pitch)
 		audio_player.play()
 		audio_player.set_bus(bus) 
 		add_child(audio_player)
 	elif given_sample is Array:
 		if (typeof(given_sample[0])==1 && given_sample[0]==false):
-			play_audio(given_sample[rand_range(1,given_sample.size()-1)],pos_in_2d,affected_time,true_pitch,random_pitch,bus)
+			play_audio(given_sample[randf_range(1,given_sample.size()-1)],pos_in_2d,affected_time,true_pitch,random_pitch,bus)
 		else:
 			for i in given_sample:
 				play_audio(i,pos_in_2d,affected_time,true_pitch,random_pitch,bus)

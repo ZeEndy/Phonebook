@@ -15,7 +15,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	speed_scale=1
-	modulate = Color.orangered.linear_interpolate(Color.yellow, randf())
+	modulate = Color.ORANGE_RED.lerp(Color.YELLOW, randf())
 	z_index=1
 	if start==true:
 		self_modulate.a+=(60*delta)
@@ -25,10 +25,10 @@ func _process(delta):
 	else:
 		self_modulate.a-=(10*delta)
 		self_modulate.a=clamp(self_modulate.a,0,1)
-#	modulate= modulate.linear_interpolate(Color.gray,speed/30)
+#	modulate= modulate.lerp(Color.GRAY,speed/30)
 	
 #	material.set("blend_mode",BLEND_MODE_ADD)
-	global_rotation= direction-deg2rad(180)
+	global_rotation= direction-deg_to_rad(180)
 	global_position+=Vector2(speed*60,0).rotated(direction)*delta
 	speed-=friction*60*delta
 	speed=clamp(speed,0,10)

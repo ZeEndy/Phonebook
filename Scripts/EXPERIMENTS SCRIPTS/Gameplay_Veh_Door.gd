@@ -1,8 +1,8 @@
 extends Node2D
 
 
-export(NodePath) var path_to_col 
-export(bool) var locked
+@export var path_to_col: NodePath 
+@export var locked: bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

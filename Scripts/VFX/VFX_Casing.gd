@@ -20,9 +20,9 @@ func _physics_process(delta):
 	else:
 		ready=true
 		z_index=-2
-	#transfer sprite on surface when low enough speed
+	#transfer sprite checked surface when low enough speed
 	if linear_velocity.length()<0.001 && ready==true:
-		var sprite = get_node("Sprite")
+		var sprite = get_node("Sprite2D")
 		get_parent().get_node(get_parent().my_surface).add_to_surface(sprite,global_position,global_rotation)
-		if get_node_or_null("Sprite")==null:
+		if get_node_or_null("Sprite2D")==null:
 			queue_free()

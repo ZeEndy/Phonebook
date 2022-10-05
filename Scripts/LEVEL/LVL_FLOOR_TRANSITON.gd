@@ -1,21 +1,21 @@
 extends Area2D
 
-export(NodePath) var targetPath
-export(NodePath) var next_transiton
+@export var targetPath: NodePath
+@export var next_transiton: NodePath
 var x_pos = 0
-export var let_trough=false
-export var pull_out=false
+@export var let_trough=false
+@export var pull_out=false
 
 #func _process(delta):
 #	if let_trough==true:
-#		$RayCast2D/AnimatedSprite.visible=true
+#		$RayCast2D/AnimatedSprite2D.visible=true
 #		x_pos+=0.75*delta
-#		$RayCast2D/AnimatedSprite.playing=true
-#		$RayCast2D/AnimatedSprite.position.x=-20-(abs((Vector2(5,0).rotated((deg2rad(-abs(x_pos))* 1.34 + deg2rad(90))*500)).x))
+#		$RayCast2D/AnimatedSprite2D.playing=true
+#		$RayCast2D/AnimatedSprite2D.position.x=-20-(abs((Vector2(5,0).rotated((deg_to_rad(-abs(x_pos))* 1.34 + deg_to_rad(90))*500)).x))
 #	else:
 #		x_pos=0
-#		$RayCast2D/AnimatedSprite.visible=false
-#		$RayCast2D/AnimatedSprite.playing=false
+#		$RayCast2D/AnimatedSprite2D.visible=false
+#		$RayCast2D/AnimatedSprite2D.playing=false
 
 
 func _physics_process(_delta):
@@ -44,7 +44,7 @@ func _physics_process(_delta):
 							let_trough=true
 							get_node(targetPath).freeze_scene(get_node(targetPath), false)
 							get_node(next_transiton).pull_out=true
-							yield(get_tree().create_timer(0.02),"timeout")
+							await get_tree().create_timer(0.02).timeout
 							get_tree().get_nodes_in_group("NavMap")[0].nav_map_up_to_date=false
 				else:
 					b.get_parent().movement((Vector2(-160,0)).rotated(global_rotation),_delta)

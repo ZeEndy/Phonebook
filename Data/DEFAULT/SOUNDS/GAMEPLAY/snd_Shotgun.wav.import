@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/snd_Shotgun.wav-87a09d369f0affe81261193f11e9a3e8.sample"
+type="AudioStreamWAV"
+uid="uid://dviny46kgnd72"
+path="res://.godot/imported/snd_Shotgun.wav-87a09d369f0affe81261193f11e9a3e8.sample"
 
 [deps]
 
 source_file="res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Shotgun.wav"
-dest_files=[ "res://.import/snd_Shotgun.wav-87a09d369f0affe81261193f11e9a3e8.sample" ]
+dest_files=["res://.godot/imported/snd_Shotgun.wav-87a09d369f0affe81261193f11e9a3e8.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

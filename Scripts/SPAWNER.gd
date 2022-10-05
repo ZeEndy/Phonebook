@@ -4,7 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var random_timer=rand_range(0,1)
+var random_timer=randf_range(0,1)
 
 
 
@@ -19,17 +19,17 @@ var random_timer=rand_range(0,1)
 
 
 func spawn_eneny():
-	var eneny=load("res://Data/DEFAULT/ENTS/PED_ENEMY.tscn").instance()
+	var eneny=load("res://Data/DEFAULT/ENTS/PED_ENEMY.tscn").instantiate()
 	get_parent().add_child(eneny)
 	eneny.global_position=global_position
 	eneny.get_node('PED_SPRITES').teleport()
 	var gun=debug_rand_weapon()
 	eneny.gun=gun
 	eneny.sprite_index=gun.walk_sprite
-	random_timer=rand_range(10,15)
+	random_timer=randf_range(10,15)
 
 func debug_rand_weapon():
-			var random_weapon=int(round(rand_range(0,3)))
+			var random_weapon=int(round(randf_range(0,3)))
 			var gun
 			match random_weapon:
 				0:#M16
@@ -43,7 +43,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkM9",
 						"attack_sprite":["AttackM9"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_M9.wav",
 						
@@ -84,7 +84,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkAK",
 						"attack_sprite":["AttackAK"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndAK.wav",
 						
@@ -125,7 +125,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkM16",
 						"attack_sprite":["AttackM16"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/sndM16.wav",
 						
@@ -166,7 +166,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkShotgun",
 						"attack_sprite":["AttackShotgun"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Shotgun.wav",
 						
@@ -207,7 +207,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkKnife",
 						"attack_sprite":["AttackKnife"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"",
 						
@@ -248,7 +248,7 @@ func debug_rand_weapon():
 						"walk_sprite":"WalkBat",
 						"attack_sprite":["AttackBat"],
 						"attack_index":0,
-						#random on attack
+						#random checked attack
 						"random_sprite":false,
 						"attack_sound":"",
 						

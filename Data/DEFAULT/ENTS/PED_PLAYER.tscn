@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/PEDS/PED_Player.gd" type="Script" id=1]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Legs.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/smoothing/smoothing_2d.gd" type="Script" id=3]
-[ext_resource path="res://Data/DEFAULT/SPRITES/player.png" type="Texture" id=4]
+[ext_resource path="res://Data/DEFAULT/SPRITES/player.png" type="Texture2D" id=4]
 [ext_resource path="res://Data/DEFAULT/SPRITES/Char/anims_Char_Body.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -14,7 +14,7 @@ z_index = 1
 script = ExtResource( 1 )
 execute_click = true
 
-[node name="PED_COL" type="KinematicBody2D" parent="." groups=["PED", "Player"]]
+[node name="PED_COL" type="CharacterBody2D" parent="." groups=["PED", "Player"]]
 collision_layer = 4
 collision_mask = 32
 
@@ -30,10 +30,10 @@ target = NodePath("../PED_COL")
 flags = 51
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PED_SPRITES"]
-margin_left = -102.0
-margin_top = 17.0
-margin_right = -1.0
-margin_bottom = 57.0
+offset_left = -102.0
+offset_top = 17.0
+offset_right = -1.0
+offset_bottom = 57.0
 text = "6"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,6 +44,6 @@ __meta__ = {
 [node name="Body" parent="PED_SPRITES" instance=ExtResource( 6 )]
 spawn_pos_on_tree = NodePath("../..")
 
-[node name="TEMPSPRITE" type="Sprite" parent="."]
+[node name="TEMPSPRITE" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource( 4 )

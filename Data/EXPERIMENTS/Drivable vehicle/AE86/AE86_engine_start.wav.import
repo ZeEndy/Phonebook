@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/AE86_engine_start.wav-0d854a975786152a3618b2f9d9cac470.sample"
+type="AudioStreamWAV"
+uid="uid://0rbaqqwy70jw"
+path="res://.godot/imported/AE86_engine_start.wav-0d854a975786152a3618b2f9d9cac470.sample"
 
 [deps]
 
 source_file="res://Data/EXPERIMENTS/Drivable vehicle/AE86/AE86_engine_start.wav"
-dest_files=[ "res://.import/AE86_engine_start.wav-0d854a975786152a3618b2f9d9cac470.sample" ]
+dest_files=["res://.godot/imported/AE86_engine_start.wav-0d854a975786152a3618b2f9d9cac470.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

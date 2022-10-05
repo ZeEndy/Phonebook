@@ -1,15 +1,15 @@
 extends Node2D
 class_name PED
 #preloads
-onready var def_bullet_ent=preload("res://Data/DEFAULT/ENTS/ENT_BULLET.tscn")
-onready var def_grenade_ent=preload("res://Data/DEFAULT/ENTS/ENT_GRENADE.tscn")
+@onready var def_bullet_ent=preload("res://Data/DEFAULT/ENTS/ENT_BULLET.tscn")
+@onready var def_grenade_ent=preload("res://Data/DEFAULT/ENTS/ENT_GRENADE.tscn")
 
 
 #reference variables
-onready var sprites = get_node("PED_SPRITES")
-onready var sprite_body = get_node("PED_SPRITES/Body")
-onready var sprite_legs = get_node("PED_SPRITES/Legs")
-onready var collision_body = get_node("PED_COL")
+@onready var sprites = get_node("PED_SPRITES")
+@onready var sprite_body = get_node("PED_SPRITES/Body")
+@onready var sprite_legs = get_node("PED_SPRITES/Legs")
+@onready var collision_body = get_node("PED_COL")
 
 
 #variables are oragnized by specification aka what state they are used the most in
@@ -25,12 +25,12 @@ var state = ped_states.alive
 
 #ALIVE STATE VARIABLES
 var health=1
-export var start_with_gun=false
+@export var start_with_gun=false
 # Movement variables
 const MAX_SPEED = 225
 const ACCELERATION = 0.20
 const DECEL_MULTIP = 0.75
-export var my_velocity=Vector2()
+@export var my_velocity=Vector2()
 var friction_multip = 1
 var axis = Vector2()
 var motion_multiplier=1
@@ -38,7 +38,7 @@ var path=[]
 
 
 #WEAPON VARIABLES
-export var delay=0
+@export var delay=0
 var default_gun={
 	#id for hud
 	"id":"Unarmed",
@@ -49,7 +49,7 @@ var default_gun={
 	"walk_sprite":"WalkUnarmed",
 	"attack_sprite":["AttackUnarmed"],
 	"attack_index":0,
-	#random on attack
+	#random checked attack
 	"random_sprite":false,
 	"attack_sound":null,
 	
@@ -76,7 +76,7 @@ var default_gun={
 	"trigger_reset":0.1,
 	"trigger_shot":0,
 	"shoot_bullets":0}
-export var gun ={
+@export var gun ={
 	#id for hud
 	"id":"Unarmed",
 	#ammo of the gun
@@ -86,7 +86,7 @@ export var gun ={
 	"walk_sprite":"WalkUnarmed",
 	"attack_sprite":["AttackUnarmed"],
 	"attack_index":0,
-	#random on attack
+	#random checked attack
 	"random_sprite":false,
 	
 	"attack_sound":null,
@@ -120,21 +120,21 @@ var closest_gun = null
 
 
 #DOWNED STATE/EXECUTION STATE
-export var MAX_GET_UP_TIME=8
-export var down_timer=8
+@export var MAX_GET_UP_TIME=8
+@export var down_timer=8
 var in_distance_to_execute=false
 var execute_target=null
-export var execute_click=false
+@export var execute_click=false
 var can_get_up=true
 
 
 #VISUALS AND MISC
-export var shake_screen=false
+@export var shake_screen=false
 var change_sprite_value=false
 var change_leg_sprite_value=false
-# Sprite variables
-export var sprite_index = "WalkUnarmed"
-export var leg_index = "WalkLegs"
+# Sprite2D variables
+@export var sprite_index = "WalkUnarmed"
+@export var leg_index = "WalkLegs"
 var body_direction = 0
 
 signal die
@@ -208,14 +208,16 @@ func movement(new_motion=null,_delta=null):
 	if new_motion==null:
 		#normal movement code
 		if axis.length() > 0:
-			my_velocity=my_velocity.linear_interpolate(axis*MAX_SPEED,ACCELERATION)
-			my_velocity= my_velocity.clamped(MAX_SPEED)
+			my_velocity=my_velocity.lerp(axis*MAX_SPEED,ACCELERATION)
+			my_velocity= my_velocity.clamp(MAX_SPEED)
 		else:
 			pass
 			my_velocity=lerp(my_velocity,Vector2(0,0),DECEL_MULTIP)
 	else:
 		my_velocity=new_motion
-	my_velocity=collision_body.move_and_slide(my_velocity)
+	collision_body.set_velocity(my_velocity)
+	collision_body.move_and_slide()
+	my_velocity=collision_body.velocity
 
 func general_process(delta):
 	if state==ped_states.alive:
@@ -258,7 +260,7 @@ func leg_sprites(delta):
 
 
 #This script functions by reading through the poperty list of the gun variable and spawning
-#a bullet depending on what the parameters are
+#a bullet depending checked what the parameters are
 #as well as doing melee initalization
 func attack():
 	# wad(NOT) integration
@@ -270,7 +272,7 @@ func attack():
 			if gun.random_sprite == false:
 				gun.attack_index = (gun.attack_index + 1) % gun[attack_sprite].size()
 			else:
-				gun.attack_index=rand_range(0,gun[attack_sprite].size()-1)
+				gun.attack_index=randf_range(0,gun[attack_sprite].size()-1)
 			delay=gun.trigger_reset
 			sprite_index=chosen_attack_sprite
 	elif gun.type=="semi" && delay==0 && gun.ammo>0:
@@ -289,7 +291,7 @@ func attack():
 		if gun.random_sprite == false:
 			gun.attack_index = (gun.attack_index + 1) % gun[attack_sprite].size()
 		else:
-			gun.attack_index=rand_range(0,gun[attack_sprite].size()-1)
+			gun.attack_index=randf_range(0,gun[attack_sprite].size()-1)
 		delay=gun.trigger_reset
 	elif gun.type=="burst" && gun.ammo>0:
 		if gun.trigger_shot==0:
@@ -304,7 +306,7 @@ func attack():
 				if gun.random_sprite == false:
 					gun.attack_index = (gun.attack_index + 1) % gun[attack_sprite].size()
 				else:
-					gun.attack_index=rand_range(0,gun[attack_sprite].size()-1)
+					gun.attack_index=randf_range(0,gun[attack_sprite].size()-1)
 				gun.trigger_shot-=1
 				delay=gun.trigger_reset
 				if gun.trigger_shot==0:
@@ -334,14 +336,11 @@ func dupe_dict(fromdict):
 	return todict
 
 
-func drop_weapon(throw_speed=1,dir=null):
+func drop_weapon(throw_speed=1,dir=body_direction):
 	if gun.droppable==true:
 		var load_weapon=load("res://Data/DEFAULT/ENTS/ENT_GENERIC_WEAPON.tscn")
-		var inst_weapon=load_weapon.instance()
-		if dir==null:
-			inst_weapon.linear_velocity=(Vector2(1200,0).rotated(body_direction))*throw_speed
-		else:
-			inst_weapon.linear_velocity=(Vector2(1200,0).rotated(dir))*throw_speed
+		var inst_weapon=load_weapon.instantiate()
+		inst_weapon.linear_velocity=(Vector2(1200,0).rotated(dir))*throw_speed
 		inst_weapon.global_position=collision_body.global_position+Vector2(15,0).rotated(body_direction)
 		inst_weapon.gun=dupe_dict(gun)
 		get_parent().call_deferred("add_child",inst_weapon)
@@ -360,19 +359,19 @@ func spawn_bullet(amoumt:int):
 	if gun.attack_sound!=null:
 		AudioManager.play_audio(gun.attack_sound)
 	if shake_screen==true:
-		get_tree().get_nodes_in_group("Camera")[0].shake=gun.screen_shake
+		get_tree().get_nodes_in_group("Camera3D")[0].shake=gun.screen_shake
 		#this doesn't work idk
 #		Input.start_joy_vibration(0,1,1,1)
 	gun.ammo-=1
 	#for I is so that you can spawn multiple bullets at the same time
 	for i in amoumt:
 		if gun.attack_type!="grenade":
-			var sus_bullet=def_bullet_ent.instance()
+			var sus_bullet=def_bullet_ent.instantiate()
 			#add da weapon spawn bullet
 			sus_bullet.global_position=sprite_body.get_node("Bullet_Spawn").global_position
 			var recoil_add=sprite_body.get_node("Bullet_Spawn").global_rotation
 			if gun.has("recoil"):
-				recoil_add+=deg2rad(rand_range(-gun.recoil,gun.recoil))
+				recoil_add+=deg_to_rad(randf_range(-gun.recoil,gun.recoil))
 			sus_bullet.global_rotation=recoil_add
 			if gun.attack_type=="normal":
 				sus_bullet.penetrate=false
@@ -381,12 +380,12 @@ func spawn_bullet(amoumt:int):
 				sus_bullet.death_sprite=gun.kill_sprite
 				sus_bullet.death_lean_sprite=gun.kill_lean_sprite
 		else:
-			var sus_bullet=def_grenade_ent.instance()
+			var sus_bullet=def_grenade_ent.instantiate()
 			#add da weapon spawn bullet
 			sus_bullet.global_position=sprite_body.get_node("Bullet_Spawn").global_position
 			var recoil_add=sprite_body.get_node("Bullet_Spawn").global_rotation
 			if gun.has("recoil"):
-				recoil_add+=deg2rad(rand_range(-gun.recoil,gun.recoil))
+				recoil_add+=deg_to_rad(randf_range(-gun.recoil,gun.recoil))
 			sus_bullet.global_rotation=recoil_add
 			sus_bullet.height=clamp(given_height,1,1000)
 			get_parent().add_child(sus_bullet)
@@ -403,7 +402,7 @@ func move_to_point(delta,point:Vector2,speed=0.7):
 		var temp_dir=Vector2(0,0)
 		if path.size()>1:
 			if collision_body.global_position.distance_to(path[-1])<5:
-				path.remove(path.size()-1)
+				path.remove_at(path.size()-1)
 			temp_dir=collision_body.global_position.direction_to(path[-1])
 		axis=temp_dir*speed
 	movement()
@@ -419,10 +418,10 @@ func _play_animation(animation:String,frame=0):
 	sprite_body.seek(frame,true)
 	sprite_index = animation
 
-func do_remove_health(damage=1,killsprite:String="DeadBlunt",rot:float=randi(),frame="rand",body_speed=2,_bleed=false):
+func do_remove_health(damage,killsprite:String="DeadBlunt",rot:float=randf()*PI*2,frame="rand",body_speed=2,_bleed=false):
 	var damage_output
 	if damage is Array:
-		damage_output=rand_range(damage[0],damage[1])
+		damage_output=randf_range(damage[0],damage[1])
 	else:
 		damage_output=damage
 	health-=damage_output
@@ -431,7 +430,7 @@ func do_remove_health(damage=1,killsprite:String="DeadBlunt",rot:float=randi(),f
 			drop_weapon(randf()*0.3,randi())
 			sprite_legs.play(killsprite)
 			if frame=="rand":
-				sprite_legs.seek(rand_range(0,sprite_legs.get_node("AnimationPlayer").current_animation_length))
+				sprite_legs.seek(randf_range(0,sprite_legs.get_node("AnimationPlayer").current_animation_length))
 			else:
 				sprite_legs.seek(frame)
 			sprite_legs.global_rotation=rot
@@ -446,10 +445,10 @@ func go_down(direction=randi()):
 			state = ped_states.down
 			sprite_legs.play("GetUp",0,false,0)
 			sprite_legs.speed_scale=0
-			sprite_legs.global_rotation_degrees=rad2deg(direction)+180
+			sprite_legs.global_rotation_degrees=rad_to_deg(direction)+180
 			sprite_body.visible=false
 			down_timer=8
-			collision_body.set_collision_layer_bit(6,false)
+			collision_body.set_collision_layer_value(6,false)
 			axis=Vector2(0.8,0).rotated(direction)
 #		collision_body.linear_damp=6
 
@@ -470,14 +469,14 @@ func do_execution():
 		execute_target.get_parent().my_velocity=Vector2(0,0)
 		execute_target.get_parent().axis=Vector2(0,0)
 		collision_body.global_position=execute_target.global_position
-		sprite_body.global_rotation=execute_target.get_parent().sprite_legs.global_rotation-deg2rad(180)
+		sprite_body.global_rotation=execute_target.get_parent().sprite_legs.global_rotation-deg_to_rad(180)
 		
 		if execute_target.get_parent().sprite_legs.animation!="GetUpLean":
 			if gun.execution_sprite!="":
 				sprite_body.play(gun.execution_sprite)
 				execute_target.get_parent().sprite_legs.play(gun.ground_sprite,0,false,0)
 			else:
-				drop_weapon(0.1,deg2rad(rand_range(-180,180)))
+				drop_weapon(0.1,deg_to_rad(randf_range(-180,180)))
 				sprite_body.play(default_gun.execution_sprite)
 				execute_target.get_parent().sprite_legs.play(default_gun.ground_sprite,0,false,0)
 		else:
@@ -513,12 +512,12 @@ func get_downed_enemies():
 
 
 
-func execute_remove_health(damage=1,ammo_use=0,animation="",frame="rand",sound=null,_bleed:bool=false):
+func execute_remove_health(damage,ammo_use=0,animation="",frame="rand",sound=null,_bleed:bool=false):
 	if state==ped_states.execute:
 		var par=execute_target.get_parent()
 		var damage_output
 		if damage is Array:
-			damage_output=rand_range(damage[0],damage[1])
+			damage_output=randf_range(damage[0],damage[1])
 		else:
 			damage_output=damage
 		if ammo_use>0:
@@ -533,7 +532,7 @@ func execute_remove_health(damage=1,ammo_use=0,animation="",frame="rand",sound=n
 			if animation!="":
 				par.sprite_legs.play(animation,0,false,0)
 				if frame=="rand":
-					par.sprite_legs.seek(rand_range(0,sprite_legs.get_node("AnimationPlayer").current_animation_length))
+					par.sprite_legs.seek(randf_range(0,sprite_legs.get_node("AnimationPlayer").current_animation_length))
 				else:
 					par.sprite_legs.seek(frame)
 			state=ped_states.alive

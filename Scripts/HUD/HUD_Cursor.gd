@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends AnimatedSprite2D
 # normal means unarmed
 var cursor_anim="default"
 var mouse = Vector2()
@@ -28,14 +28,14 @@ func _process(_delta):
 #		global_rotation=get_tree().get_nodes_in_group("Player")[0].get_parent().body_direction
 		get_tree().get_nodes_in_group("Player")[0].get_parent().cursor_pos=mouse
 		if Input.is_action_just_pressed("spawn_a10"):
-			var spawn_a10=load("res://Data/EXPERIMENTS/A10/A10.tscn").instance()
+			var spawn_a10=load("res://Data/EXPERIMENTS/A10/A10.tscn").instantiate()
 			spawn_a10.global_position=global_position
 			spawn_a10.global_rotation=get_tree().get_nodes_in_group("Player")[0].get_parent().body_direction
 			get_parent().add_child(spawn_a10)
 	
 	
 	
-#	var camera = get_tree().get_nodes_in_group("Camera")[0]
+#	var camera = get_tree().get_nodes_in_group("Camera3D")[0]
 	
 #	scale.x=(1+camera.shake*2)*cursor_scale
 #	scale.y=(1+camera.shake*2)*cursor_scale
@@ -45,7 +45,7 @@ func _process(_delta):
 	var height=get_viewport_rect().size.y
 	
 	if Input.is_action_just_pressed("DEBUG_SPAWN_ENEMY"):
-		var fart = load("res://Data/DEFAULT/ENTS/PED_ENEMY.tscn").instance()
+		var fart = load("res://Data/DEFAULT/ENTS/PED_ENEMY.tscn").instantiate()
 		get_parent().add_child(fart)
 		fart.global_position=global_position
 		

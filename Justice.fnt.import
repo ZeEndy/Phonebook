@@ -1,0 +1,16 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://cp4tyonlnhvr5"
+path="res://.godot/imported/Justice.fnt-e0388dc0af6435a6b955f9fb91ddb3c4.fontdata"
+
+[deps]
+
+source_file="res://Justice.fnt"
+dest_files=["res://.godot/imported/Justice.fnt-e0388dc0af6435a6b955f9fb91ddb3c4.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,9 +9,9 @@ var friction=0.1
 
 
 #func _ready():
-#	get_node("AnimatedSprite").speed_scale=0
+#	get_node("AnimatedSprite2D").speed_scale=0
 #	if speed==0:
-#		var body=get_node("AnimatedSprite").get_path()
+#		var body=get_node("AnimatedSprite2D").get_path()
 #		get_parent().get_node(get_parent().my_surface).add_to_surface(body,global_position,global_rotation)
 #		queue_free()
 #
@@ -22,7 +22,7 @@ var friction=0.1
 #	speed-=friction*60*delta
 #	speed=clamp(speed,0,10)
 #	if speed==0 or c:
-#		var body=get_node("AnimatedSprite").get_path()
+#		var body=get_node("AnimatedSprite2D").get_path()
 #		if "my_surface" in get_parent():
 #			get_parent().get_node(get_parent().my_surface).add_to_surface(body,global_position,global_rotation)
 #		queue_free()
