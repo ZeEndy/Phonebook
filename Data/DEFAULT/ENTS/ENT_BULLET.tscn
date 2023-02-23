@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://btuy3yrdsrr8a"]
 
-[ext_resource path="res://Scripts/GAMEPLAY/GAMEPLAY_BULLET.gd" type="Script" id=1]
-[ext_resource path="res://Data/DEFAULT/SPRITES/8x8.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://Scripts/GAMEPLAY/GAMEPLAY_BULLET.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://djguu8wleqt8y" path="res://Data/Sprites/VFX/sprBullet.png" id="2"]
+
+[sub_resource type="CanvasItemMaterial" id="1"]
+blend_mode = 1
 
 [node name="BULLET" type="Sprite2D"]
-texture = ExtResource( 2 )
-script = ExtResource( 1 )
+material = SubResource("1")
+texture = ExtResource("2")
+region_enabled = true
+region_rect = Rect2(15, 1, 1, 1)
+script = ExtResource("1")

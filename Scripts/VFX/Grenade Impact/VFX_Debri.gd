@@ -24,5 +24,5 @@ func _process(delta):
 	speed-=friction*60*delta
 	speed=clamp(speed,0,10)
 	if speed==0:
-		if !(get_parent() is SubViewport):
+		if !(get_parent() is Viewport):
 			get_parent().get_node(get_parent().my_surface).add_to_surface(self.get_path(),global_position,global_rotation)

@@ -1,15 +1,74 @@
-[gd_resource type="AudioBusLayout" format=2]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://8voyvgi4u1he"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_o7ysq"]
+resource_name = "Compressor"
+gain = 2.1
+mix = 0.75
+sidechain = &"Music"
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_ul0uo"]
+resource_name = "Distortion"
+pre_gain = -0.7
+drive = 0.13
+post_gain = -0.2
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_fggsc"]
+resource_name = "Limiter"
+ceiling_db = -1.0
+threshold_db = -2.0
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_uk7ra"]
+resource_name = "HighPassFilter"
+cutoff_hz = 800.0
+resonance = 0.1
+
+[sub_resource type="AudioEffectHighShelfFilter" id="AudioEffectHighShelfFilter_mfj7a"]
+resource_name = "HighShelfFilter"
 
 [resource]
-bus/1/name = "Music"
+bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
-bus/1/send = "Master"
-bus/2/name = "SFX"
+bus/1/volume_db = -10.9863
+bus/1/send = &"Master"
+bus/2/name = &"SFX"
 bus/2/solo = false
 bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
-bus/2/send = "Master"
+bus/2/send = &"Master"
+bus/3/name = &"Gunfire"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = SubResource("AudioEffectCompressor_o7ysq")
+bus/3/effect/0/enabled = false
+bus/3/effect/1/effect = SubResource("AudioEffectDistortion_ul0uo")
+bus/3/effect/1/enabled = false
+bus/3/effect/2/effect = SubResource("AudioEffectLimiter_fggsc")
+bus/3/effect/2/enabled = false
+bus/4/name = &"General SFX"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"SFX"
+bus/5/name = &"Tinnitus"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = -80.0
+bus/5/send = &"SFX"
+bus/6/name = &"Radio"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Music"
+bus/6/effect/0/effect = SubResource("AudioEffectHighPassFilter_uk7ra")
+bus/6/effect/0/enabled = true
+bus/6/effect/1/effect = SubResource("AudioEffectHighShelfFilter_mfj7a")
+bus/6/effect/1/enabled = false

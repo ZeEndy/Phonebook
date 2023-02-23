@@ -9,6 +9,8 @@ class_name WEAPON
 var pick_up=false
 var wait_pickup=0.001
 
+@onready var sprite=get_node("SPRITE")
+@onready var col=get_node("CollisionShape2D")
 
 @export var gun={
 	#id for hud
@@ -17,19 +19,16 @@ var wait_pickup=0.001
 	"max_ammo":30,
 	"ammo":25,
 	# wad sprites
-	"walk_sprite":"WalkM16",
-	"attack_sprite":["AttackM16"],
+	"attack_count":1,
 	"attack_index":0,
-	#random checked attack
+	#random on attack
 	"random_sprite":false,
-	#flip checked attack
+	#flip on attack
 	"flip_sprite":false,
 
 	"sound_index":0,
 	"random_attack_sounds":true,
-	"attack_sound":["sndM16"],
 	"random_kill_sounds":true,
-	"kill_sound":[],
 	
 	"kill_sprite":"DeadMachinegun",
 	"kill_lean_sprite":"DeadLeanMachinegun",
@@ -58,30 +57,27 @@ var wait_pickup=0.001
 
 
 func _ready():
-	get_node("SPRITE").global=global_rotation
-#	_create_collision_polygon(get_node("SPRITE").texture,l[2])
-#	print(l[0].get_data())
-#	var dick= AtlasTexture.new()
-
+	sprite.global_rotation=global_rotation
+	sprite.animation=gun["id"]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	get_node("SPRITE").global_position=global_position
-	get_node("SPRITE").global_rotation_degrees+=linear_velocity.length()*5*delta
+	sprite.global_position=global_position
+	sprite.global_rotation+=deg_to_rad(linear_velocity.length()*5*delta)
 	if wait_pickup>0 && pick_up==false:
 		wait_pickup-=delta
 	else:
 		pick_up=true
 	if linear_velocity.length()<50:
-		get_node("CollisionShape2D").disabled=true
+		col.disabled=true
 
 
 func _manual_visiblity(input1=true):
-	get_node("SPRITE").visible=input1
+	sprite.visible=input1
 
 
 func _on_ENT_GENERIC_WEAPON_body_entered(body):
-	if body in get_tree().get_nodes_in_group("Enemy") && get_node("CollisionShape2D").disabled==false:
+	if body in get_tree().get_nodes_in_group("Enemy") && col.disabled==false:
 		body.get_parent().go_down(global_position.direction_to(body.global_position).angle())
 		pass
 

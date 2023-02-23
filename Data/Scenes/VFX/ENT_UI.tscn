@@ -1,0 +1,203 @@
+[gd_scene load_steps=17 format=3 uid="uid://dwddauml6erf8"]
+
+[ext_resource type="Texture2D" uid="uid://c1w0nkt2d8cve" path="res://Data/DEFAULT/SPRITES/sprCursor_strip13.png" id="12_vs583"]
+
+[sub_resource type="GDScript" id="2"]
+script/source = "extends CanvasLayer
+
+
+
+
+
+@onready var cursor=get_node(\"Cursor\")
+#Side UI
+var ammo=1
+var max_ammo=1
+var fuck_cum_retard=false
+var in_combat=true
+
+#Cursor
+var cursor_sens=1.0
+var window_based=false
+var cursor_anim=\"default\"
+var mouse = Vector2()
+var factor=0.8
+var p_pos=Vector2()
+
+var real_mouse=Vector2()
+
+var focus_input=\"mouse\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	await RenderingServer.frame_post_draw
+	fuck_cum_retard=true
+	if window_based==false:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+
+
+
+func _process(delta):
+	if fuck_cum_retard==true:
+	
+	
+	
+	#CURSOR
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			var width=get_viewport().get_visible_rect().size.x
+			var height=get_viewport().get_visible_rect().size.y
+			
+			if Vector2(Input.get_action_strength(\"look_left\")-Input.get_action_strength(\"look_right\"),Input.get_action_strength(\"look_up\")-Input.get_action_strength(\"look_down\")).length()>0:
+				focus_input=\"controller\"
+			
+			if focus_input==\"controller\":
+				if Vector2(Input.get_action_strength(\"look_left\")-Input.get_action_strength(\"look_right\"),Input.get_action_strength(\"look_up\")-Input.get_action_strength(\"look_down\")).length()>0:
+					if !Input.is_action_pressed(\"far_look\"):
+						mouse=Vector2(Input.get_action_strength(\"look_right\")-Input.get_action_strength(\"look_left\"),Input.get_action_strength(\"look_down\")-Input.get_action_strength(\"look_up\")).normalized()*54
+					else:
+						mouse=Vector2(Input.get_action_strength(\"look_right\")-Input.get_action_strength(\"look_left\"),Input.get_action_strength(\"look_down\")-Input.get_action_strength(\"look_up\"))*270
+			else:
+				
+				mouse.x=((real_mouse.x-width*0.5))*factor
+				mouse.y=((real_mouse.y-height*0.5))*factor
+				
+				if window_based==true:
+					real_mouse=get_viewport().get_mouse_position()
+				
+				real_mouse.x=clamp(real_mouse.x,0,width)
+				real_mouse.y=clamp(real_mouse.y,0,height)
+	#		Input.warp_mouse(p_pos+mouse)
+			cursor.position=lerp(cursor.position,p_pos+mouse,0.88)
+			
+			
+			
+			
+			if Input.is_action_pressed(\"far_look\"):
+				factor=lerp(factor,1.6,0.5)
+			else:
+				factor=lerp(factor,0.9,0.5)
+		else:
+			cursor.position=lerp(cursor.position,get_viewport().get_mouse_position(),0.88)
+
+func _input(event):
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		real_mouse+=event.relative*cursor_sens
+		focus_input=\"mouse\"
+
+func set_player_pos(pos:Vector2):
+	pos=p_pos
+func _on_ammo_resized():
+	pass # Replace with function body.
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuffn"]
+atlas = ExtResource("12_vs583")
+region = Rect2(0, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ubgb"]
+atlas = ExtResource("12_vs583")
+region = Rect2(13, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y6ax"]
+atlas = ExtResource("12_vs583")
+region = Rect2(26, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("12_vs583")
+region = Rect2(39, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvc0r"]
+atlas = ExtResource("12_vs583")
+region = Rect2(52, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("12_vs583")
+region = Rect2(65, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ton"]
+atlas = ExtResource("12_vs583")
+region = Rect2(78, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xgjw"]
+atlas = ExtResource("12_vs583")
+region = Rect2(91, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kli11"]
+atlas = ExtResource("12_vs583")
+region = Rect2(104, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd6xk"]
+atlas = ExtResource("12_vs583")
+region = Rect2(117, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvy36"]
+atlas = ExtResource("12_vs583")
+region = Rect2(130, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("12_vs583")
+region = Rect2(143, 0, 13, 13)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("12_vs583")
+region = Rect2(156, 0, 13, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ya8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuffn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ubgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y6ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvc0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ton")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xgjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kli11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd6xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvy36")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="UI" type="CanvasLayer"]
+script = SubResource("2")
+metadata/_edit_vertical_guides_ = [-121.0]
+
+[node name="Cursor" type="AnimatedSprite2D" parent="."]
+position = Vector2(873, 690)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_4ya8v")

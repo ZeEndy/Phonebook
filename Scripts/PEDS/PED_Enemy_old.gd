@@ -11,24 +11,24 @@ enum Enemy_t {
 	FAT
 }
 
-@onready var Legs = get_node("PED_SPRITES/Legs")
-@onready var Body = get_node("PED_SPRITES/Body")
-@onready var KBody = get_node("PED_COL")
+onready var Legs = get_node("PED_SPRITES/Legs")
+onready var Body = get_node("PED_SPRITES/Body")
+onready var KBody = get_node("PED_COL")
 
-@export var CHECKRELOAD = 30
-@export var ALERTWAIT = 16
-@export var TURNSPEED = 10
-@export var WALKSPEED = 1
-@export var PATHSPEED = 2
-@export var RUNSPEED = 3
-@export var RUNSPEED_DOG = 5
-@export var VIEW_DIST = 280
+export var CHECKRELOAD = 30
+export var ALERTWAIT = 16
+export var TURNSPEED = 10
+export var WALKSPEED = 1
+export var PATHSPEED = 2
+export var RUNSPEED = 3
+export var RUNSPEED_DOG = 5
+export var VIEW_DIST = 280
 
 
 var speed = 0
 var direction = 0
 
-@export var behaviour: Enemy_t = Enemy_t.PATROL
+export(Enemy_t) var behaviour = Enemy_t.PATROL
 
 
 
@@ -73,7 +73,7 @@ func _physics_process(delta):
 		elif script_state == 2: state2()
 		elif script_state == 3: state3()
 		else: return
-		var v = speed * Vector2(cos(deg_to_rad(direction)), sin(deg_to_rad(direction)))# * delta_time
+		var v = speed * Vector2(cos(deg_to_radrad(direction))deg_to_radeg_to_rad(direction)))# * delta_time
 		#KBody.position += v
 		KBody.linear_velocity=v*60
 		Body.rotation_degrees = direction
@@ -88,7 +88,7 @@ func _physics_process(delta):
 
 	#func _draw():
 		#for c in get_children():
-		#	if c is AnimatedSprite2D:
+		#	if c is AnimatedSprite:
 	#	var c = Legs
 	#	var sprite_tex = c.frames.get_frame(c.animation, c.frame)
 		#draw_set_transform(c.global_position - position, c.rotation, Vector2.ONE)
@@ -218,7 +218,7 @@ func switch_state(new_state):
 	#			if "Dead" in a:
 	#				dead.sprite.texture = Body.frames.get_frame(a, randi() % Body.frames.get_frame_count(a))
 	#				break
-			#AnimatedSprite2D.new().frames.get_frame(Body.animation, Body.frame)
+			#AnimatedSprite.new().frames.get_frame(Body.animation, Body.frame)
 			#var l = GameManager.player_wad.single_frame("")
 			queue_free()
 	# yeah :/
@@ -239,19 +239,19 @@ func state0():
 				direction = randi() % 360
 				speed = randi() % 2
 				random_timer = 60 + (randi() % 61)
-			var v = Vector2(speed * cos(deg_to_rad(direction)) * delta_time, speed * sin(deg_to_rad(direction)) * delta_time)
+			var v = Vector2(speed * cos(deg_to_radrad(direction)) * delta_time, speed deg_to_radeg_to_rad(direction)) * delta_time)
 			
-			var bounce_obj=PhysicsTestMotionResult2D.new()
+			var bounce_obj=Physics2DTestMotionResult.new()
 			#this causes a masive memory leak. too bad
 			#TODO: find a better way to bounce
 			var c = KBody.test_motion(v,true,0.08,bounce_obj)
 			if c:
 				v = v.bounce(bounce_obj.collision_normal)
-				direction = rad_to_deg(v.angle())
+				direction = rad2deg(v.angle())
 	elif behaviour == Enemy_t.PATROL:
 			speed = WALKSPEED
 			#direction = round(direction/10)*10
-			var v = 8 * Vector2(cos(deg_to_rad(direction)) * delta_time, sin(deg_to_rad(direction)) * delta_time)
+			var v = 8 * Vector2(cos(deg_to_radrad(direction)) * delta_timedeg_to_radeg_to_rad(direction)) * delta_time)
 			var c = KBody.test_motion(v)
 			if c:
 				direction -= 10 * delta_time
@@ -262,10 +262,10 @@ func state0():
 				else:
 					direction -= dif
 			#if !place_free(x+lengthdir_x(8,direction),y+lengthdir_y(direction))
-			# TODO: turn checked collisions and stuff
+			# TODO: turn on collisions and stuff
 	elif behaviour == Enemy_t.DOG_PATROL:
 			speed = WALKSPEED * delta_time
-			# TODO: turn checked corners and stuff
+			# TODO: turn on corners and stuff
 	elif behaviour == Enemy_t.STATIONARY:
 			speed = 0
 	
@@ -312,7 +312,7 @@ func state1():
 				speed = min(speed + 0.5 * delta_time, r)
 			else:
 				speed = max(speed - 0.25 * delta_time, 0)
-			direction = hm1_rotate(direction, rad_to_deg(player_focused.position.angle_to_point(KBody.global_position)), TURNSPEED * delta_time)
+			direction = hm1_rotate(direction, rad2deg(player_focused.position.angle_to_point(KBody.global_position)), TURNSPEED * delta_time)
 	var los = check_los() # 0 none, 1 direct, 2 indirect
 	#if (los == 1): switch_state(1)
 	if (los == 0): switch_state(3)
@@ -342,11 +342,11 @@ func state3():
 	#var steering = desired_velocity - _velocity
 	#_velocity += steering
 	#KBody.position += _velocity * get_process_delta_time()
-	direction = rad_to_deg((_target_point_world - KBody.global_position).angle())
+	direction = rad2deg((_target_point_world - KBody.global_position).angle())
 	speed = PATHSPEED
 	var _arrived_to_next_point = KBody.global_position.distance_to(_target_point_world) < 6
 	if _arrived_to_next_point:
-		path.remove_at(0)
+		path.remove(0)
 		if len(path) == 0:
 			switch_state(0)
 			return
@@ -367,7 +367,7 @@ func check_los():
 	for p in _players:
 		if p == null: continue
 		var dist = KBody.global_position.distance_squared_to(p.position)
-		var angl = rad_to_deg(KBody.global_position.angle_to_point(p.position))
+		var angl = rad2deg(KBody.global_position.angle_to_point(p.position))
 		var vd = Vector2(cos(deg_to_rad(angl+90)), sin(deg_to_rad(angl+90))) * 4
 		var result1 = space_state.intersect_ray(KBody.global_position + vd, p.position + vd, [KBody], 0b00000000000000000101)
 		vd = Vector2(cos(deg_to_rad(angl-90)), sin(deg_to_rad(angl-90))) * 4

@@ -12,17 +12,17 @@ script = ExtResource( 2 )
 [node name="mouse" type="Node2D" parent="."]
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = 39.5686
-offset_top = 45.3182
-offset_right = 170.569
-offset_bottom = 103.318
+margin_left = 39.5686
+margin_top = 45.3182
+margin_right = 170.569
+margin_bottom = 103.318
 text = "TEST"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
-"Camera3D",
+"Camera",
 ]]
 position = Vector2( 960, 540 )
 current = true
@@ -33,10 +33,10 @@ current = true
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="level"]
-offset_left = 53.1549
-offset_top = 31.3592
-offset_right = 491.155
-offset_bottom = 45.3592
+margin_left = 53.1549
+margin_top = 31.3592
+margin_right = 491.155
+margin_bottom = 45.3592
 text = "LEVEL NAME"
 __meta__ = {
 "_edit_use_anchors_": false

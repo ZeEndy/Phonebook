@@ -1,54 +1,53 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://2bfte35uv8o8"]
 
-[ext_resource path="res://Data/Sprites/VFX/sprCasing556.png" type="Texture2D" id=1]
-[ext_resource path="res://Scripts/VFX/VFX_Casing.gd" type="Script" id=2]
-[ext_resource path="res://Data/Sprites/VFX/sprBulletSmoke_strip27.png" type="Texture2D" id=3]
+[ext_resource type="Script" path="res://Scripts/VFX/VFX_Casing.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://djk02aqnc4382" path="res://Data/Sprites/Objects/Weapons/sprCasing556.png" id="2_wl84a"]
+[ext_resource type="Texture2D" uid="uid://cf7mn054kmtah" path="res://Data/Sprites/VFX/sprBulletSmoke_strip27.png" id="3"]
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id="2"]
 bounce = 0.7
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.5, 0.5 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(3, 1)
 
-[sub_resource type="CanvasItemMaterial" id=5]
+[sub_resource type="CanvasItemMaterial" id="5"]
 particles_animation = true
 particles_anim_h_frames = 21
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=4]
-offsets = PackedFloat32Array( 0, 0.100287, 1 )
-colors = PackedColorArray( 1, 1, 1, 1, 0.746094, 0.746094, 0.746094, 1, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id="4"]
+offsets = PackedFloat32Array(0, 0.100287, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.746094, 0.746094, 0.746094, 1, 1, 1, 1, 0)
 
 [node name="Casing" type="RigidBody2D"]
-rotation = 6.28318
 z_index = 1
+rotation = 6.28318
+collision_layer = 2
 collision_mask = 0
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource("2")
 continuous_cd = 1
 linear_damp = 10.0
 angular_damp = 10.0
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+position = Vector2(0.5, 0.5)
+shape = SubResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2( -0.5, 0.5 )
-texture = ExtResource( 1 )
-offset = Vector2( 1, 0 )
-region_rect = Rect2( 0, 0, 0, 1 )
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 0.5)
+texture = ExtResource("2_wl84a")
+offset = Vector2(1, 0)
+region_rect = Rect2(0, 0, 0, 1)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-material = SubResource( 5 )
-position = Vector2( 2, 0 )
+material = SubResource("5")
+position = Vector2(2, 0)
 rotation = 0.00502259
 emitting = false
 amount = 10
 lifetime = 0.5
-local_coords = false
-texture = ExtResource( 3 )
-flag_align_y = true
-gravity = Vector2( 0, 0 )
-color_ramp = SubResource( 4 )
-anim_speed = 1.0
+texture = ExtResource("3")
+gravity = Vector2(0, 0)
+color_ramp = SubResource("4")

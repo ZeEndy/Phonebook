@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://rbprdwdjtrwj"]
+
+[ext_resource type="Script" path="res://Scripts/GAME/GAME_GENERAL.gd" id="3"]
+
+[sub_resource type="QuadMesh" id="6"]
+
+[sub_resource type="Gradient" id="4"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="7"]
+gradient = SubResource("4")
+
+[sub_resource type="QuadMesh" id="3"]
+
+[sub_resource type="GradientTexture1D" id="5"]
+gradient = SubResource("4")
+
+[node name="GAME" type="Node"]
+script = ExtResource("3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Fade" type="MeshInstance2D" parent="CanvasLayer"]
+rotation = 1.5708
+scale = Vector2(5, 5)
+mesh = SubResource("6")
+texture = SubResource("7")
+
+[node name="Menu_Fade" type="MeshInstance2D" parent="CanvasLayer"]
+visible = false
+rotation = 1.5708
+scale = Vector2(5, 5)
+mesh = SubResource("3")
+texture = SubResource("5")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"Music"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 50
+
+[node name="DEBUG_TEXT" type="Label" parent="CanvasLayer2"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -18,18 +18,14 @@
 #	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #	SOFTWARE.
 
-extends Node3D
+extends Spatial
 
-@export var target: NodePath : NodePath :
-	get:
-		return target # TODOConverter40 Copy here content of get_target
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of set_target
+export(NodePath) var target : NodePath setget set_target, get_target
 
-var _m_Target : Node3D
+var _m_Target : Spatial
 
-var _m_trCurr : Transform3D
-var _m_trPrev : Transform3D
+var _m_trCurr : Transform
+var _m_trPrev : Transform
 
 const SF_ENABLED = 1 << 0
 const SF_TRANSLATE = 1 << 1
@@ -38,16 +34,12 @@ const SF_SLERP = 1 << 3
 const SF_DIRTY = 1 << 4
 const SF_INVISIBLE = 1 << 5
 
-@export (int, FLAGS, "enabled", "translate", "basis", "slerp") var flags : int = SF_ENABLED | SF_TRANSLATE | SF_BASIS :
-	get:
-		return flags # TODOConverter40 Copy here content of _get_flags
-	set(mod_value):
-		mod_value  # TODOConverter40 Copy here content of _set_flags
+export (int, FLAGS, "enabled", "translate", "basis", "slerp") var flags : int = SF_ENABLED | SF_TRANSLATE | SF_BASIS setget _set_flags, _get_flags
 
 ##########################################################################################
 # USER FUNCS
 
-# call this checked e.g. starting a level, AFTER moving the target
+# call this on e.g. starting a level, AFTER moving the target
 # so we can update both the previous and current values
 func teleport():
 	var temp_flags = flags
@@ -62,7 +54,7 @@ func teleport():
 	# resume old flags
 	flags = temp_flags
 	
-func set_enabled(bEnable : bool):
+func set_enabled(var bEnable : bool):
 	_ChangeFlags(SF_ENABLED, bEnable)
 	_SetProcessing()
 
@@ -76,8 +68,8 @@ func is_enabled():
 
 
 func _ready():
-	_m_trCurr = Transform3D()
-	_m_trPrev = Transform3D()
+	_m_trCurr = Transform()
+	_m_trPrev = Transform()
 
 
 func set_target(new_value):
@@ -112,7 +104,7 @@ func _enter_tree():
 
 func _notification(what):
 	match what:
-		# invisible turns unchecked processing
+		# invisible turns off processing
 		NOTIFICATION_VISIBILITY_CHANGED:
 			_ChangeFlags(SF_INVISIBLE, is_visible_in_tree() == false)
 			_SetProcessing()
@@ -136,7 +128,7 @@ func _FindTarget():
 		
 	_m_Target = get_node(target)
 	
-	if _m_Target is Node3D:
+	if _m_Target is Spatial:
 		return
 
 	_m_Target = null
@@ -161,7 +153,7 @@ func _process(_delta):
 	
 	var f = Engine.get_physics_interpolation_fraction()
 	
-	var tr : Transform3D = Transform3D()
+	var tr : Transform = Transform()
 
 	# translate
 	if _TestFlags(SF_TRANSLATE):
@@ -188,23 +180,23 @@ func _physics_process(_delta):
 	_SetFlags(SF_DIRTY)
 	pass
 
-func _LerpBasis(from : Basis, to : Basis, f : float)->Basis:
+func _LerpBasis(var from : Basis, var to : Basis, var f : float)->Basis:
 	var res : Basis = Basis()
-	res.x = from.x.lerp(to.x, f)
-	res.y = from.y.lerp(to.y, f)
-	res.z = from.z.lerp(to.z, f)
+	res.x = from.x.linear_interpolate(to.x, f)
+	res.y = from.y.linear_interpolate(to.y, f)
+	res.z = from.z.linear_interpolate(to.z, f)
 	return res
 
-func _SetFlags(f):
+func _SetFlags(var f):
 	flags |= f
 	
-func _ClearFlags(f):
+func _ClearFlags(var f):
 	flags &= ~f
 	
-func _TestFlags(f):
+func _TestFlags(var f):
 	return (flags & f) == f
 
-func _ChangeFlags(f, bSet):
+func _ChangeFlags(var f, var bSet):
 	if bSet:
 		_SetFlags(f)
 	else:

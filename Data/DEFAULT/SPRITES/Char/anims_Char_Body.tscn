@@ -2,118 +2,29 @@
 
 [ext_resource path="res://Scripts/GAME/GAME_ANIM_NONWAD.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/GAMEPLAY/GAMEPLAY_MELEE_AREA.gd" type="Script" id=2]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteWall_strip10.png" type="Texture2D" id=3]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackShotgun_strip13.png" type="Texture2D" id=4]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteShotgun_strip8.png" type="Texture2D" id=5]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteM9_strip14.png" type="Texture2D" id=6]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/bat/Char_ExecuteBat_low_strip7.png" type="Texture2D" id=7]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackUnarmed_strip7.png" type="Texture2D" id=8]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkAK_strip8.png" type="Texture2D" id=9]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Char_MaskOn_strip4.png" type="Texture2D" id=10]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkBat_strip8.png" type="Texture2D" id=11]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkShotgun_strip8.png" type="Texture2D" id=12]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkM9_strip8.png" type="Texture2D" id=13]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackBat_strip9.png" type="Texture2D" id=14]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackM9_strip2.png" type="Texture2D" id=15]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackM16_strip2.png" type="Texture2D" id=16]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkM16_strip8.png" type="Texture2D" id=17]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkKnife_strip8.png" type="Texture2D" id=18]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackAK_strip2.png" type="Texture2D" id=19]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/bat/Char_ExecuteBat_high_strip7.png" type="Texture2D" id=20]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Char_Hat_strip5.png" type="Texture2D" id=21]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkUnarmed_strip8.png" type="Texture2D" id=22]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteUnarmed_strip4.png" type="Texture2D" id=23]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackKnife_strip9.png" type="Texture2D" id=24]
-[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteKnife_strip8.png" type="Texture2D" id=25]
-
-[sub_resource type="Animation" id=238]
-resource_name = "AttackAK"
-length = 0.111111
-step = 0.0555556
-tracks/0/type = "value"
-tracks/0/path = NodePath("anim:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0555556 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 0,
-"values": [ 0, 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("anim:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ "Attack AK", "Attack AK" ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("anim:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 10, 0 ), Vector2( 10, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../..:sprite_index")
-tracks/3/interp = 1
-tracks/3/loop_wrap = false
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PackedFloat32Array( 0.111111 ),
-"transitions": PackedFloat32Array( 1 ),
-"update": 1,
-"values": [ "WalkAK" ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Melee_Area/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("anim/mask:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.0555556 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("anim/execution_arms:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.112 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteWall_strip10.png" type="Texture" id=3]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackShotgun_strip13.png" type="Texture" id=4]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteShotgun_strip8.png" type="Texture" id=5]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteM9_strip14.png" type="Texture" id=6]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/bat/Char_ExecuteBat_low_strip7.png" type="Texture" id=7]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackUnarmed_strip7.png" type="Texture" id=8]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkAK_strip8.png" type="Texture" id=9]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Char_MaskOn_strip4.png" type="Texture" id=10]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkBat_strip8.png" type="Texture" id=11]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkShotgun_strip8.png" type="Texture" id=12]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkM9_strip8.png" type="Texture" id=13]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackBat_strip9.png" type="Texture" id=14]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackM9_strip2.png" type="Texture" id=15]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackM16_strip2.png" type="Texture" id=16]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkM16_strip8.png" type="Texture" id=17]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkKnife_strip8.png" type="Texture" id=18]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackAK_strip2.png" type="Texture" id=19]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/bat/Char_ExecuteBat_high_strip7.png" type="Texture" id=20]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Char_Hat_strip5.png" type="Texture" id=21]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Walk/Char_WalkUnarmed_strip8.png" type="Texture" id=22]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteUnarmed_strip4.png" type="Texture" id=23]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Attack/Char_AttackKnife_strip9.png" type="Texture" id=24]
+[ext_resource path="res://Data/DEFAULT/SPRITES/Char/Execute/Char_ExecuteKnife_strip8.png" type="Texture" id=25]
 
 [sub_resource type="Animation" id=176]
 resource_name = "AttackBat"
@@ -126,8 +37,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
@@ -138,8 +49,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Attack Bat", "Attack Bat" ]
 }
@@ -150,8 +61,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 6, 0 ), Vector2( 6, 0 ) ]
 }
@@ -162,8 +73,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ [ false, "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
 "method": "play_audio"
@@ -176,8 +87,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.166667, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.166667, 0.388889 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
@@ -188,8 +99,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.0555556, 0.166667, 0.222222, 0.277778 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556, 0.166667, 0.222222, 0.277778 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 2 ) ]
 }
@@ -200,8 +111,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 1 ]
 }
@@ -212,8 +123,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0.388889 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.388889 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "WalkBat" ],
 "method": "flip_sprite_switch"
@@ -226,8 +137,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0, 0.392 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.392 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Hit.wav" ], [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Hit.wav" ] ]
 }
@@ -238,8 +149,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array( 0, 0.392 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.392 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "DeadBlunt", "DeadSlash" ]
 }
@@ -250,10 +161,99 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array( 0, 0.392 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.392 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "DeadLeanMelee", "DeadLeanMelee" ]
+}
+
+[sub_resource type="Animation" id=244]
+resource_name = "AttackJ941R"
+length = 0.153846
+step = 0.0769231
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0769231 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Attack M9", "Attack M9" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("anim:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, 0 ), Vector2( 11, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 0 ), Vector2( 24, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("anim/mask:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.0769231 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("anim/execution_arms:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../..:sprite_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.153846 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "WalkJ941R" ]
 }
 
 [sub_resource type="Animation" id=179]
@@ -267,8 +267,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0277778, 0.0555556, 0.0833333, 0.111111, 0.138889, 0.166667, 0.194444, 0.222222 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0277778, 0.0555556, 0.0833333, 0.111111, 0.138889, 0.166667, 0.194444, 0.222222 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
@@ -279,8 +279,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.25 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Attack Knife", "Attack Knife" ]
 }
@@ -291,8 +291,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.25 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 6, 8 ), Vector2( 6, 8 ) ]
 }
@@ -303,8 +303,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0.25 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "WalkKnife" ],
 "method": "flip_sprite_switch"
@@ -317,8 +317,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0555556, 0.222222 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556, 0.222222 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
@@ -329,8 +329,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
 }
@@ -341,8 +341,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.375 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.375 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 1, 1 ]
 }
@@ -353,8 +353,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -365,8 +365,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0.0277778 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.0277778 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
 "method": "play_audio"
@@ -379,8 +379,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut2.wav" ] ]
 }
@@ -391,8 +391,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "DeadSlash" ]
 }
@@ -403,8 +403,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "DeadLeanMelee" ]
 }
@@ -419,8 +419,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0555556 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 1 ]
 }
@@ -431,8 +431,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Attack M16", "Attack M16" ]
 }
@@ -443,8 +443,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 10, 0 ), Vector2( 10, 0 ) ]
 }
@@ -455,8 +455,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.111111 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, true ]
 }
@@ -467,8 +467,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0555556 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
 }
@@ -479,16 +479,16 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0.111111 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.111111 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "WalkM16" ]
 }
 
-[sub_resource type="Animation" id=244]
-resource_name = "AttackM9"
-length = 0.153846
-step = 0.0769231
+[sub_resource type="Animation" id=238]
+resource_name = "AttackMK47"
+length = 0.111111
+step = 0.0555556
 tracks/0/type = "value"
 tracks/0/path = NodePath("anim:frame")
 tracks/0/interp = 1
@@ -496,8 +496,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0, 1 ]
 }
@@ -508,10 +508,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "Attack M9", "Attack M9" ]
+"values": [ "Attack AK", "Attack AK" ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("anim:offset")
@@ -520,72 +520,58 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 11, 0 ), Vector2( 11, 0 ) ]
+"values": [ Vector2( 10, 0 ), Vector2( 10, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("../..:sprite_index")
 tracks/3/interp = 1
-tracks/3/loop_wrap = true
+tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.154 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 30, 0 ), Vector2( 30, 0 ) ]
+"times": PoolRealArray( 0.111111 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "WalkMK47" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("anim/mask:position")
+tracks/4/path = NodePath("Melee_Area/CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.111111 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+"values": [ true, true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("anim/execution_arms:visible")
+tracks/5/path = NodePath("anim/mask:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, false ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../..:sprite_index")
+tracks/6/path = NodePath("anim/execution_arms:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0.153846 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0, 0.112 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "WalkM9" ]
-}
-tracks/7/type = "method"
-tracks/7/path = NodePath(".")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [ "", Vector2( 0, 0 ), 0.0, [  ] ],
-"method": "spawn_object"
-} ]
+"values": [ false, false ]
 }
 
 [sub_resource type="Animation" id=247]
@@ -599,8 +585,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
@@ -611,8 +597,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.461538 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.461538 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Attack Shotgun", "Attack Shotgun" ]
 }
@@ -623,20 +609,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.461538 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.461538 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 11, 0 ), Vector2( 11, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
@@ -647,8 +633,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ) ]
 }
@@ -659,8 +645,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.461538 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.461538 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -671,8 +657,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0.461538 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.461538 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "WalkShotgun" ]
 }
@@ -683,8 +669,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0.384615 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.384615 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "PumpShotgun" ],
 "method": "pump"
@@ -702,8 +688,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556, 0.111111, 0.166667, 0.222222, 0.277778, 0.333333, 0.388889 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 6 ]
 }
@@ -714,8 +700,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Attack Unarmed", "Attack Unarmed" ]
 }
@@ -726,8 +712,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 9, 0 ), Vector2( 9, 0 ) ]
 }
@@ -738,8 +724,8 @@ tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0.388889 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.388889 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "WalkUnarmed" ]
 }
@@ -750,8 +736,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0555556 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.0555556 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "flip_sprite"
@@ -767,8 +753,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.112, 0.333333 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.112, 0.333333 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, true ]
 }
@@ -779,8 +765,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.111111, 0.277778 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.111111, 0.277778 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 1, 1 ), Vector2( 1, 0 ) ]
 }
@@ -791,8 +777,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 0 ]
 }
@@ -803,8 +789,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.388889 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ [ null ], [  ] ]
 }
@@ -821,8 +807,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
@@ -833,8 +819,8 @@ tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Execute Bat", "Execute Bat" ]
 }
@@ -845,8 +831,8 @@ tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4, -1 ), Vector2( 4, -1 ) ]
 }
@@ -857,8 +843,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -869,8 +855,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.153846, 0.230769 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0.153846, 0.230769 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ [ false, "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Swing/snd_Swing2.wav" ] ],
 "method": "play_audio"
@@ -886,8 +872,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.153846, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.153846, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 3, 0 ), Vector2( 2, 0 ), Vector2( 4, 0 ) ]
 }
@@ -898,8 +884,8 @@ tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.461538, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.461538, 0.538462 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, false ]
 }
@@ -910,8 +896,8 @@ tracks/7/loop_wrap = false
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
@@ -922,8 +908,8 @@ tracks/8/loop_wrap = false
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4, -1 ), Vector2( 4, -1 ) ]
 }
@@ -934,8 +920,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array( 0.307692, 0.384615, 0.461538, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.307692, 0.384615, 0.461538, 0.538462 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [ 13 ],
 "method": "execute_e_next_frame"
@@ -957,8 +943,8 @@ tracks/10/loop_wrap = false
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array( 0.0769231 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.0769231 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -969,8 +955,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false ]
 }
@@ -981,8 +967,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PackedFloat32Array( 0.538462 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.538462 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0.4 ],
 "method": "execute_remove_health"
@@ -1001,8 +987,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 3, 0, 1, 2, 3 ]
 }
@@ -1013,8 +999,8 @@ tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Execute Unarmed", "Execute Unarmed" ]
 }
@@ -1025,8 +1011,8 @@ tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 11, 0.5 ), Vector2( 11, 0.5 ) ]
 }
@@ -1037,8 +1023,8 @@ tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1049,8 +1035,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.0769231 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.0769231 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Punch.wav" ],
 "method": "play_audio"
@@ -1063,8 +1049,8 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1.03526, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1.03526, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 10, 1 ), Vector2( 12, 1 ), Vector2( 11, 1 ), Vector2( 10, 1 ), Vector2( 10, 1 ) ]
 }
@@ -1075,8 +1061,8 @@ tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -1087,8 +1073,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0.153846 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.153846 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ [ 0.25, 0.3 ], 0.0, "DeadBash", "rand", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Hit.wav" ],
 "method": "execute_remove_health"
@@ -1101,8 +1087,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "execute_e_copy_time"
@@ -1127,8 +1113,8 @@ tracks/9/loop_wrap = false
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -1139,8 +1125,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
 }
@@ -1151,8 +1137,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/12/type = "value"
@@ -1162,8 +1148,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
@@ -1179,8 +1165,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
@@ -1191,8 +1177,8 @@ tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Execute Knife", "Execute Knife" ]
 }
@@ -1203,8 +1189,8 @@ tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 14, 3.5 ), Vector2( 14, 3.5 ) ]
 }
@@ -1215,8 +1201,8 @@ tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1227,8 +1213,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.0769231 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.0769231 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Punch.wav" ],
 "method": "play_audio"
@@ -1241,8 +1227,8 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.230769, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.230769, 0.307692 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 14, 1.99981 ), Vector2( 14, 0.999814 ), Vector2( 13, 0.999827 ) ]
 }
@@ -1253,8 +1239,8 @@ tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -1265,8 +1251,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "execute_e_copy_time"
@@ -1303,8 +1289,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/9/type = "value"
@@ -1314,8 +1300,8 @@ tracks/9/loop_wrap = false
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1326,8 +1312,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/11/type = "value"
@@ -1337,8 +1323,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
@@ -1354,8 +1340,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077, 1 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ]
 }
@@ -1366,8 +1352,8 @@ tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 1.15385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 1.15385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Execute M9", "Execute M9" ]
 }
@@ -1378,8 +1364,8 @@ tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 1.15385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 1.15385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 12, 0 ), Vector2( 12, 0 ) ]
 }
@@ -1390,8 +1376,8 @@ tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1402,8 +1388,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.769231, 1.07692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0.769231, 1.07692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_M9.wav" ],
 "method": "play_audio"
@@ -1419,8 +1405,8 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.230769, 0.692308, 0.769231, 0.846154, 1.15385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.230769, 0.692308, 0.769231, 0.846154, 1.15385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 7, -6.2108e-05 ), Vector2( 5, -4.44253e-05 ), Vector2( 7, -6.21954e-05 ), Vector2( 7, -6.21954e-05 ), Vector2( 6.99999, -1.00006 ), Vector2( 7, -6.22272e-05 ), Vector2( 7, -6.22272e-05 ) ]
 }
@@ -1431,8 +1417,8 @@ tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -1443,8 +1429,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384616, 0.461539, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077, 1 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384616, 0.461539, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "execute_e_copy_time"
@@ -1496,8 +1482,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/9/type = "value"
@@ -1507,8 +1493,8 @@ tracks/9/loop_wrap = false
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1519,8 +1505,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/11/type = "value"
@@ -1530,8 +1516,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array( 0, 1.15385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 1.15385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
@@ -1547,8 +1533,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
@@ -1559,8 +1545,8 @@ tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Execute Shotgun", "Execute Shotgun" ]
 }
@@ -1571,8 +1557,8 @@ tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 11, 5 ), Vector2( 11, 5 ) ]
 }
@@ -1583,8 +1569,8 @@ tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1595,8 +1581,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.385 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.385 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Punch.wav" ],
 "method": "play_audio"
@@ -1609,8 +1595,8 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.166667, 0.222222, 0.388889 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.166667, 0.222222, 0.388889 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 14, 0.000405431 ), Vector2( 14, -0.999595 ), Vector2( 14, 1.00041 ), Vector2( 14, 0.000405431 ) ]
 }
@@ -1621,8 +1607,8 @@ tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -1633,8 +1619,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "execute_e_copy_time"
@@ -1671,8 +1657,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/9/type = "value"
@@ -1682,8 +1668,8 @@ tracks/9/loop_wrap = false
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1694,8 +1680,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/11/type = "value"
@@ -1705,8 +1691,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
@@ -1722,8 +1708,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
@@ -1734,8 +1720,8 @@ tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.769231 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Execute Wall", "Execute Wall" ]
 }
@@ -1746,8 +1732,8 @@ tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.769231 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -10, 0.5 ), Vector2( -10, 0.5 ) ]
 }
@@ -1758,8 +1744,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1770,8 +1756,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0.308, 0.769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0.308, 0.769231 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Hit.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Punch.wav" ] ],
 "method": "play_audio"
@@ -1787,8 +1773,8 @@ tracks/5/loop_wrap = false
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.307692, 0.384616, 0.461539, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.307692, 0.384616, 0.461539, 0.538462 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( -18, -3 ), Vector2( -18, -3 ), Vector2( -21, -4 ), Vector2( -20, -4 ), Vector2( -18, -3 ) ]
 }
@@ -1799,8 +1785,8 @@ tracks/6/loop_wrap = false
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -1811,8 +1797,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0.769231 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.769231 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 1.0 ],
 "method": "execute_remove_health"
@@ -1825,8 +1811,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384616, 0.461539, 0.538462, 0.615385, 0.692308, 0.769231 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384616, 0.461539, 0.538462, 0.615385, 0.692308, 0.769231 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "execute_e_copy_time"
@@ -1869,8 +1855,8 @@ tracks/9/loop_wrap = false
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 1,
 "values": [  ]
 }
@@ -1881,8 +1867,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 tracks/11/type = "value"
@@ -1892,8 +1878,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PackedFloat32Array( 0, 0.769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.769231 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
@@ -1904,8 +1890,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PackedFloat32Array(  ),
-"transitions": PackedFloat32Array(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "values": [  ]
 }
 
@@ -1920,8 +1906,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3 ]
 }
@@ -1932,8 +1918,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Mask On", "Mask On" ]
 }
@@ -1944,20 +1930,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
@@ -1968,8 +1954,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 6, 0 ), Vector2( 8, 0 ), Vector2( 4, 0 ) ]
 }
@@ -1980,8 +1966,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.307692 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.307692 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -1992,8 +1978,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.230769 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.230769 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ -1, 0 ]
 }
@@ -2004,8 +1990,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0, 0.0769231 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -2016,8 +2002,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PackedFloat32Array( 0.307692 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.307692 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "WalkUnarmed" ]
 }
@@ -2033,8 +2019,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
@@ -2045,8 +2031,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Pump Shotgun", "Pump Shotgun" ]
 }
@@ -2057,20 +2043,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 10, 0 ), Vector2( 10, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
@@ -2081,8 +2067,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
@@ -2093,8 +2079,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.538462 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.538462 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -2105,8 +2091,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0.538462 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.538462 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "WalkShotgun" ]
 }
@@ -2117,8 +2103,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0.153846 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0.153846 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "", Vector2( 0, 0 ), [  ] ],
 "method": "spawn_object"
@@ -2134,8 +2120,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "Walk Unarmed" ]
 }
@@ -2146,8 +2132,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
@@ -2158,8 +2144,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
@@ -2170,88 +2156,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
-}
-
-[sub_resource type="Animation" id=214]
-resource_name = "WalkAK"
-length = 0.615385
-loop = true
-step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("anim:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("anim:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ "Walk AK", "Walk AK" ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("anim:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 24, 0 ), Vector2( 24, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("anim/mask:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692, 0.384615 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("anim/execution_arms:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
 }
 
 [sub_resource type="Animation" id=215]
@@ -2266,8 +2174,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
 }
@@ -2278,8 +2186,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Walk Bat", "Walk Bat" ]
 }
@@ -2290,20 +2198,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -1, 6 ), Vector2( -1, 6 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
@@ -2314,8 +2222,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692, 0.384615 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.307692, 0.384615 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
@@ -2326,8 +2234,86 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+
+[sub_resource type="Animation" id=218]
+resource_name = "WalkJ941R"
+length = 0.615385
+loop = true
+step = 0.0769231
+tracks/0/type = "value"
+tracks/0/path = NodePath("anim:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("anim:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Walk M9", "Walk M9" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("anim:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 11, 0 ), Vector2( 11, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.616 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 0 ), Vector2( 24, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("anim/mask:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.0769231, 0.307692, 0.384615 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("anim/execution_arms:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -2344,8 +2330,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
 }
@@ -2356,8 +2342,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Walk Knife", "Walk Knife" ]
 }
@@ -2368,20 +2354,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
@@ -2392,8 +2378,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692, 0.384615 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.307692, 0.384615 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
@@ -2404,8 +2390,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -2422,8 +2408,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
 }
@@ -2434,8 +2420,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Walk M16", "Walk M16" ]
 }
@@ -2446,22 +2432,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 24, 0 ), Vector2( 24, 0 ) ]
+"values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("anim/mask:position")
@@ -2470,8 +2456,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692, 0.384615 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.307692, 0.384615 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
@@ -2482,14 +2468,14 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
 
-[sub_resource type="Animation" id=218]
-resource_name = "WalkM9"
+[sub_resource type="Animation" id=214]
+resource_name = "WalkMK47"
 length = 0.615385
 loop = true
 step = 0.0769231
@@ -2500,8 +2486,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
 }
@@ -2512,10 +2498,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ "Walk M9", "Walk M9" ]
+"values": [ "Walk AK", "Walk AK" ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("anim:offset")
@@ -2524,22 +2510,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 11, 0 ), Vector2( 11, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.154 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 34, 0 ), Vector2( 34, 0 ) ]
+"values": [ Vector2( 24, 0 ), Vector2( 24, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("anim/mask:position")
@@ -2548,10 +2534,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.307692, 0.384615 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.307692, 0.384615 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, -1 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 1 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("anim/execution_arms:visible")
@@ -2560,8 +2546,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -2578,8 +2564,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
 }
@@ -2590,8 +2576,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Walk Shotgun", "Walk Shotgun" ]
 }
@@ -2602,22 +2588,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 10, 0 ), Vector2( 10, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.616 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 24, 0 ), Vector2( 24, 0 ) ]
+"values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("anim/mask:position")
@@ -2626,8 +2612,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.230769, 0.307692, 0.384615, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.230769, 0.307692, 0.384615, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, -1 ) ]
 }
@@ -2638,8 +2624,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -2650,8 +2636,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, true ]
 }
@@ -2668,8 +2654,8 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
 }
@@ -2680,8 +2666,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ "Walk Unarmed", "Walk Unarmed" ]
 }
@@ -2692,20 +2678,20 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Bullet_Spawn:position")
+tracks/3/path = NodePath("anim/Bullet_Spawn:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.153846 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.153846 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 0 ), Vector2( 1, 0 ) ]
 }
@@ -2716,8 +2702,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.0769231, 0.230769, 0.307692, 0.384615, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.0769231, 0.230769, 0.307692, 0.384615, 0.615385 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 1 ), Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, -1 ) ]
 }
@@ -2728,8 +2714,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, false ]
 }
@@ -2740,11 +2726,119 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.615385 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PoolRealArray( 0, 0.615385 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, true ]
 }
+
+[sub_resource type="AtlasTexture" id=193]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=194]
+atlas = ExtResource( 7 )
+region = Rect2( 60, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=195]
+atlas = ExtResource( 7 )
+region = Rect2( 120, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=196]
+atlas = ExtResource( 7 )
+region = Rect2( 180, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=197]
+atlas = ExtResource( 7 )
+region = Rect2( 240, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=198]
+atlas = ExtResource( 7 )
+region = Rect2( 300, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=199]
+atlas = ExtResource( 7 )
+region = Rect2( 360, 0, 60, 32 )
+
+[sub_resource type="AtlasTexture" id=239]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=240]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=241]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=242]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=80]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=81]
+atlas = ExtResource( 18 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=82]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=83]
+atlas = ExtResource( 18 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=84]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=85]
+atlas = ExtResource( 18 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=86]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 18 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=120]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=121]
+atlas = ExtResource( 9 )
+region = Rect2( 44, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=122]
+atlas = ExtResource( 9 )
+region = Rect2( 88, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=123]
+atlas = ExtResource( 9 )
+region = Rect2( 132, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=124]
+atlas = ExtResource( 9 )
+region = Rect2( 176, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=125]
+atlas = ExtResource( 9 )
+region = Rect2( 220, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=126]
+atlas = ExtResource( 9 )
+region = Rect2( 264, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=127]
+atlas = ExtResource( 9 )
+region = Rect2( 308, 0, 44, 32 )
 
 [sub_resource type="AtlasTexture" id=112]
 atlas = ExtResource( 12 )
@@ -2778,37 +2872,133 @@ region = Rect2( 300, 0, 50, 32 )
 atlas = ExtResource( 12 )
 region = Rect2( 350, 0, 50, 32 )
 
-[sub_resource type="AtlasTexture" id=120]
-atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=180]
+atlas = ExtResource( 24 )
+region = Rect2( 0, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=121]
-atlas = ExtResource( 9 )
-region = Rect2( 44, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=181]
+atlas = ExtResource( 24 )
+region = Rect2( 32, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=122]
-atlas = ExtResource( 9 )
-region = Rect2( 88, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=182]
+atlas = ExtResource( 24 )
+region = Rect2( 64, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=123]
-atlas = ExtResource( 9 )
-region = Rect2( 132, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=183]
+atlas = ExtResource( 24 )
+region = Rect2( 96, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=124]
-atlas = ExtResource( 9 )
-region = Rect2( 176, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=184]
+atlas = ExtResource( 24 )
+region = Rect2( 128, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=125]
-atlas = ExtResource( 9 )
-region = Rect2( 220, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=185]
+atlas = ExtResource( 24 )
+region = Rect2( 160, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=126]
-atlas = ExtResource( 9 )
-region = Rect2( 264, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=186]
+atlas = ExtResource( 24 )
+region = Rect2( 192, 0, 32, 44 )
 
-[sub_resource type="AtlasTexture" id=127]
-atlas = ExtResource( 9 )
-region = Rect2( 308, 0, 44, 32 )
+[sub_resource type="AtlasTexture" id=187]
+atlas = ExtResource( 24 )
+region = Rect2( 224, 0, 32, 44 )
+
+[sub_resource type="AtlasTexture" id=188]
+atlas = ExtResource( 24 )
+region = Rect2( 256, 0, 32, 44 )
+
+[sub_resource type="AtlasTexture" id=245]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=246]
+atlas = ExtResource( 15 )
+region = Rect2( 50, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=265]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=266]
+atlas = ExtResource( 4 )
+region = Rect2( 50, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=267]
+atlas = ExtResource( 4 )
+region = Rect2( 100, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=268]
+atlas = ExtResource( 4 )
+region = Rect2( 150, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=269]
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=270]
+atlas = ExtResource( 4 )
+region = Rect2( 250, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=153]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=154]
+atlas = ExtResource( 8 )
+region = Rect2( 60, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=155]
+atlas = ExtResource( 8 )
+region = Rect2( 120, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=156]
+atlas = ExtResource( 8 )
+region = Rect2( 180, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=157]
+atlas = ExtResource( 8 )
+region = Rect2( 240, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=158]
+atlas = ExtResource( 8 )
+region = Rect2( 300, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=159]
+atlas = ExtResource( 8 )
+region = Rect2( 360, 0, 60, 44 )
+
+[sub_resource type="AtlasTexture" id=128]
+atlas = ExtResource( 22 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=129]
+atlas = ExtResource( 22 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=130]
+atlas = ExtResource( 22 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=131]
+atlas = ExtResource( 22 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=132]
+atlas = ExtResource( 22 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=133]
+atlas = ExtResource( 22 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=134]
+atlas = ExtResource( 22 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=135]
+atlas = ExtResource( 22 )
+region = Rect2( 224, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=271]
 atlas = ExtResource( 3 )
@@ -2850,6 +3040,22 @@ region = Rect2( 352, 0, 44, 35 )
 atlas = ExtResource( 3 )
 region = Rect2( 396, 0, 44, 35 )
 
+[sub_resource type="AtlasTexture" id=189]
+atlas = ExtResource( 23 )
+region = Rect2( 0, 0, 28, 23 )
+
+[sub_resource type="AtlasTexture" id=190]
+atlas = ExtResource( 23 )
+region = Rect2( 28, 0, 28, 23 )
+
+[sub_resource type="AtlasTexture" id=191]
+atlas = ExtResource( 23 )
+region = Rect2( 56, 0, 28, 23 )
+
+[sub_resource type="AtlasTexture" id=192]
+atlas = ExtResource( 23 )
+region = Rect2( 84, 0, 28, 23 )
+
 [sub_resource type="AtlasTexture" id=281]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 40, 40 )
@@ -2881,6 +3087,38 @@ region = Rect2( 240, 0, 40, 40 )
 [sub_resource type="AtlasTexture" id=288]
 atlas = ExtResource( 5 )
 region = Rect2( 280, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=296]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=297]
+atlas = ExtResource( 25 )
+region = Rect2( 40, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=298]
+atlas = ExtResource( 25 )
+region = Rect2( 80, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=299]
+atlas = ExtResource( 25 )
+region = Rect2( 120, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=300]
+atlas = ExtResource( 25 )
+region = Rect2( 160, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=301]
+atlas = ExtResource( 25 )
+region = Rect2( 200, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=302]
+atlas = ExtResource( 25 )
+region = Rect2( 240, 0, 40, 35 )
+
+[sub_resource type="AtlasTexture" id=303]
+atlas = ExtResource( 25 )
+region = Rect2( 280, 0, 40, 35 )
 
 [sub_resource type="AtlasTexture" id=164]
 atlas = ExtResource( 14 )
@@ -2917,310 +3155,6 @@ region = Rect2( 384, 0, 48, 48 )
 [sub_resource type="AtlasTexture" id=172]
 atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 48, 48 )
-
-[sub_resource type="AtlasTexture" id=189]
-atlas = ExtResource( 23 )
-region = Rect2( 0, 0, 28, 23 )
-
-[sub_resource type="AtlasTexture" id=190]
-atlas = ExtResource( 23 )
-region = Rect2( 28, 0, 28, 23 )
-
-[sub_resource type="AtlasTexture" id=191]
-atlas = ExtResource( 23 )
-region = Rect2( 56, 0, 28, 23 )
-
-[sub_resource type="AtlasTexture" id=192]
-atlas = ExtResource( 23 )
-region = Rect2( 84, 0, 28, 23 )
-
-[sub_resource type="AtlasTexture" id=239]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=240]
-atlas = ExtResource( 10 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=241]
-atlas = ExtResource( 10 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=242]
-atlas = ExtResource( 10 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=193]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=194]
-atlas = ExtResource( 7 )
-region = Rect2( 60, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=195]
-atlas = ExtResource( 7 )
-region = Rect2( 120, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=196]
-atlas = ExtResource( 7 )
-region = Rect2( 180, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=197]
-atlas = ExtResource( 7 )
-region = Rect2( 240, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=198]
-atlas = ExtResource( 7 )
-region = Rect2( 300, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=199]
-atlas = ExtResource( 7 )
-region = Rect2( 360, 0, 60, 32 )
-
-[sub_resource type="AtlasTexture" id=80]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=81]
-atlas = ExtResource( 18 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=82]
-atlas = ExtResource( 18 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=83]
-atlas = ExtResource( 18 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=84]
-atlas = ExtResource( 18 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=85]
-atlas = ExtResource( 18 )
-region = Rect2( 160, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=86]
-atlas = ExtResource( 18 )
-region = Rect2( 192, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=87]
-atlas = ExtResource( 18 )
-region = Rect2( 224, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=180]
-atlas = ExtResource( 24 )
-region = Rect2( 0, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=181]
-atlas = ExtResource( 24 )
-region = Rect2( 32, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=182]
-atlas = ExtResource( 24 )
-region = Rect2( 64, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=183]
-atlas = ExtResource( 24 )
-region = Rect2( 96, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=184]
-atlas = ExtResource( 24 )
-region = Rect2( 128, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=185]
-atlas = ExtResource( 24 )
-region = Rect2( 160, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=186]
-atlas = ExtResource( 24 )
-region = Rect2( 192, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=187]
-atlas = ExtResource( 24 )
-region = Rect2( 224, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=188]
-atlas = ExtResource( 24 )
-region = Rect2( 256, 0, 32, 44 )
-
-[sub_resource type="AtlasTexture" id=104]
-atlas = ExtResource( 17 )
-region = Rect2( 0, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=105]
-atlas = ExtResource( 17 )
-region = Rect2( 44, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=106]
-atlas = ExtResource( 17 )
-region = Rect2( 88, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=107]
-atlas = ExtResource( 17 )
-region = Rect2( 132, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=108]
-atlas = ExtResource( 17 )
-region = Rect2( 176, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=109]
-atlas = ExtResource( 17 )
-region = Rect2( 220, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=110]
-atlas = ExtResource( 17 )
-region = Rect2( 264, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=111]
-atlas = ExtResource( 17 )
-region = Rect2( 308, 0, 44, 32 )
-
-[sub_resource type="AtlasTexture" id=162]
-atlas = ExtResource( 16 )
-region = Rect2( 0, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=163]
-atlas = ExtResource( 16 )
-region = Rect2( 50, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=96]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=97]
-atlas = ExtResource( 13 )
-region = Rect2( 50, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=98]
-atlas = ExtResource( 13 )
-region = Rect2( 100, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=99]
-atlas = ExtResource( 13 )
-region = Rect2( 150, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=100]
-atlas = ExtResource( 13 )
-region = Rect2( 200, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=101]
-atlas = ExtResource( 13 )
-region = Rect2( 250, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=102]
-atlas = ExtResource( 13 )
-region = Rect2( 300, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=103]
-atlas = ExtResource( 13 )
-region = Rect2( 350, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=265]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=266]
-atlas = ExtResource( 4 )
-region = Rect2( 50, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=267]
-atlas = ExtResource( 4 )
-region = Rect2( 100, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=268]
-atlas = ExtResource( 4 )
-region = Rect2( 150, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=269]
-atlas = ExtResource( 4 )
-region = Rect2( 200, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=270]
-atlas = ExtResource( 4 )
-region = Rect2( 250, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=296]
-atlas = ExtResource( 25 )
-region = Rect2( 0, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=297]
-atlas = ExtResource( 25 )
-region = Rect2( 40, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=298]
-atlas = ExtResource( 25 )
-region = Rect2( 80, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=299]
-atlas = ExtResource( 25 )
-region = Rect2( 120, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=300]
-atlas = ExtResource( 25 )
-region = Rect2( 160, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=301]
-atlas = ExtResource( 25 )
-region = Rect2( 200, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=302]
-atlas = ExtResource( 25 )
-region = Rect2( 240, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=303]
-atlas = ExtResource( 25 )
-region = Rect2( 280, 0, 40, 35 )
-
-[sub_resource type="AtlasTexture" id=88]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=89]
-atlas = ExtResource( 11 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=90]
-atlas = ExtResource( 11 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=91]
-atlas = ExtResource( 11 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=92]
-atlas = ExtResource( 11 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=93]
-atlas = ExtResource( 11 )
-region = Rect2( 160, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=94]
-atlas = ExtResource( 11 )
-region = Rect2( 192, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=95]
-atlas = ExtResource( 11 )
-region = Rect2( 224, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=160]
-atlas = ExtResource( 19 )
-region = Rect2( 0, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=161]
-atlas = ExtResource( 19 )
-region = Rect2( 50, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=245]
-atlas = ExtResource( 15 )
-region = Rect2( 0, 0, 50, 32 )
-
-[sub_resource type="AtlasTexture" id=246]
-atlas = ExtResource( 15 )
-region = Rect2( 50, 0, 50, 32 )
 
 [sub_resource type="AtlasTexture" id=289]
 atlas = ExtResource( 4 )
@@ -3306,96 +3240,123 @@ region = Rect2( 384, 0, 32, 32 )
 atlas = ExtResource( 6 )
 region = Rect2( 416, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=128]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=160]
+atlas = ExtResource( 19 )
+region = Rect2( 0, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=161]
+atlas = ExtResource( 19 )
+region = Rect2( 50, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=162]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=163]
+atlas = ExtResource( 16 )
+region = Rect2( 50, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=129]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=89]
+atlas = ExtResource( 11 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=130]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 11 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=131]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=91]
+atlas = ExtResource( 11 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=132]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=92]
+atlas = ExtResource( 11 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=133]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=93]
+atlas = ExtResource( 11 )
 region = Rect2( 160, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=134]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=94]
+atlas = ExtResource( 11 )
 region = Rect2( 192, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=135]
-atlas = ExtResource( 22 )
+[sub_resource type="AtlasTexture" id=95]
+atlas = ExtResource( 11 )
 region = Rect2( 224, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=153]
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=104]
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 44, 32 )
 
-[sub_resource type="AtlasTexture" id=154]
-atlas = ExtResource( 8 )
-region = Rect2( 60, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=105]
+atlas = ExtResource( 17 )
+region = Rect2( 44, 0, 44, 32 )
 
-[sub_resource type="AtlasTexture" id=155]
-atlas = ExtResource( 8 )
-region = Rect2( 120, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=106]
+atlas = ExtResource( 17 )
+region = Rect2( 88, 0, 44, 32 )
 
-[sub_resource type="AtlasTexture" id=156]
-atlas = ExtResource( 8 )
-region = Rect2( 180, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=107]
+atlas = ExtResource( 17 )
+region = Rect2( 132, 0, 44, 32 )
 
-[sub_resource type="AtlasTexture" id=157]
-atlas = ExtResource( 8 )
-region = Rect2( 240, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=108]
+atlas = ExtResource( 17 )
+region = Rect2( 176, 0, 44, 32 )
 
-[sub_resource type="AtlasTexture" id=158]
-atlas = ExtResource( 8 )
-region = Rect2( 300, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=109]
+atlas = ExtResource( 17 )
+region = Rect2( 220, 0, 44, 32 )
 
-[sub_resource type="AtlasTexture" id=159]
-atlas = ExtResource( 8 )
-region = Rect2( 360, 0, 60, 44 )
+[sub_resource type="AtlasTexture" id=110]
+atlas = ExtResource( 17 )
+region = Rect2( 264, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=111]
+atlas = ExtResource( 17 )
+region = Rect2( 308, 0, 44, 32 )
+
+[sub_resource type="AtlasTexture" id=96]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=97]
+atlas = ExtResource( 13 )
+region = Rect2( 50, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=98]
+atlas = ExtResource( 13 )
+region = Rect2( 100, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=99]
+atlas = ExtResource( 13 )
+region = Rect2( 150, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=100]
+atlas = ExtResource( 13 )
+region = Rect2( 200, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=101]
+atlas = ExtResource( 13 )
+region = Rect2( 250, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=102]
+atlas = ExtResource( 13 )
+region = Rect2( 300, 0, 50, 32 )
+
+[sub_resource type="AtlasTexture" id=103]
+atlas = ExtResource( 13 )
+region = Rect2( 350, 0, 50, 32 )
 
 [sub_resource type="SpriteFrames" id=79]
 animations = [ {
-"frames": [ SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ) ],
+"frames": [ SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 197 ), SubResource( 198 ), SubResource( 199 ) ],
 "loop": true,
-"name": "Walk Shotgun",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ) ],
-"loop": true,
-"name": "Walk AK",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 271 ), SubResource( 272 ), SubResource( 273 ), SubResource( 274 ), SubResource( 275 ), SubResource( 276 ), SubResource( 277 ), SubResource( 278 ), SubResource( 279 ), SubResource( 280 ) ],
-"loop": true,
-"name": "Execute Wall",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 281 ), SubResource( 282 ), SubResource( 283 ), SubResource( 284 ), SubResource( 285 ), SubResource( 286 ), SubResource( 287 ), SubResource( 288 ) ],
-"loop": true,
-"name": "Execute Shotgun",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ), SubResource( 168 ), SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 172 ) ],
-"loop": true,
-"name": "Attack Bat",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 189 ), SubResource( 190 ), SubResource( 191 ), SubResource( 192 ) ],
-"loop": true,
-"name": "Execute Unarmed",
+"name": "Execute Bat",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 239 ), SubResource( 240 ), SubResource( 241 ), SubResource( 242 ) ],
@@ -3403,14 +3364,19 @@ animations = [ {
 "name": "Mask On",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 193 ), SubResource( 194 ), SubResource( 195 ), SubResource( 196 ), SubResource( 197 ), SubResource( 198 ), SubResource( 199 ) ],
-"loop": true,
-"name": "Execute Bat",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 80 ), SubResource( 81 ), SubResource( 82 ), SubResource( 83 ), SubResource( 84 ), SubResource( 85 ), SubResource( 86 ), SubResource( 87 ) ],
 "loop": true,
 "name": "Walk Knife",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 120 ), SubResource( 121 ), SubResource( 122 ), SubResource( 123 ), SubResource( 124 ), SubResource( 125 ), SubResource( 126 ), SubResource( 127 ) ],
+"loop": true,
+"name": "Walk AK",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 112 ), SubResource( 113 ), SubResource( 114 ), SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ), SubResource( 119 ) ],
+"loop": true,
+"name": "Walk Shotgun",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 180 ), SubResource( 181 ), SubResource( 182 ), SubResource( 183 ), SubResource( 184 ), SubResource( 185 ), SubResource( 186 ), SubResource( 187 ), SubResource( 188 ) ],
@@ -3418,19 +3384,9 @@ animations = [ {
 "name": "Attack Knife",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ) ],
+"frames": [ SubResource( 245 ), SubResource( 246 ) ],
 "loop": true,
-"name": "Walk M16",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 162 ), SubResource( 163 ) ],
-"loop": true,
-"name": "Attack M16",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
-"loop": true,
-"name": "Walk M9",
+"name": "Attack M9",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 265 ), SubResource( 266 ), SubResource( 267 ), SubResource( 268 ), SubResource( 269 ), SubResource( 270 ) ],
@@ -3438,24 +3394,39 @@ animations = [ {
 "name": "Attack Shotgun",
 "speed": 18.0
 }, {
+"frames": [ SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ) ],
+"loop": true,
+"name": "Attack Unarmed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ) ],
+"loop": true,
+"name": "Walk Unarmed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 271 ), SubResource( 272 ), SubResource( 273 ), SubResource( 274 ), SubResource( 275 ), SubResource( 276 ), SubResource( 277 ), SubResource( 278 ), SubResource( 279 ), SubResource( 280 ) ],
+"loop": true,
+"name": "Execute Wall",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 189 ), SubResource( 190 ), SubResource( 191 ), SubResource( 192 ) ],
+"loop": true,
+"name": "Execute Unarmed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 281 ), SubResource( 282 ), SubResource( 283 ), SubResource( 284 ), SubResource( 285 ), SubResource( 286 ), SubResource( 287 ), SubResource( 288 ) ],
+"loop": true,
+"name": "Execute Shotgun",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 296 ), SubResource( 297 ), SubResource( 298 ), SubResource( 299 ), SubResource( 300 ), SubResource( 301 ), SubResource( 302 ), SubResource( 303 ) ],
 "loop": true,
 "name": "Execute Knife",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
+"frames": [ SubResource( 164 ), SubResource( 165 ), SubResource( 166 ), SubResource( 167 ), SubResource( 168 ), SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 172 ) ],
 "loop": true,
-"name": "Walk Bat",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 160 ), SubResource( 161 ) ],
-"loop": true,
-"name": "Attack AK",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 245 ), SubResource( 246 ) ],
-"loop": true,
-"name": "Attack M9",
+"name": "Attack Bat",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 289 ), SubResource( 290 ), SubResource( 291 ), SubResource( 292 ), SubResource( 293 ), SubResource( 294 ), SubResource( 295 ) ],
@@ -3468,14 +3439,29 @@ animations = [ {
 "name": "Execute M9",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 128 ), SubResource( 129 ), SubResource( 130 ), SubResource( 131 ), SubResource( 132 ), SubResource( 133 ), SubResource( 134 ), SubResource( 135 ) ],
+"frames": [ SubResource( 160 ), SubResource( 161 ) ],
 "loop": true,
-"name": "Walk Unarmed",
+"name": "Attack AK",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ), SubResource( 159 ) ],
+"frames": [ SubResource( 162 ), SubResource( 163 ) ],
 "loop": true,
-"name": "Attack Unarmed",
+"name": "Attack M16",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 88 ), SubResource( 89 ), SubResource( 90 ), SubResource( 91 ), SubResource( 92 ), SubResource( 93 ), SubResource( 94 ), SubResource( 95 ) ],
+"loop": true,
+"name": "Walk Bat",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 104 ), SubResource( 105 ), SubResource( 106 ), SubResource( 107 ), SubResource( 108 ), SubResource( 109 ), SubResource( 110 ), SubResource( 111 ) ],
+"loop": true,
+"name": "Walk M16",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 96 ), SubResource( 97 ), SubResource( 98 ), SubResource( 99 ), SubResource( 100 ), SubResource( 101 ), SubResource( 102 ), SubResource( 103 ) ],
+"loop": true,
+"name": "Walk M9",
 "speed": 5.0
 } ]
 
@@ -3548,17 +3534,15 @@ radius = 12.0
 height = 8.0
 
 [node name="Body" type="Node2D"]
-rotation = 5.07036e-06
 script = ExtResource( 1 )
 speed_scale = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 0.999999
-anims/AttackAK = SubResource( 238 )
 anims/AttackBat = SubResource( 176 )
+anims/AttackJ941R = SubResource( 244 )
 anims/AttackKnife = SubResource( 179 )
 anims/AttackM16 = SubResource( 236 )
-anims/AttackM9 = SubResource( 244 )
+anims/AttackMK47 = SubResource( 238 )
 anims/AttackShotgun = SubResource( 247 )
 anims/AttackUnarmed = SubResource( 152 )
 anims/ExecuteBat = SubResource( 219 )
@@ -3570,31 +3554,31 @@ anims/ExecuteWall = SubResource( 249 )
 anims/MaskOn = SubResource( 243 )
 anims/PumpShotgun = SubResource( 250 )
 anims/RESET = SubResource( 5 )
-anims/WalkAK = SubResource( 214 )
 anims/WalkBat = SubResource( 215 )
+anims/WalkJ941R = SubResource( 218 )
 anims/WalkKnife = SubResource( 216 )
 anims/WalkM16 = SubResource( 217 )
-anims/WalkM9 = SubResource( 218 )
+anims/WalkMK47 = SubResource( 214 )
 anims/WalkShotgun = SubResource( 7 )
 anims/WalkUnarmed = SubResource( 78 )
 
-[node name="anim" type="AnimatedSprite2D" parent="."]
+[node name="anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 79 )
 animation = "Walk Unarmed"
 
-[node name="mask" type="AnimatedSprite2D" parent="anim"]
+[node name="mask" type="AnimatedSprite" parent="anim"]
 frames = SubResource( 205 )
 frame = 2
 offset = Vector2( -0.5, 0.5 )
 
-[node name="execution_arms" type="AnimatedSprite2D" parent="anim"]
+[node name="execution_arms" type="AnimatedSprite" parent="anim"]
 visible = false
 frames = SubResource( 213 )
 frame = 6
 offset = Vector2( 4, -1 )
 
-[node name="Bullet_Spawn" type="Marker2D" parent="."]
-position = Vector2( 30, 0 )
+[node name="Bullet_Spawn" type="Position2D" parent="anim"]
+position = Vector2( 1, 0 )
 
 [node name="Melee_Area" type="Area2D" parent="."]
 position = Vector2( 16, 0 )
@@ -3603,8 +3587,8 @@ collision_mask = 65535
 monitorable = false
 script = ExtResource( 2 )
 attack_type = 1
-hit_sound = [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut1.wav", "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Cut2.wav" ]
-death_sprite = "DeadSlash"
+hit_sound = [ "res://Data/DEFAULT/SOUNDS/GAMEPLAY/snd_Hit.wav" ]
+death_sprite = "DeadBlunt"
 death_lean_sprite = "DeadLeanMelee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Melee_Area"]

@@ -1,17 +1,33 @@
-extends Node2D
+extends SubViewport
 
 
 @export var floor_clear=false
 @export var solid_collisions_list=[]
-@export var my_surface: NodePath
+@export_node_path("SubViewport") var path_to_surf
+@export_node_path("TileMap") var astar
+var _astar=null
+var my_surface=null
+#@onready var navigation=get_node(navigation_path)
+
 
 var time_to_reset_navmap=0.1
 var reset_navmap=true
+var intensity=0
+var chromatic=0.1
+var death=0;
 
+@export var current=false
+var execute_once=true
+
+var constantly_show=false
+
+#
 func _ready():
-	await get_tree().create_timer(0.01).timeout
-	if visible==false:
-		freeze_scene(self, true)
+	
+	if path_to_surf!=null:
+		my_surface=get_node_or_null(path_to_surf)
+	if astar != null:
+		_astar=get_node_or_null(astar)
 
 func _physics_process(_delta):
 	floor_clear=true
@@ -19,47 +35,23 @@ func _physics_process(_delta):
 		if i in get_tree().get_nodes_in_group("Enemy_Parent"):
 			floor_clear=false
 
-
-func freeze_node(node, freeze):
-	if (node is CollisionShape2D) or (node is CollisionPolygon2D):
-		node.disabled=freeze
-	if (node is RayCast2D):
-		node.enabled=!freeze
-	if (node.has_method("_manual_visiblity")):
-		node._manual_visiblity(!freeze)
-	if (node is RigidBody2D) && !(node in get_tree().get_nodes_in_group("Player")):
-		node.linear_velocity=Vector2.ZERO
-	if (node is WEAPON):
-		node.pick_up=!freeze
+func _process(delta):
+	if get_tree().get_nodes_in_group("Player").size()>0:
+		if get_tree().get_nodes_in_group("Player")[0].get_parent() in get_children():
+			get_parent().visible=true
+			get_parent().modulate=Color(1,1,1)
+		else:
+			if constantly_show==true:
+				get_parent().visible=true
+				get_parent().modulate=Color(0.5,0.5,0.5)
+				constantly_show=false
+			else:
+				get_parent().visible=false
+	size=get_parent().get_viewport_rect().size
+	if current==true && OS.get_name()!="HTML5":
+		intensity=clamp(intensity+(float(Input.is_action_just_pressed("ui_up"))-float(Input.is_action_just_pressed("ui_down")))*0.1,0,0.545)
 	
 	
-	
-#	if (node is Enemy):
-#		node.active=true
-#	if node is StaticBody2D:
-#		if freeze:
-#			solid_collisions_list.append([node.get_path(),node.collision_layer,node.collision_mask])
-#			node.collision_layer=0
-#			node.collision_mask=0
-#		else:
-#			for i in solid_collisions_list:
-#				if i[0]==node.get_path():
-#					node.collision_layer=i[1]
-#					node.collision_mask=i[2]
-	
-	
-	node.set_process(!freeze)
-	node.set_physics_process(!freeze)
-
-
-
-
-func freeze_scene(node, freeze,resetnavmap=false):
-	freeze_node(node, freeze)
-	for c in node.get_children():
-		freeze_scene(c, freeze)
-	reset_navmap=resetnavmap
-	time_to_reset_navmap=1
 
 
 

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 1 )
 
-[node name="BULLET" type="CharacterBody2D"]
+[node name="BULLET" type="KinematicBody2D"]
 collision_layer = 8
 collision_mask = 69
 script = ExtResource( 1 )

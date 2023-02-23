@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://yr5ejhj5sy8l"]
+
+[ext_resource type="Texture2D" uid="uid://bhfojd0wg4nh3" path="res://Data/Sprites/VFX/Impact/Armour/IMP_Armour_hit_strip5.png" id="1_d0ndj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v70pj"]
+atlas = ExtResource("1_d0ndj")
+region = Rect2(0, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbd8m"]
+atlas = ExtResource("1_d0ndj")
+region = Rect2(5, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehscj"]
+atlas = ExtResource("1_d0ndj")
+region = Rect2(10, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e78b2"]
+atlas = ExtResource("1_d0ndj")
+region = Rect2(15, 0, 5, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuxun"]
+atlas = ExtResource("1_d0ndj")
+region = Rect2(20, 0, 5, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sgnsn"]
+animations = [{
+"frames": [SubResource("AtlasTexture_v70pj"), SubResource("AtlasTexture_bbd8m"), SubResource("AtlasTexture_ehscj"), SubResource("AtlasTexture_e78b2"), SubResource("AtlasTexture_cuxun")],
+"loop": false,
+"name": &"default",
+"speed": 48.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_g7e55"]
+resource_name = "impact"
+script/source = "extends AnimatedSprite2D
+
+
+var speed=4
+var direction = 0
+var friction=0.5
+
+
+func _process(delta):
+	z_index=1
+	frame=speed
+	global_position+=Vector2(speed*60,0).rotated(direction)*delta
+	speed=clamp(speed,0,10)
+	speed-=friction*60*delta
+	if speed<1:
+		queue_free()
+
+
+func _on_impact_animation_finished():
+	queue_free()
+	pass
+"
+
+[node name="impact" type="AnimatedSprite2D"]
+texture_filter = 1
+frames = SubResource("SpriteFrames_sgnsn")
+offset = Vector2(2.5, 0)
+script = SubResource("GDScript_g7e55")
+
+[connection signal="animation_finished" from="." to="." method="_on_impact_animation_finished"]

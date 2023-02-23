@@ -20,7 +20,7 @@
 
 extends Node2D
 
-@export_node_path(Node2D) var target: 
+@export_node_path("Node2D") var target: 
 	set=set_target,get=get_target
 
 var _m_Target : Node2D

@@ -1,0 +1,192 @@
+[gd_scene load_steps=14 format=3 uid="uid://2d7fkkc6j5hi"]
+
+[ext_resource type="Script" path="res://Scripts/GAMEPLAY/GAMEPLAY_Interactable.gd" id="1_opfdo"]
+[ext_resource type="FontFile" uid="uid://btobekrncxvg0" path="res://Data/Font/Gatty-ExtraBold.ttf" id="2_v1vox"]
+[ext_resource type="Texture2D" uid="uid://befxahl1vq0at" path="res://Data/Sprites/UI/UI_CirclePoint.png" id="3_dgv0y"]
+[ext_resource type="AudioStream" uid="uid://6q313j47wja" path="res://Data/Sounds/UI/Notif_Popup.wav" id="4_mkany"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ghj1"]
+radius = 20.0
+
+[sub_resource type="Animation" id="Animation_uc3lc"]
+resource_name = "FuckOff"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Control:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.59),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(238, 50), Vector2(10, 50), Vector2(1, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.59),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_si238"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Control:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kfkd8"]
+resource_name = "ShowUp"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Control:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 50), Vector2(248, 50), Vector2(238, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Control:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2d:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7kit5"]
+_data = {
+"FuckOff": SubResource("Animation_uc3lc"),
+"RESET": SubResource("Animation_si238"),
+"ShowUp": SubResource("Animation_kfkd8")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qck6k"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_7oa6u"]
+offsets = PackedFloat32Array(0.524306, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x28pw"]
+light_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dwp3k"]
+light_mode = 1
+
+[node name="Interactable" type="Node2D"]
+z_index = 5
+script = ExtResource("1_opfdo")
+
+[node name="Area2d" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Area2d"]
+shape = SubResource("CircleShape2D_2ghj1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7kit5")
+}
+
+[node name="Line2d" type="Line2D" parent="."]
+material = SubResource("CanvasItemMaterial_qck6k")
+width = 1.0
+gradient = SubResource("Gradient_7oa6u")
+
+[node name="Point" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("CanvasItemMaterial_x28pw")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(-3, -3)
+texture = ExtResource("3_dgv0y")
+
+[node name="Text" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="Text"]
+visible = false
+light_mask = 0
+material = SubResource("CanvasItemMaterial_dwp3k")
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = -15.0
+offset_right = 1.0
+offset_bottom = 35.0
+
+[node name="ColorRect" type="ColorRect" parent="Text/Control"]
+use_parent_material = true
+offset_left = -2.0
+offset_top = 20.0
+offset_right = 238.0
+offset_bottom = 50.0
+scale = Vector2(0.25, 0.25)
+color = Color(0.129412, 0.152941, 0.14902, 0.862745)
+
+[node name="Label" type="Label" parent="Text/Control"]
+use_parent_material = true
+offset_top = 12.0
+offset_right = 238.0
+offset_bottom = 72.0
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_v1vox")
+theme_override_font_sizes/font_size = 48
+text = "[E]   TO INTERACT"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2d" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mkany")
+volume_db = -30.0
